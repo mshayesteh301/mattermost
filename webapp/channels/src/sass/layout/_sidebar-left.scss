@@ -32,12 +32,6 @@ $sidebarOpacityAnimationDuration: 0.15s;
         max-width: 440px;
     }
 
-    h1,
-    h2,
-    h3 {
-        font-family: 'Open Sans', sans-serif;
-    }
-
     &.dragging {
         z-index: 14;
 
@@ -234,9 +228,8 @@ $sidebarOpacityAnimationDuration: 0.15s;
             border-radius: 4px;
             margin-bottom: 8px;
             background: rgba(var(--sidebar-text-rgb), 0.08);
-            font-family: 'Open Sans', sans-serif;
             font-size: 12px;
-            text-align: left;
+            text-align: right;
 
             .icon-magnify {
                 display: inline-flex;
@@ -598,8 +591,7 @@ $sidebarOpacityAnimationDuration: 0.15s;
         background-color: var(--sidebar-bg);
         box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.33);
         color: rgba(var(--sidebar-text-rgb), 0.64);
-        font-family: 'Open Sans', sans-serif;
-        text-align: left;
+        text-align: right;
         text-overflow: ellipsis;
         text-transform: uppercase;
         transition: box-shadow 0.25s ease-in-out;
@@ -712,11 +704,10 @@ $sidebarOpacityAnimationDuration: 0.15s;
         background-color: transparent;
         box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.33);
         color: rgba(var(--sidebar-text-rgb), 0.64);
-        font-family: 'Open Sans', sans-serif;
         font-size: 12px;
         font-weight: 600;
         letter-spacing: 0.05em;
-        text-align: left;
+        text-align: right;
         text-transform: uppercase;
         transition: box-shadow 0.25s ease-in-out;
         white-space: nowrap;

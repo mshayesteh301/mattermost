@@ -42,14 +42,14 @@ const Badge = styled.span`
 `;
 
 const ProductBrandingFreeEdition = (): JSX.Element => {
-    const license = useSelector(getLicense);
+    // const license = useSelector(getLicense);
 
-    let badgeText = '';
-    if (license?.SkuShortName === LicenseSkus.Entry) {
-        badgeText = 'ENTRY EDITION';
-    } else if (license?.IsLicensed === 'false') {
-        badgeText = 'TEAM EDITION';
-    }
+    // let badgeText = '';
+    // if (license?.SkuShortName === LicenseSkus.Entry) {
+    //     badgeText = 'ENTRY EDITION';
+    // } else if (license?.IsLicensed === 'false') {
+    //     badgeText = 'TEAM EDITION';
+    // }
 
     return (
         <ProductBrandingFreeEditionContainer tabIndex={-1}>
@@ -57,7 +57,7 @@ const ProductBrandingFreeEdition = (): JSX.Element => {
                 width={116}
                 height={20}
             />
-            <Badge>{badgeText}</Badge>
+            {/* <Badge>{badgeText}</Badge> */}
         </ProductBrandingFreeEditionContainer>
     );
 };

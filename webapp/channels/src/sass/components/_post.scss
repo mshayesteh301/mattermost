@@ -144,7 +144,7 @@
 
     .post-list-holder-by-time {
         position: absolute;
-        width: 100%;
+        width: calc(100% - 5px);
         height: 100%;
         background: var(--center-channel-bg);
 

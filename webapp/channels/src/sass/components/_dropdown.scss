@@ -61,5 +61,7 @@
     .dropdown-menu {
         top: calc(100% + 4px);
         min-width: 245px;
+        left: auto;
+        right: 0;
     }
 }
