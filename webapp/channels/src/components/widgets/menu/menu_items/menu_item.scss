@@ -42,7 +42,7 @@
             width: 28px; // less 12px padding is 16px
             height: 16px; // less 3px top padding is 16px;
             align-self: center;
-            padding-right: 12px;
+            padding-left: 12px;
             line-height: 16px;
         }
 
@@ -95,7 +95,7 @@
             cursor: pointer;
             font-weight: normal;
             line-height: 28px;
-            text-align: left;
+            text-align: right;
             text-overflow: ellipsis;
             white-space: nowrap;
 
