@@ -5,6 +5,12 @@
 
 .radio,
 .checkbox {
+    
+    label {
+        padding-left: 0;
+        padding-right: 20px;
+    }
+
     &.margin-bottom--none {
         margin-bottom: 0;
     }
@@ -116,7 +122,6 @@
 }
 
 .has-error {
-
     .help-block,
     .radio,
     .checkbox,
@@ -147,7 +152,7 @@
         align-items: center;
     }
 
-    input[type='radio'] {
+    input[type="radio"] {
         width: 13px;
         margin-top: 0;
     }
@@ -166,7 +171,7 @@
         padding-right: 1px;
         margin-right: 6px;
 
-        &+span {
+        & + span {
             margin-right: 4px;
             font-weight: 600;
         }
