@@ -101,7 +101,7 @@ services:
       - mm-test
     depends_on:
       - postgres
-      # - minio
+      - minio
       # - inbucket
       # - openldap
       # - elasticsearch

@@ -5,10 +5,15 @@
 
 .radio,
 .checkbox {
-    
+
     label {
         padding-left: 0;
         padding-right: 20px;
+
+        input[type="radio"]{
+            margin-right:-20px;
+            margin-left: 0;;
+        }
     }
 
     &.margin-bottom--none {
