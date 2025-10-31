@@ -7761,11 +7761,11 @@
   },
   {
     "id": "api.channel.create_default_channels.town_square",
-    "translation": "دانشگاه"
+    "translation": "پیش‌فرض"
   },
   {
     "id": "api.channel.create_default_channels.off_topic",
-    "translation": "بحث آزاد"
+    "translation": "عمومی"
   },
   {
     "id": "api.channel.create_channel.max_channel_limit.app_error",
