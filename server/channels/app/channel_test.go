@@ -345,18 +345,18 @@ func TestRemoveUsersFromChannelNotMemberOfTeam(t *testing.T) {
 	require.Equal(t, members[0].UserId, th.BasicUser.Id)
 }
 
-func TestJoinDefaultChannelsCreatesChannelMemberHistoryRecordTownSquare(t *testing.T) {
+func TestJoinDefaultChannelsCreatesChannelMemberHistoryRecordDefaultChannel(t *testing.T) {
 	mainHelper.Parallel(t)
 	th := Setup(t).InitBasic()
 	defer th.TearDown()
 
-	// figure out the initial number of users in town square
-	channel, err := th.App.Srv().Store().Channel().GetByName(th.BasicTeam.Id, "town-square", true)
+	// figure out the initial number of users in default channel
+	channel, err := th.App.Srv().Store().Channel().GetByName(th.BasicTeam.Id, "default-channel", true)
 	require.NoError(t, err)
-	townSquareChannelID := channel.Id
-	users, nErr := th.App.Srv().Store().ChannelMemberHistory().GetUsersInChannelDuring(model.GetMillis()-100, model.GetMillis()+100, []string{townSquareChannelID})
+	defaultChannelChannelID := channel.Id
+	users, nErr := th.App.Srv().Store().ChannelMemberHistory().GetUsersInChannelDuring(model.GetMillis()-100, model.GetMillis()+100, []string{defaultChannelChannelID})
 	require.NoError(t, nErr)
-	initialNumTownSquareUsers := len(users)
+	initialNumDefaultChannelUsers := len(users)
 
 	// create a new user that joins the default channels
 	user := th.CreateUser()
@@ -364,13 +364,13 @@ func TestJoinDefaultChannelsCreatesChannelMemberHistoryRecordTownSquare(t *testi
 	require.Nil(t, appErr)
 
 	// there should be a ChannelMemberHistory record for the user
-	histories, nErr := th.App.Srv().Store().ChannelMemberHistory().GetUsersInChannelDuring(model.GetMillis()-100, model.GetMillis()+100, []string{townSquareChannelID})
+	histories, nErr := th.App.Srv().Store().ChannelMemberHistory().GetUsersInChannelDuring(model.GetMillis()-100, model.GetMillis()+100, []string{defaultChannelChannelID})
 	require.NoError(t, nErr)
-	assert.Len(t, histories, initialNumTownSquareUsers+1)
+	assert.Len(t, histories, initialNumDefaultChannelUsers+1)
 
 	found := false
 	for _, history := range histories {
-		if user.Id == history.UserId && townSquareChannelID == history.ChannelId {
+		if user.Id == history.UserId && defaultChannelChannelID == history.ChannelId {
 			found = true
 			break
 		}
@@ -389,7 +389,7 @@ func TestJoinDefaultChannelsCreatesChannelMemberHistoryRecordOffTopic(t *testing
 	offTopicChannelId := channel.Id
 	users, nErr := th.App.Srv().Store().ChannelMemberHistory().GetUsersInChannelDuring(model.GetMillis()-100, model.GetMillis()+100, []string{offTopicChannelId})
 	require.NoError(t, nErr)
-	initialNumTownSquareUsers := len(users)
+	initialNumDefaultChannelUsers := len(users)
 
 	// create a new user that joins the default channels
 	user := th.CreateUser()
@@ -399,7 +399,7 @@ func TestJoinDefaultChannelsCreatesChannelMemberHistoryRecordOffTopic(t *testing
 	// there should be a ChannelMemberHistory record for the user
 	histories, nErr := th.App.Srv().Store().ChannelMemberHistory().GetUsersInChannelDuring(model.GetMillis()-100, model.GetMillis()+100, []string{offTopicChannelId})
 	require.NoError(t, nErr)
-	assert.Len(t, histories, initialNumTownSquareUsers+1)
+	assert.Len(t, histories, initialNumDefaultChannelUsers+1)
 
 	found := false
 	for _, history := range histories {
@@ -817,29 +817,29 @@ func TestLeaveDefaultChannel(t *testing.T) {
 	guest := th.CreateGuest()
 	th.LinkUserToTeam(guest, th.BasicTeam)
 
-	townSquare, appErr := th.App.GetChannelByName(th.Context, "town-square", th.BasicTeam.Id, false)
+	defaultChannel, appErr := th.App.GetChannelByName(th.Context, "default-channel", th.BasicTeam.Id, false)
 	require.Nil(t, appErr)
-	th.AddUserToChannel(guest, townSquare)
-	th.AddUserToChannel(th.BasicUser, townSquare)
+	th.AddUserToChannel(guest, defaultChannel)
+	th.AddUserToChannel(th.BasicUser, defaultChannel)
 
 	t.Run("User tries to leave the default channel", func(t *testing.T) {
-		appErr = th.App.LeaveChannel(th.Context, townSquare.Id, th.BasicUser.Id)
+		appErr = th.App.LeaveChannel(th.Context, defaultChannel.Id, th.BasicUser.Id)
 		assert.NotNil(t, appErr, "It should fail to remove a regular user from the default channel")
 		assert.Equal(t, appErr.Id, "api.channel.remove.default.app_error")
-		_, appErr = th.App.GetChannelMember(th.Context, townSquare.Id, th.BasicUser.Id)
+		_, appErr = th.App.GetChannelMember(th.Context, defaultChannel.Id, th.BasicUser.Id)
 		assert.Nil(t, appErr)
 	})
 
 	t.Run("Guest leaves the default channel", func(t *testing.T) {
-		appErr = th.App.LeaveChannel(th.Context, townSquare.Id, guest.Id)
+		appErr = th.App.LeaveChannel(th.Context, defaultChannel.Id, guest.Id)
 		assert.Nil(t, appErr, "It should allow to remove a guest user from the default channel")
-		_, appErr = th.App.GetChannelMember(th.Context, townSquare.Id, guest.Id)
+		_, appErr = th.App.GetChannelMember(th.Context, defaultChannel.Id, guest.Id)
 		assert.NotNil(t, appErr)
 	})
 
 	t.Run("Trying to leave the default channel should not delete thread memberships", func(t *testing.T) {
 		post := &model.Post{
-			ChannelId: townSquare.Id,
+			ChannelId: defaultChannel.Id,
 			Message:   "root post",
 			UserId:    th.BasicUser.Id,
 		}
@@ -847,7 +847,7 @@ func TestLeaveDefaultChannel(t *testing.T) {
 		require.Nil(t, appErr)
 
 		reply := &model.Post{
-			ChannelId: townSquare.Id,
+			ChannelId: defaultChannel.Id,
 			Message:   "reply post",
 			UserId:    th.BasicUser.Id,
 			RootId:    rpost.Id,
@@ -855,15 +855,15 @@ func TestLeaveDefaultChannel(t *testing.T) {
 		_, appErr = th.App.CreatePost(th.Context, reply, th.BasicChannel, model.CreatePostFlags{SetOnline: true})
 		require.Nil(t, appErr)
 
-		threads, appErr := th.App.GetThreadsForUser(th.Context, th.BasicUser.Id, townSquare.TeamId, model.GetUserThreadsOpts{})
+		threads, appErr := th.App.GetThreadsForUser(th.Context, th.BasicUser.Id, defaultChannel.TeamId, model.GetUserThreadsOpts{})
 		require.Nil(t, appErr)
 		require.Len(t, threads.Threads, 1)
 
-		appErr = th.App.LeaveChannel(th.Context, townSquare.Id, th.BasicUser.Id)
+		appErr = th.App.LeaveChannel(th.Context, defaultChannel.Id, th.BasicUser.Id)
 		assert.NotNil(t, appErr, "It should fail to remove a regular user from the default channel")
 		assert.Equal(t, appErr.Id, "api.channel.remove.default.app_error")
 
-		threads, appErr = th.App.GetThreadsForUser(th.Context, th.BasicUser.Id, townSquare.TeamId, model.GetUserThreadsOpts{})
+		threads, appErr = th.App.GetThreadsForUser(th.Context, th.BasicUser.Id, defaultChannel.TeamId, model.GetUserThreadsOpts{})
 		require.Nil(t, appErr)
 		require.Len(t, threads.Threads, 1)
 	})
@@ -937,13 +937,13 @@ func TestLeaveLastChannel(t *testing.T) {
 	guest := th.CreateGuest()
 	th.LinkUserToTeam(guest, th.BasicTeam)
 
-	townSquare, appErr := th.App.GetChannelByName(th.Context, "town-square", th.BasicTeam.Id, false)
+	defaultChannel, appErr := th.App.GetChannelByName(th.Context, "default-channel", th.BasicTeam.Id, false)
 	require.Nil(t, appErr)
-	th.AddUserToChannel(guest, townSquare)
+	th.AddUserToChannel(guest, defaultChannel)
 	th.AddUserToChannel(guest, th.BasicChannel)
 
 	t.Run("Guest leaves not last channel", func(t *testing.T) {
-		appErr = th.App.LeaveChannel(th.Context, townSquare.Id, guest.Id)
+		appErr = th.App.LeaveChannel(th.Context, defaultChannel.Id, guest.Id)
 		require.Nil(t, appErr)
 		_, appErr = th.App.GetTeamMember(th.Context, th.BasicTeam.Id, guest.Id)
 		assert.Nil(t, appErr, "It should maintain the team membership")
@@ -1473,10 +1473,10 @@ func TestGetPublicChannelsForTeam(t *testing.T) {
 
 	var expectedChannels []*model.Channel
 
-	townSquare, appErr := th.App.GetChannelByName(th.Context, "town-square", team.Id, false)
+	defaultChannel, appErr := th.App.GetChannelByName(th.Context, "default-channel", team.Id, false)
 	require.Nil(t, appErr)
-	require.NotNil(t, townSquare)
-	expectedChannels = append(expectedChannels, townSquare)
+	require.NotNil(t, defaultChannel)
+	expectedChannels = append(expectedChannels, defaultChannel)
 
 	offTopic, appErr := th.App.GetChannelByName(th.Context, "off-topic", team.Id, false)
 	require.Nil(t, appErr)
@@ -1635,7 +1635,7 @@ func TestDefaultChannelNames(t *testing.T) {
 	defer th.TearDown()
 
 	actual := th.App.DefaultChannelNames(th.Context)
-	expect := []string{"town-square", "off-topic"}
+	expect := []string{"default-channel", "off-topic"}
 	require.ElementsMatch(t, expect, actual)
 
 	th.App.UpdateConfig(func(cfg *model.Config) {
@@ -1643,7 +1643,7 @@ func TestDefaultChannelNames(t *testing.T) {
 	})
 
 	actual = th.App.DefaultChannelNames(th.Context)
-	expect = []string{"town-square", "foo", "bar"}
+	expect = []string{"default-channel", "foo", "bar"}
 	require.ElementsMatch(t, expect, actual)
 }
 

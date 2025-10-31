@@ -27,12 +27,12 @@ function verifyLoadingSpinnerIsGone() {
 }
 
 describe('Mobile Search', () => {
-    let townsquareLink;
+    let defaultchannelLink;
 
     before(() => {
         // # Login as test user
         cy.apiInitSetup({loginAfter: true}).then(({team}) => {
-            townsquareLink = `/${team.name}/channels/town-square`;
+            defaultchannelLink = `/${team.name}/channels/default-channel`;
         });
     });
 
@@ -40,8 +40,8 @@ describe('Mobile Search', () => {
         // # Resize window to mobile view
         cy.viewport('iphone-6');
 
-        // # Visit town-square
-        cy.visit(townsquareLink);
+        // # Visit default-channel
+        cy.visit(defaultchannelLink);
     });
 
     it('Opening the Recent Mentions eventually loads the results', () => {

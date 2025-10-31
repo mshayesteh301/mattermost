@@ -2110,7 +2110,7 @@ func TestGetChannelsForUser(t *testing.T) {
 	numPrivate := 0
 	numPublic := 0
 	numOffTopic := 0
-	numTownSquare := 0
+	numDefaultChannel := 0
 	for _, ch := range channels {
 		if ch.Type == model.ChannelTypeOpen {
 			numPublic++
@@ -2120,8 +2120,8 @@ func TestGetChannelsForUser(t *testing.T) {
 
 		if ch.DisplayName == "Off-Topic" {
 			numOffTopic++
-		} else if ch.DisplayName == "Town Square" {
-			numTownSquare++
+		} else if ch.DisplayName == "Default Channel" {
+			numDefaultChannel++
 		}
 	}
 
@@ -2129,7 +2129,7 @@ func TestGetChannelsForUser(t *testing.T) {
 	assert.Equal(t, 2, numPrivate)
 	assert.Equal(t, 7, numPublic)
 	assert.Equal(t, 2, numOffTopic)
-	assert.Equal(t, 2, numTownSquare)
+	assert.Equal(t, 2, numDefaultChannel)
 
 	// Creating some more channels to be exactly 100 to test page size boundaries.
 	for range 91 {
@@ -2179,7 +2179,7 @@ func TestGetAllChannels(t *testing.T) {
 		deletedChannel := channels[0].Channel
 
 		// Never try to delete the default channel
-		if deletedChannel.Name == "town-square" {
+		if deletedChannel.Name == "default-channel" {
 			deletedChannel = channels[1].Channel
 		}
 
@@ -2276,7 +2276,7 @@ func TestGetAllChannels(t *testing.T) {
 		CheckOKStatus(t, resp)
 		require.True(t, len(channels) > 0)
 		for _, channel := range channels {
-			if channel.DisplayName != "Off-Topic" && channel.DisplayName != "Town Square" {
+			if channel.DisplayName != "Off-Topic" && channel.DisplayName != "Default Channel" {
 				require.NotEqual(t, "", channel.CreatorId)
 				require.NotEqual(t, "", channel.Name)
 			}
@@ -2287,7 +2287,7 @@ func TestGetAllChannels(t *testing.T) {
 		CheckOKStatus(t, resp)
 		require.True(t, len(channels) > 0)
 		for _, channel := range channels {
-			if channel.DisplayName != "Off-Topic" && channel.DisplayName != "Town Square" {
+			if channel.DisplayName != "Off-Topic" && channel.DisplayName != "Default Channel" {
 				require.NotEqual(t, "", channel.CreatorId)
 				require.NotEqual(t, "", channel.Name)
 			}
@@ -2735,7 +2735,7 @@ func TestSearchAllChannels(t *testing.T) {
 		CheckOKStatus(t, resp)
 		require.True(t, len(channels) > 0)
 		for _, channel := range channels {
-			if channel.DisplayName != "Off-Topic" && channel.DisplayName != "Town Square" {
+			if channel.DisplayName != "Off-Topic" && channel.DisplayName != "Default Channel" {
 				require.NotEqual(t, "", channel.CreatorId)
 				require.NotEqual(t, "", channel.Name)
 			}
@@ -2746,7 +2746,7 @@ func TestSearchAllChannels(t *testing.T) {
 		CheckOKStatus(t, resp)
 		require.True(t, len(channels) > 0)
 		for _, channel := range channels {
-			if channel.DisplayName != "Off-Topic" && channel.DisplayName != "Town Square" {
+			if channel.DisplayName != "Off-Topic" && channel.DisplayName != "Default Channel" {
 				require.NotEqual(t, "", channel.CreatorId)
 				require.NotEqual(t, "", channel.Name)
 			}
@@ -4899,8 +4899,8 @@ func TestAutocompleteChannels(t *testing.T) {
 
 	// A private channel to make sure private channels are used.
 	ptown, _, err := th.Client.CreateChannel(context.Background(), &model.Channel{
-		DisplayName: "Town",
-		Name:        "town",
+		DisplayName: "Default",
+		Name:        "default",
 		Type:        model.ChannelTypePrivate,
 		TeamId:      th.BasicTeam.Id,
 	})
@@ -4927,10 +4927,10 @@ func TestAutocompleteChannels(t *testing.T) {
 		expectedExcludes []string
 	}{
 		{
-			"Basic town-square",
+			"Basic default-channel",
 			th.BasicTeam.Id,
-			"town",
-			[]string{"town-square", "town"},
+			"default",
+			[]string{"default-channel", "default"},
 			[]string{"off-topic", "tower"},
 		},
 		{
@@ -4938,13 +4938,13 @@ func TestAutocompleteChannels(t *testing.T) {
 			th.BasicTeam.Id,
 			"off-to",
 			[]string{"off-topic"},
-			[]string{"town-square", "town", "tower"},
+			[]string{"default-channel", "default", "tower"},
 		},
 		{
-			"Basic town square and off topic",
+			"Basic default channel and off topic",
 			th.BasicTeam.Id,
 			"tow",
-			[]string{"town-square", "tower", "town"},
+			[]string{"default-channel", "tower", "default"},
 			[]string{"off-topic"},
 		},
 	} {
@@ -4996,8 +4996,8 @@ func TestAutocompleteChannelsForSearch(t *testing.T) {
 
 	// A private channel to make sure private channels are not used
 	ptown, _, err := th.SystemAdminClient.CreateChannel(context.Background(), &model.Channel{
-		DisplayName: "Town",
-		Name:        "town",
+		DisplayName: "Default",
+		Name:        "default",
 		Type:        model.ChannelTypePrivate,
 		TeamId:      th.BasicTeam.Id,
 	})
@@ -5037,25 +5037,25 @@ func TestAutocompleteChannelsForSearch(t *testing.T) {
 		expectedExcludes []string
 	}{
 		{
-			"Basic town-square",
+			"Basic default-channel",
 			th.BasicTeam.Id,
-			"town",
-			[]string{"town-square", "townpriv"},
-			[]string{"off-topic", "town"},
+			"default",
+			[]string{"default-channel", "townpriv"},
+			[]string{"off-topic", "default"},
 		},
 		{
 			"Basic off-topic",
 			th.BasicTeam.Id,
 			"off-to",
 			[]string{"off-topic"},
-			[]string{"town-square", "town", "townpriv"},
+			[]string{"default-channel", "default", "townpriv"},
 		},
 		{
-			"Basic town square and townpriv",
+			"Basic default channel and townpriv",
 			th.BasicTeam.Id,
 			"tow",
-			[]string{"town-square", "townpriv"},
-			[]string{"off-topic", "town"},
+			[]string{"default-channel", "townpriv"},
+			[]string{"off-topic", "default"},
 		},
 		{
 			"Direct and group messages",
@@ -5120,8 +5120,8 @@ func TestAutocompleteChannelsForSearchGuestUsers(t *testing.T) {
 
 	// A private channel to make sure private channels are not used
 	town, _, err := th.SystemAdminClient.CreateChannel(context.Background(), &model.Channel{
-		DisplayName: "Town",
-		Name:        "town",
+		DisplayName: "Default",
+		Name:        "default",
 		Type:        model.ChannelTypeOpen,
 		TeamId:      th.BasicTeam.Id,
 	})
@@ -5170,16 +5170,16 @@ func TestAutocompleteChannelsForSearchGuestUsers(t *testing.T) {
 		{
 			"Should return those channel where is member",
 			th.BasicTeam.Id,
-			"town",
-			[]string{"town", "townpriv"},
-			[]string{"town-square", "off-topic"},
+			"default",
+			[]string{"default", "townpriv"},
+			[]string{"default-channel", "off-topic"},
 		},
 		{
 			"Should return empty if not member of the searched channels",
 			th.BasicTeam.Id,
 			"off-to",
 			[]string{},
-			[]string{"off-topic", "town-square", "town", "townpriv"},
+			[]string{"off-topic", "default-channel", "default", "townpriv"},
 		},
 		{
 			"Should return direct and group messages",

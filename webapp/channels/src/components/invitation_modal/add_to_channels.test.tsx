@@ -32,21 +32,21 @@ const baseProps: Props = deepFreeze({
     currentChannel: {
         display_name: '',
     },
-    townSquareDisplayName: 'Town Square',
+    defaultChannelDisplayName: 'Default Channel',
 });
 
 describe('AddToChannels', () => {
     describe('placeholder selection', () => {
-        it('should use townSquareDisplayName when not in a channel', () => {
+        it('should use defaultChannelDisplayName when not in a channel', () => {
             const props = {...baseProps, currentChannel: undefined};
             renderWithContext(<AddToChannels {...props}/>);
-            expect(screen.getByText(props.townSquareDisplayName, {exact: false})).toBeInTheDocument();
+            expect(screen.getByText(props.defaultChannelDisplayName, {exact: false})).toBeInTheDocument();
         });
 
         it('should use townSqureDisplayName when not in a public or private channel', () => {
             const props = {...baseProps, currentChannel: {type: 'D', display_name: ''} as Channel};
             renderWithContext(<AddToChannels {...props}/>);
-            expect(screen.getByText(props.townSquareDisplayName, {exact: false})).toBeInTheDocument();
+            expect(screen.getByText(props.defaultChannelDisplayName, {exact: false})).toBeInTheDocument();
         });
 
         it('should use the currentChannel display_name when in a channel', () => {

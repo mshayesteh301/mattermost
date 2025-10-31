@@ -49,7 +49,7 @@ describe('Team Settings', () => {
 
         cy.apiInitSetup().then(({team}) => {
             testTeam = team;
-            cy.visit(`/${team.name}/channels/town-square`);
+            cy.visit(`/${team.name}/channels/default-channel`);
         });
     });
 
@@ -123,7 +123,7 @@ describe('Team Settings', () => {
         // * Check that the display name of the team the user was invited to is being correctly displayed
         cy.uiGetLHSHeader().findByText(testTeam.display_name);
 
-        // * Check that the 'Town Square' channel title is visible
-        cy.get('h2.channel-intro__title').should('be.visible').should('have.text', 'Town Square');
+        // * Check that the 'Default Channel' channel title is visible
+        cy.get('h2.channel-intro__title').should('be.visible').should('have.text', 'Default Channel');
     });
 });

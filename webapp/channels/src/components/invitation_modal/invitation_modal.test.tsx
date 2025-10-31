@@ -46,7 +46,7 @@ const defaultProps: Props = deepFreeze({
     canAddUsers: true,
     canInviteGuests: true,
     intl: {} as IntlShape,
-    townSquareDisplayName: '',
+    defaultChannelDisplayName: '',
     onExited: jest.fn(),
     roleForTrackFlow: {started_by_role: General.SYSTEM_USER_ROLE},
     focusOriginElement: 'elementId',

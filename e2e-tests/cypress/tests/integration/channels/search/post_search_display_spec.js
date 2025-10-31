@@ -27,8 +27,8 @@ describe('Search', () => {
     beforeEach(() => {
         cy.apiAdminLogin();
 
-        // Visit town square as an admin
-        cy.visit(`/${testTeam.name}/channels/town-square`);
+        // Visit default channel as an admin
+        cy.visit(`/${testTeam.name}/channels/default-channel`);
     });
 
     it('MM-T353 After clearing search query, search options display', () => {
@@ -71,8 +71,8 @@ describe('Search', () => {
                 cy.postMessageAs({sender: testUser, message: testMessage, channelId: channel.id});
             });
 
-            // # Visit town-square.
-            cy.visit(`/${testTeam.name}/channels/town-square`);
+            // # Visit default-channel.
+            cy.visit(`/${testTeam.name}/channels/default-channel`);
 
             cy.uiGetSearchContainer().click();
 
@@ -106,7 +106,7 @@ describe('Search', () => {
     });
 
     it('MM-T1450 - Autocomplete behaviour', () => {
-        // # Post message in town-square
+        // # Post message in default-channel
         cy.postMessage('hello');
 
         // # Click on searchbox
@@ -127,8 +127,8 @@ describe('Search', () => {
         // # Clear search box
         cy.get('.input-clear-x').first().click({force: true}).wait(TIMEOUTS.HALF_SEC);
 
-        // # Search for search term in:town-square{space}
-        cy.uiGetSearchBox().type('in:town-square ').wait(TIMEOUTS.HALF_SEC);
+        // # Search for search term in:default-channel{space}
+        cy.uiGetSearchBox().type('in:default-channel ').wait(TIMEOUTS.HALF_SEC);
 
         // * Check the hint contents are now visible
         assertSearchHint();
@@ -136,11 +136,11 @@ describe('Search', () => {
         // # Clear search box
         cy.uiGetSearchBox().get('.input-clear-x').click({force: true}).wait(TIMEOUTS.HALF_SEC);
 
-        // # Search for search term in:town-square{enter}
-        cy.uiGetSearchBox().type('in:town-square').wait(TIMEOUTS.HALF_SEC);
+        // # Search for search term in:default-channel{enter}
+        cy.uiGetSearchBox().type('in:default-channel').wait(TIMEOUTS.HALF_SEC);
 
         // * Assert that channel name displays appropriately
-        cy.get('.suggestion-list__item').first().should('contain.text', 'Town Square~town-square');
+        cy.get('.suggestion-list__item').first().should('contain.text', 'Default Channel~default-channel');
 
         // # Press enter to register search term
         cy.uiGetSearchBox().type('{enter}');
@@ -149,7 +149,7 @@ describe('Search', () => {
         assertSearchHint();
 
         // * Assert that searchBox now includes a trailing space
-        cy.uiGetSearchBox().should('have.value', 'in:town-square ');
+        cy.uiGetSearchBox().should('have.value', 'in:default-channel ');
 
         // # Perform the search
         cy.uiGetSearchBox().type('{enter}').wait(TIMEOUTS.HALF_SEC);

@@ -54,7 +54,7 @@ export function mapStateToProps(state: GlobalState, props: OwnProps) {
     const license = getLicense(state);
     const channels = getChannelsInCurrentTeam(state);
     const channelsByName = getChannelsNameMapInCurrentTeam(state);
-    const townSquareDisplayName = channelsByName[Constants.DEFAULT_CHANNEL]?.display_name || Constants.DEFAULT_CHANNEL_UI_NAME;
+    const defaultChannelDisplayName = channelsByName[Constants.DEFAULT_CHANNEL]?.display_name || Constants.DEFAULT_CHANNEL_UI_NAME;
 
     const currentTeamId = getCurrentTeamId(state);
     const currentTeam = currentTeamId === '' && props.channelToInvite ? getTeam(state, props.channelToInvite.team_id) : getCurrentTeam(state);
@@ -88,7 +88,7 @@ export function mapStateToProps(state: GlobalState, props: OwnProps) {
         isCloud,
         isAdmin: isAdmin(getCurrentUser(state).roles),
         currentChannel,
-        townSquareDisplayName,
+        defaultChannelDisplayName,
     };
 }
 

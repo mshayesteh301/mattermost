@@ -3505,7 +3505,7 @@
   "onboardingTour.ChannelsAndDirectMessagesTour.directMessages": "<b>Direkte berjochten</b> binne foar priveepetearen tusken yndividuën of lytse groepen.",
   "onboardingTour.ChannelsAndDirectMessagesTour.firstChannel": "Hey kijk, daar is je **{firstChannelName}** kanaal! ",
   "onboardingTour.ChannelsAndDirectMessagesTour.title": "Kanalen en directe berichten",
-  "onboardingTour.ChannelsAndDirectMessagesTour.townSquare": "Wy hawwe ek de <b>{townSquare}</b>- en <b>{offTopic}</b>-kanalen tafoege foar elkenien yn jo team.",
+  "onboardingTour.ChannelsAndDirectMessagesTour.defaultChannel": "Wy hawwe ek de <b>{defaultChannel}</b>- en <b>{offTopic}</b>-kanalen tafoege foar elkenien yn jo team.",
   "onboardingTour.CreateAndJoinChannels.Description": "Maak nieuwe kanalen of blader door beschikbare kanalen om te zien wat jouw team bespreekt. Als je in kanalen komt, organiseer ze dan in categorieën op basis van hoe je werkt.",
   "onboardingTour.CreateAndJoinChannels.title": "Creëer en wordt lid van kanalen",
   "onboardingTour.customizeYourExperience.Description": "Stel jouw beschikbaarheid in, voeg een aangepaste status toe en ga naar Instellingen en jouw profiel om uw ervaring te configureren, inclusief meldingsvoorkeuren en aangepaste themakleuren.",

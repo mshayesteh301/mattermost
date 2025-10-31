@@ -19,7 +19,7 @@ jest.mock('utils/channel_utils.tsx', () => {
 
     return {
         ...original,
-        getRedirectChannelNameForTeam: () => 'town-square',
+        getRedirectChannelNameForTeam: () => 'default-channel',
     };
 });
 
@@ -57,7 +57,7 @@ jest.mock('mattermost-redux/selectors/entities/utils', () => ({
 
 describe('channel view actions', () => {
     const channel1 = {id: 'channelid1', name: 'channel1', display_name: 'Channel 1', type: 'O', team_id: 'teamid1'};
-    const townsquare = {id: 'channelid2', name: General.DEFAULT_CHANNEL, display_name: 'Town Square', type: 'O', team_id: 'teamid1'};
+    const defaultchannel = {id: 'channelid2', name: General.DEFAULT_CHANNEL, display_name: 'Default Channel', type: 'O', team_id: 'teamid1'};
     const gmChannel = {id: 'gmchannelid', name: 'gmchannel', display_name: 'GM Channel 1', type: 'G'};
     const team1 = {id: 'teamid1', name: 'team1'};
 
@@ -75,15 +75,15 @@ describe('channel view actions', () => {
             },
             channels: {
                 currentChannelId: 'channelid1',
-                channels: {channelid1: channel1, channelid2: townsquare, gmchannelid: gmChannel},
+                channels: {channelid1: channel1, channelid2: defaultchannel, gmchannelid: gmChannel},
                 manuallyUnread: {},
                 myMembers: {
                     gmchannelid: {channel_id: 'gmchannelid', user_id: 'userid1'},
                     channelid1: {channel_id: 'channelid1', user_id: 'userid1'},
-                    townsquare: {channel_id: 'townsquare', user_id: 'userid1'},
+                    defaultchannel: {channel_id: 'defaultchannel', user_id: 'userid1'},
                 },
                 channelsInTeam: {
-                    [team1.id]: [channel1.id, townsquare.id],
+                    [team1.id]: [channel1.id, defaultchannel.id],
                 },
             },
             general: {
@@ -194,7 +194,7 @@ describe('channel view actions', () => {
     });
 
     describe('goToLastViewedChannel', () => {
-        test('should switch to town square if last viewed channel is current channel', async () => {
+        test('should switch to default channel if last viewed channel is current channel', async () => {
             await store.dispatch(Actions.goToLastViewedChannel());
             expect(getHistory().push).toHaveBeenCalledWith(`/${team1.name}/channels/${General.DEFAULT_CHANNEL}`);
         });

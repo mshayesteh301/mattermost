@@ -27,7 +27,7 @@
           default: 0
       - name: exclude_default_channels
         in: query
-        description: Whether to exclude default channels (ex Town Square, Off-Topic) from the results.
+        description: Whether to exclude default channels (ex Default Channel, Off-Topic) from the results.
         schema:
           type: boolean
           default: false
@@ -209,7 +209,7 @@
         the channel.
 
 
-        Configured 'default' channels (ex Town Square and Off-Topic) can be excluded from the results
+        Configured 'default' channels (ex Default Channel and Off-Topic) can be excluded from the results
 
         with the `exclude_default_channels` boolean parameter.
 

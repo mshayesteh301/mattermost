@@ -22,9 +22,9 @@ test(
         // # Initialize setup and get the required users and team
         const {team, adminUser, user} = await pw.initSetup();
 
-        // # Log in as the admin in one browser session and navigate to the "town-square" channel
+        // # Log in as the admin in one browser session and navigate to the "default-channel" channel
         const {page: adminPage, channelsPage: adminChannelsPage} = await pw.testBrowser.login(adminUser);
-        await adminChannelsPage.goto(team.name, 'town-square');
+        await adminChannelsPage.goto(team.name, 'default-channel');
         await adminChannelsPage.toBeVisible();
 
         // # Stub the Notification in the admin's browser to capture notifications

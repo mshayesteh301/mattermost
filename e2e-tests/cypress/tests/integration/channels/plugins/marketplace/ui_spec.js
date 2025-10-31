@@ -13,7 +13,7 @@ import * as TIMEOUTS from '../../../../fixtures/timeouts';
 import {githubPluginOld} from '../../../../utils/plugins';
 
 describe('Plugin Marketplace', () => {
-    let townsquareLink;
+    let defaultchannelLink;
 
     before(() => {
         cy.shouldNotRunOnCloudEdition();
@@ -21,7 +21,7 @@ describe('Plugin Marketplace', () => {
         cy.shouldHavePluginUploadEnabled();
 
         cy.apiInitSetup().then(({team}) => {
-            townsquareLink = `/${team.name}/channels/town-square`;
+            defaultchannelLink = `/${team.name}/channels/default-channel`;
         });
     });
 
@@ -48,8 +48,8 @@ describe('Plugin Marketplace', () => {
         // # Cleanup installed plugins
         cy.apiUninstallAllPlugins();
 
-        // # Visit the Town Square channel
-        cy.visit(townsquareLink);
+        // # Visit the Default Channel channel
+        cy.visit(defaultchannelLink);
 
         // # Open up marketplace
         cy.uiOpenProductMenu('Marketplace');

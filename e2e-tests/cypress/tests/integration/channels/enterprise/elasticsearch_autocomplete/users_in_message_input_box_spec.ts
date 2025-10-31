@@ -34,8 +34,8 @@ describe('Autocomplete with Elasticsearch - Users', () => {
 
             cy.apiLogin(searchData.sysadmin);
 
-            // # Navigate to the new teams town square
-            cy.visit(`/${searchData.team.name}/channels/town-square`);
+            // # Navigate to the new teams default channel
+            cy.visit(`/${searchData.team.name}/channels/default-channel`);
         });
     });
 

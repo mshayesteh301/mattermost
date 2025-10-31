@@ -29,8 +29,8 @@ describe('Keyboard Shortcuts', () => {
         cy.get('body').cmdOrCtrlShortcut('K');
         cy.get('#quickSwitchInput').type('T');
 
-        // * Confirm the town-square channel is selected in the suggestion list
-        cy.get('#suggestionList').findByTestId('town-square').should('be.visible').and('have.class', 'suggestion--selected');
+        // * Confirm the default-channel channel is selected in the suggestion list
+        cy.get('#suggestionList').findByTestId('default-channel').should('be.visible').and('have.class', 'suggestion--selected');
 
         // # Press down arrow
         cy.wait(TIMEOUTS.HALF_SEC);

@@ -196,7 +196,7 @@
     "translation": "ഡയറക്റ്റ് ചാനൽ സൃഷ്ടിക്കുവാൻ ഉപയോഗിച്ചത് തെറ്റായ യുസർ ഐഡി ആണ്."
   },
   {
-    "id": "api.channel.create_default_channels.town_square",
+    "id": "api.channel.create_default_channels.default_channel",
     "translation": "നടുമുറ്റം"
   },
   {

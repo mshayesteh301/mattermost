@@ -15,12 +15,12 @@ import * as TIMEOUTS from '../../../../fixtures/timeouts';
 import {verifyPluginMarketplaceVisibility} from './helpers';
 
 describe('Plugin Marketplace', () => {
-    let townsquareLink;
+    let defaultchannelLink;
     let pluginManagementPage;
 
     before(() => {
         cy.apiInitSetup().then(({team}) => {
-            townsquareLink = `/${team.name}/channels/town-square`;
+            defaultchannelLink = `/${team.name}/channels/default-channel`;
             pluginManagementPage = '/admin_console/plugins/plugin_management';
         });
     });
@@ -42,7 +42,7 @@ describe('Plugin Marketplace', () => {
         cy.get('#saveSetting').click();
 
         // Verify that the Plugin Marketplace is available
-        cy.visit(townsquareLink);
+        cy.visit(defaultchannelLink);
         verifyPluginMarketplaceVisibility(true);
     });
 
@@ -63,7 +63,7 @@ describe('Plugin Marketplace', () => {
         cy.get('#saveSetting').click();
 
         // Verify that the Plugin Marketplace is available
-        cy.visit(townsquareLink);
+        cy.visit(defaultchannelLink);
         verifyPluginMarketplaceVisibility(true);
     });
 });

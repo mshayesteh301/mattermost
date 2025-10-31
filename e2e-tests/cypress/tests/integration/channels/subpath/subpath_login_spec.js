@@ -11,7 +11,7 @@
 
 describe('Cookie with Subpath', () => {
     let testUser;
-    let townsquareLink;
+    let defaultchannelLink;
 
     before(() => {
         cy.shouldRunWithSubpath();
@@ -21,10 +21,10 @@ describe('Cookie with Subpath', () => {
         cy.apiInitSetup().then(({team, user}) => {
             testUser = user;
 
-            // Logout current session and try to visit town-square
+            // Logout current session and try to visit default-channel
             cy.apiLogout().then(() => {
-                townsquareLink = `/${team.name}/channels/town-square`;
-                cy.visit(townsquareLink);
+                defaultchannelLink = `/${team.name}/channels/default-channel`;
+                cy.visit(defaultchannelLink);
             });
         });
     });
@@ -34,7 +34,7 @@ describe('Cookie with Subpath', () => {
             cy.location().its('origin').then((origin) => {
                 let subpath = '';
                 if (url !== origin) {
-                    subpath = url.replace(origin, '').replace(townsquareLink, '');
+                    subpath = url.replace(origin, '').replace(defaultchannelLink, '');
                 }
 
                 // * Check login page is loaded
@@ -50,7 +50,7 @@ describe('Cookie with Subpath', () => {
 
                 // * Check subpath included in url
                 cy.url().should('include', subpath);
-                cy.url().should('include', '/channels/town-square');
+                cy.url().should('include', '/channels/default-channel');
 
                 // * Check cookies have correct path parameter
                 cy.getCookies().should('have.length', 5).each((cookie) => {

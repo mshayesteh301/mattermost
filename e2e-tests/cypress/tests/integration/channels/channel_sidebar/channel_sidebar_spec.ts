@@ -25,12 +25,12 @@ describe('Channel sidebar', () => {
     let testUser;
 
     before(() => {
-        // # Login as test user and visit town-square
+        // # Login as test user and visit default-channel
         cy.apiInitSetup({loginAfter: true}).then(({team, user}) => {
             testTeam = team;
             testUser = user;
 
-            cy.visit(`/${team.name}/channels/town-square`);
+            cy.visit(`/${team.name}/channels/default-channel`);
         });
     });
 
@@ -49,11 +49,11 @@ describe('Channel sidebar', () => {
         cy.url().should('include', `/${teamName}/channels/off-topic`);
         cy.get('#channelHeaderTitle', {timeout: TIMEOUTS.HALF_MIN}).should('be.visible').should('contain', 'Off-Topic');
 
-        // # Click on Town Square
-        cy.get('.SidebarChannel:contains(Town Square)').should('be.visible').click();
+        // # Click on Default Channel
+        cy.get('.SidebarChannel:contains(Default Channel)').should('be.visible').click();
 
         // * Verify that the channel changed
-        verifyChannelSwitch('Town Square', `/${teamName}/channels/town-square`);
+        verifyChannelSwitch('Default Channel', `/${teamName}/channels/default-channel`);
     });
 
     it('should mark channel as read and unread in sidebar', () => {
@@ -64,18 +64,18 @@ describe('Channel sidebar', () => {
         // * Verify that we've switched to the new team
         cy.uiGetLHSHeader().findByText(teamName);
 
-        // * Verify that both Off Topic and Town Square are read
+        // * Verify that both Off Topic and Default Channel are read
         cy.get('.SidebarChannel:not(.unread):contains(Off-Topic)').should('be.visible');
-        cy.get('.SidebarChannel:not(.unread):contains(Town Square)').should('be.visible');
+        cy.get('.SidebarChannel:not(.unread):contains(Default Channel)').should('be.visible');
 
         // # Have another user post in the Off Topic channel
         cy.apiGetChannelByName(teamName, 'off-topic').then(({channel}) => {
             cy.postMessageAs({sender: sysadmin, message: 'Test', channelId: channel.id});
         });
 
-        // * Verify that Off Topic is unread and Town Square is read
+        // * Verify that Off Topic is unread and Default Channel is read
         cy.get('.SidebarChannel.unread:contains(Off-Topic)').should('be.visible');
-        cy.get('.SidebarChannel:not(.unread):contains(Town Square)').should('be.visible');
+        cy.get('.SidebarChannel:not(.unread):contains(Default Channel)').should('be.visible');
     });
 
     it('should remove channel from sidebar after leaving it', () => {
@@ -96,8 +96,8 @@ describe('Channel sidebar', () => {
         cy.get('#channelHeaderTitle').click();
         cy.get('#channelLeaveChannel').should('be.visible').click();
 
-        // * Verify that we've switched to Town Square
-        verifyChannelSwitch('Town Square', `/${teamName}/channels/town-square`);
+        // * Verify that we've switched to Default Channel
+        verifyChannelSwitch('Default Channel', `/${teamName}/channels/default-channel`);
 
         // * Verify that Off Topic has disappeared from the sidebar
         cy.get('.SidebarChannel:contains(Off-Topic)').should('not.exist');
@@ -132,15 +132,15 @@ describe('Channel sidebar', () => {
         cy.get('.SidebarChannel:contains(Off-Topic)').should('exist');
 
         // # Navigate to a different channel
-        cy.visit(`/${teamName}/channels/town-square`);
+        cy.visit(`/${teamName}/channels/default-channel`);
 
         // * Verify archived channel disappears from sidebar after navigating away
         cy.get('.SidebarChannel:contains(Off-Topic)').should('not.exist');
     });
 
     it('MM-T3351 Channels created from another instance should immediately appear in the sidebar', () => {
-        // # Go to Town Square on the test team
-        cy.visit(`/${testTeam.name}/channels/town-square`);
+        // # Go to Default Channel on the test team
+        cy.visit(`/${testTeam.name}/channels/default-channel`);
 
         // * Verify that we've switched to the new team
         cy.uiGetLHSHeader().findByText(testTeam.display_name);

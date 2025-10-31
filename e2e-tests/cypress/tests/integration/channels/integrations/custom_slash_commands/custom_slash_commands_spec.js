@@ -38,7 +38,7 @@ describe('Slash commands', () => {
             user1 = user;
             team1 = team;
 
-            cy.apiGetChannelByName(team.name, 'town-square').then(({channel}) => {
+            cy.apiGetChannelByName(team.name, 'default-channel').then(({channel}) => {
                 commandURL = `${Cypress.env().webhookBaseUrl}/send_message_to_channel?channel_id=${channel.id}`;
             });
 
@@ -142,7 +142,7 @@ describe('Slash commands', () => {
         deleteCommand(team1, trigger);
 
         // # Go back to home channel
-        cy.visit(`/${team1.name}/channels/town-square`);
+        cy.visit(`/${team1.name}/channels/default-channel`);
 
         // # Run slash command
         cy.uiGetPostTextBox().clear().type(`/${trigger} {enter}`);
@@ -172,7 +172,7 @@ describe('Slash commands', () => {
         cy.get('#saveCommand').click();
 
         // # Go back to home channel
-        cy.visit(`/${team1.name}/channels/town-square`);
+        cy.visit(`/${team1.name}/channels/default-channel`);
 
         // # Run slash command
         cy.postMessage(`/${trigger} `);
@@ -208,7 +208,7 @@ describe('Slash commands', () => {
         cy.get('#saveCommand').click();
 
         // # Go back to home channel
-        cy.visit(`/${team1.name}/channels/town-square`);
+        cy.visit(`/${team1.name}/channels/default-channel`);
 
         // # Run slash command
         cy.postMessage(`/${trigger} `);
@@ -245,7 +245,7 @@ describe('Slash commands', () => {
         cy.get('#saveCommand').click();
 
         // # Go back to home channel
-        cy.visit(`/${team1.name}/channels/town-square`);
+        cy.visit(`/${team1.name}/channels/default-channel`);
 
         // # Type slash
         cy.uiGetPostTextBox().clear().type('/');
@@ -272,7 +272,7 @@ describe('Slash commands', () => {
         cy.get('#saveCommand').click();
 
         // # Go back to home channel
-        cy.visit(`/${team1.name}/channels/town-square`);
+        cy.visit(`/${team1.name}/channels/default-channel`);
 
         // # Run slash command
         cy.uiGetPostTextBox().clear().type('/');

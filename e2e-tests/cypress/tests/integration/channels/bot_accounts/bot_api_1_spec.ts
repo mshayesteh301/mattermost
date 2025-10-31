@@ -34,12 +34,12 @@ describe('Bot accounts ownership and API', () => {
         };
         cy.apiUpdateConfig(newSettings);
 
-        cy.apiInitSetup().then(({team, user, channel, townSquareUrl}) => {
+        cy.apiInitSetup().then(({team, user, channel, defaultChannelUrl}) => {
             newTeam = team;
             newUser = user;
             newChannel = channel;
 
-            cy.visit(townSquareUrl);
+            cy.visit(defaultChannelUrl);
             cy.postMessage('hello');
         });
 
@@ -61,7 +61,7 @@ describe('Bot accounts ownership and API', () => {
         // # Login as a regular user
         cy.apiLogin(newUser);
 
-        cy.visit(`/${newTeam.name}/channels/town-square`);
+        cy.visit(`/${newTeam.name}/channels/default-channel`);
 
         // # Click product switch button
         cy.uiOpenProductMenu();

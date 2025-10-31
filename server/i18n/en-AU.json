@@ -7543,8 +7543,8 @@
     "translation": "Invalid user ID for direct channel creation."
   },
   {
-    "id": "api.channel.create_default_channels.town_square",
-    "translation": "Town Square"
+    "id": "api.channel.create_default_channels.default_channel",
+    "translation": "Default Channel"
   },
   {
     "id": "api.command_settings.unsupported.app_error",

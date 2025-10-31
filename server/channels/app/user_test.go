@@ -1586,14 +1586,14 @@ func TestGetViewUsersRestrictions(t *testing.T) {
 	th.CreateChannel(th.Context, team1) // Another channel
 	team1offtopic, err := th.App.GetChannelByName(th.Context, "off-topic", team1.Id, false)
 	require.Nil(t, err)
-	team1townsquare, err := th.App.GetChannelByName(th.Context, "town-square", team1.Id, false)
+	team1defaultchannel, err := th.App.GetChannelByName(th.Context, "default-channel", team1.Id, false)
 	require.Nil(t, err)
 
 	team2channel1 := th.CreateChannel(th.Context, team2)
 	th.CreateChannel(th.Context, team2) // Another channel
 	team2offtopic, err := th.App.GetChannelByName(th.Context, "off-topic", team2.Id, false)
 	require.Nil(t, err)
-	team2townsquare, err := th.App.GetChannelByName(th.Context, "town-square", team2.Id, false)
+	team2defaultchannel, err := th.App.GetChannelByName(th.Context, "default-channel", team2.Id, false)
 	require.Nil(t, err)
 
 	_, appErr = th.App.AddUserToChannel(th.Context, user1, team1channel1, false)
@@ -1650,7 +1650,7 @@ func TestGetViewUsersRestrictions(t *testing.T) {
 		assert.NotNil(t, restrictions)
 		assert.NotNil(t, restrictions.Teams)
 		assert.NotNil(t, restrictions.Channels)
-		assert.ElementsMatch(t, []string{team1townsquare.Id, team1offtopic.Id, team1channel1.Id, team1channel2.Id, team2townsquare.Id, team2offtopic.Id, team2channel1.Id}, restrictions.Channels)
+		assert.ElementsMatch(t, []string{team1defaultchannel.Id, team1offtopic.Id, team1channel1.Id, team1channel2.Id, team2defaultchannel.Id, team2offtopic.Id, team2channel1.Id}, restrictions.Channels)
 		assert.ElementsMatch(t, []string{team1.Id, team2.Id}, restrictions.Teams)
 	})
 
@@ -1669,7 +1669,7 @@ func TestGetViewUsersRestrictions(t *testing.T) {
 		assert.NotNil(t, restrictions)
 		assert.Empty(t, restrictions.Teams)
 		assert.NotNil(t, restrictions.Channels)
-		assert.ElementsMatch(t, []string{team1townsquare.Id, team1offtopic.Id, team1channel1.Id, team1channel2.Id, team2townsquare.Id, team2offtopic.Id, team2channel1.Id}, restrictions.Channels)
+		assert.ElementsMatch(t, []string{team1defaultchannel.Id, team1offtopic.Id, team1channel1.Id, team1channel2.Id, team2defaultchannel.Id, team2offtopic.Id, team2channel1.Id}, restrictions.Channels)
 	})
 
 	t.Run("VIEW_MEMBERS permission for some teams but not for others", func(t *testing.T) {
@@ -1696,7 +1696,7 @@ func TestGetViewUsersRestrictions(t *testing.T) {
 		assert.NotNil(t, restrictions.Teams)
 		assert.NotNil(t, restrictions.Channels)
 		assert.ElementsMatch(t, restrictions.Teams, []string{team1.Id})
-		assert.ElementsMatch(t, []string{team1townsquare.Id, team1offtopic.Id, team1channel1.Id, team1channel2.Id, team2townsquare.Id, team2offtopic.Id, team2channel1.Id}, restrictions.Channels)
+		assert.ElementsMatch(t, []string{team1defaultchannel.Id, team1offtopic.Id, team1channel1.Id, team1channel2.Id, team2defaultchannel.Id, team2offtopic.Id, team2channel1.Id}, restrictions.Channels)
 	})
 }
 

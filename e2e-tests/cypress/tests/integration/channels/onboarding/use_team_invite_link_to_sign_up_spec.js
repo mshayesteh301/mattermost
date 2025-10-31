@@ -107,12 +107,12 @@ describe('Onboarding', () => {
         // * Check that the display name of the team the user successfully joined is correct
         cy.uiGetLHSHeader().findByText(testTeam.display_name);
 
-        // * Check that 'Town Square' is currently being selected
+        // * Check that 'Default Channel' is currently being selected
         cy.get('.active').within(() => {
-            cy.findByText('Town Square').should('exist');
+            cy.findByText('Default Channel').should('exist');
         });
 
-        // * Check that the 'Town Square' message is visible
-        cy.url().should('include', `/${testTeam.name}/channels/town-square`);
+        // * Check that the 'Default Channel' message is visible
+        cy.url().should('include', `/${testTeam.name}/channels/default-channel`);
     });
 });

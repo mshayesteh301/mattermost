@@ -50,8 +50,8 @@ describe('Subpath Direct Message Search', () => {
                 expect(userRes.status).to.equal(201);
                 const otherSubpathUser = userRes.body;
 
-                // # Go to town square channel of primary subpath server
-                cy.visit(`/${testTeam.name}/channels/town-square`);
+                // # Go to default channel channel of primary subpath server
+                cy.visit(`/${testTeam.name}/channels/default-channel`);
 
                 // # Open DM modal
                 cy.uiAddDirectMessage().click().wait(TIMEOUTS.HALF_SEC);

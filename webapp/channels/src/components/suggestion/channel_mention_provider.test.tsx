@@ -45,26 +45,26 @@ describe('ChannelMentionProvider.handlePretextChanged', () => {
         });
 
         test('should match a channel\'s name', () => {
-            const matched = provider.handlePretextChanged('~town-square', resultsCallback);
+            const matched = provider.handlePretextChanged('~default-channel', resultsCallback);
 
             expect(matched).toBe(true);
-            expect(autocompleteChannels).toHaveBeenCalledWith('town-square', expect.anything(), expect.anything());
+            expect(autocompleteChannels).toHaveBeenCalledWith('default-channel', expect.anything(), expect.anything());
             expect(resultsCallback).toHaveBeenCalled();
         });
 
         test('should match a channel\'s partial display name', () => {
-            const matched = provider.handlePretextChanged('~Town Sq', resultsCallback);
+            const matched = provider.handlePretextChanged('~Default Ch', resultsCallback);
 
             expect(matched).toBe(true);
-            expect(autocompleteChannels).toHaveBeenCalledWith('town sq', expect.anything(), expect.anything());
+            expect(autocompleteChannels).toHaveBeenCalledWith('default ch', expect.anything(), expect.anything());
             expect(resultsCallback).toHaveBeenCalled();
         });
 
         test('should match a channel\'s display name', () => {
-            const matched = provider.handlePretextChanged('~Town Square', resultsCallback);
+            const matched = provider.handlePretextChanged('~Default Channel', resultsCallback);
 
             expect(matched).toBe(true);
-            expect(autocompleteChannels).toHaveBeenCalledWith('town square', expect.anything(), expect.anything());
+            expect(autocompleteChannels).toHaveBeenCalledWith('default channel', expect.anything(), expect.anything());
             expect(resultsCallback).toHaveBeenCalled();
         });
 
@@ -77,7 +77,7 @@ describe('ChannelMentionProvider.handlePretextChanged', () => {
         });
 
         test('should only match at the end of the text', () => {
-            const matched = provider.handlePretextChanged('this is ~town-square, not ~off-topic', resultsCallback);
+            const matched = provider.handlePretextChanged('this is ~default-channel, not ~off-topic', resultsCallback);
 
             expect(matched).toBe(true);
             expect(autocompleteChannels).toHaveBeenCalledWith('off-topic', expect.anything(), expect.anything());
@@ -103,7 +103,7 @@ describe('ChannelMentionProvider.handlePretextChanged', () => {
         });
 
         test('should not match the middle of strikethrough text', () => {
-            const matched = provider.handlePretextChanged('~~town square', resultsCallback);
+            const matched = provider.handlePretextChanged('~~default channel', resultsCallback);
 
             expect(matched).toBe(false);
             expect(autocompleteChannels).not.toHaveBeenCalled();
@@ -121,9 +121,9 @@ describe('ChannelMentionProvider.handlePretextChanged', () => {
 
     describe('matching text after completing a result', () => {
         test('should not continue to match a link that was just completed', () => {
-            provider.handleCompleteWord('~town-square');
+            provider.handleCompleteWord('~default-channel');
 
-            const matched = provider.handlePretextChanged('This is ~town-square', resultsCallback);
+            const matched = provider.handlePretextChanged('This is ~default-channel', resultsCallback);
 
             expect(matched).toBe(false);
             expect(autocompleteChannels).not.toHaveBeenCalled();
@@ -131,9 +131,9 @@ describe('ChannelMentionProvider.handlePretextChanged', () => {
         });
 
         test('should not continue to match a link that was completed, even after typing more text', () => {
-            provider.handleCompleteWord('~town-square');
+            provider.handleCompleteWord('~default-channel');
 
-            const matched = provider.handlePretextChanged('This is ~town-square and a test', resultsCallback);
+            const matched = provider.handlePretextChanged('This is ~default-channel and a test', resultsCallback);
 
             expect(matched).toBe(false);
             expect(autocompleteChannels).not.toHaveBeenCalled();
@@ -141,9 +141,9 @@ describe('ChannelMentionProvider.handlePretextChanged', () => {
         });
 
         test('should start matching input again after another link is started', () => {
-            provider.handleCompleteWord('~town-square');
+            provider.handleCompleteWord('~default-channel');
 
-            const matched = provider.handlePretextChanged('This is ~town-square and not ~off', resultsCallback);
+            const matched = provider.handlePretextChanged('This is ~default-channel and not ~off', resultsCallback);
 
             expect(matched).toBe(true);
             expect(autocompleteChannels).toHaveBeenCalledWith('off', expect.anything(), expect.anything());

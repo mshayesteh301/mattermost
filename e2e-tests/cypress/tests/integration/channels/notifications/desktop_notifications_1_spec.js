@@ -39,8 +39,8 @@ describe('Desktop notifications', () => {
             cy.apiAddUserToTeam(testTeam.id, testUser.id);
             cy.apiLogin(testUser);
 
-            // Visit town-square.
-            cy.visit(`/${testTeam.name}/channels/town-square`);
+            // Visit default-channel.
+            cy.visit(`/${testTeam.name}/channels/default-channel`);
         });
     });
 
@@ -58,9 +58,9 @@ describe('Desktop notifications', () => {
             cy.postMessageAs({sender: otherUser, message: '@here', channelId: channel.id});
         });
 
-        // # Login with the user and visit town-square
+        // # Login with the user and visit default-channel
         cy.apiLogin(testUser);
-        cy.visit(`/${testTeam.name}/channels/town-square`);
+        cy.visit(`/${testTeam.name}/channels/default-channel`);
 
         // * Desktop notification is not received.
         cy.get('@withoutNotification').should('not.have.been.called');

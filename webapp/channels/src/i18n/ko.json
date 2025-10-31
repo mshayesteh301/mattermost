@@ -743,7 +743,7 @@
   "admin.experimental.enableOnboardingFlow.desc": "정상일 경우, 신규 사용자가 온보드 프로세스의 일부로 완료해야 하는 단계가 표시됩니다",
   "admin.experimental.enableThemeSelection.desc": "사용자들이 테마를 선택할 수 있도록 설정에서 **화면 > 테마** 탭이 활성화 합니다.",
   "admin.experimental.enableThemeSelection.title": "테마 선택 :",
-  "admin.experimental.enableTutorial.desc": "활성화 시, 계정 생성 후 처음 Mattermost를 실행하면 튜토리얼이 표시됩니다. 비활성화 시, 사용자는 계정 생성 후 처음 Mattermost를 열면 튜토리얼이 비활성화되고 Town Square로 들어갑니다.",
+  "admin.experimental.enableTutorial.desc": "활성화 시, 계정 생성 후 처음 Mattermost를 실행하면 튜토리얼이 표시됩니다. 비활성화 시, 사용자는 계정 생성 후 처음 Mattermost를 열면 튜토리얼이 비활성화되고 Default Channel로 들어갑니다.",
   "admin.experimental.enableTutorial.title": "튜토리얼 :",
   "admin.experimental.enableUserDeactivation.desc": "이 설정이 활성화되면 **계정 설정 > 고급**을 통해 사용자들이 자신의 계정을 비활성화 할 수 있게 됩니다. 어떤 사용자가 자신의 계정을 비활성화 한다면, 자신의 계정이 비활성화 되었음을 확인하는 전자우편 알림을 받게 될 것입니다. 이 설정이 비활성화되면 사용자들은 자신의 계정을 비활성화 할 수 없게 됩니다.",
   "admin.experimental.enableUserDeactivation.title": "계정 비활성화 :",

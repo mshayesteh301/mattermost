@@ -110,7 +110,7 @@ describe('Permalink message edit', () => {
 });
 
 function gotoChannel(team, channel) {
-    // # Visit town-square
+    // # Visit default-channel
     cy.visit(`/${team.name}/channels/${channel.name}`);
     cy.get('#channelHeaderTitle').should('be.visible').should('contain', channel.display_name || channel.name);
 }

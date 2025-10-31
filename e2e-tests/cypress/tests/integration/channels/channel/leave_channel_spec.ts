@@ -75,9 +75,9 @@ describe('Leave channel', () => {
             // * RHS should not be visible
             cy.get('#rhsContainer').should('not.exist');
 
-            // * Assert that user is redirected to townsquare
-            cy.url().should('include', '/channels/town-square');
-            cy.get('#channelHeaderTitle').should('be.visible').and('contain', 'Town Square');
+            // * Assert that user is redirected to defaultchannel
+            cy.url().should('include', '/channels/default-channel');
+            cy.get('#channelHeaderTitle').should('be.visible').and('contain', 'Default Channel');
         });
     });
 
@@ -113,9 +113,9 @@ describe('Leave channel', () => {
             // * RHS should not be visible
             cy.get('#rhsContainer').should('not.exist');
 
-            // * Assert that user is redirected to townsquare
-            cy.url().should('include', '/channels/town-square');
-            cy.get('#channelHeaderTitle').should('be.visible').and('contain', 'Town Square');
+            // * Assert that user is redirected to defaultchannel
+            cy.url().should('include', '/channels/default-channel');
+            cy.get('#channelHeaderTitle').should('be.visible').and('contain', 'Default Channel');
         });
     });
 });

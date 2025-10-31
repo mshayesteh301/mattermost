@@ -117,17 +117,17 @@ describe('Channel sidebar unread filter', () => {
         // * Verify that the unread filter is not enabled
         cy.get('.SidebarChannelGroupHeader:contains(CHANNELS)').should('be.visible');
 
-        // # Switch to the town square
-        cy.get('#sidebarItem_town-square').click();
-        cy.get('#channelHeaderTitle').should('contain', 'Town Square');
+        // # Switch to the default channel
+        cy.get('#sidebarItem_default-channel').click();
+        cy.get('#channelHeaderTitle').should('contain', 'Default Channel');
 
-        // * Verify that the Town Square is not unread
-        cy.get('#sidebarItem_town-square').should('be.visible').should(beRead);
+        // * Verify that the Default Channel is not unread
+        cy.get('#sidebarItem_default-channel').should('be.visible').should(beRead);
 
         enableUnreadFilter();
 
-        // * Verify that the Town Square is still visible
-        cy.get('#sidebarItem_town-square').should('be.visible').should(beRead);
+        // * Verify that the Default Channel is still visible
+        cy.get('#sidebarItem_default-channel').should('be.visible').should(beRead);
 
         disableUnreadFilter();
     });
@@ -181,7 +181,7 @@ describe('Channel sidebar unread filter', () => {
                 });
 
                 // # Go to other channel
-                cy.get('#sidebarItem_town-square').click({force: true});
+                cy.get('#sidebarItem_default-channel').click({force: true});
 
                 // # Post a message from other user
                 cy.postMessageAs({

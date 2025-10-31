@@ -42,8 +42,8 @@ describe('Guest Account - Guest User Invitation Flow', () => {
         cy.apiInitSetup().then(({team}) => {
             testTeam = team;
 
-            // # Go to town square
-            cy.visit(`/${team.name}/channels/town-square`);
+            // # Go to default channel
+            cy.visit(`/${team.name}/channels/default-channel`);
         });
     });
 
@@ -111,7 +111,7 @@ describe('Guest Account - Guest User Invitation Flow', () => {
 
         // # Visit to newly created team
         cy.reload();
-        cy.visit(`/${testTeam.name}/channels/town-square`);
+        cy.visit(`/${testTeam.name}/channels/default-channel`);
 
         // # Invite a Guest by email
         const email = `temp-${getRandomId()}@mattermost.com`;

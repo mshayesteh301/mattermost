@@ -91,7 +91,7 @@ func ManualTest(c *web.Context, w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		channel := &model.Channel{DisplayName: "Town Square", Name: "town-square", Type: model.ChannelTypeOpen, TeamId: createdTeam.Id}
+		channel := &model.Channel{DisplayName: "Default Channel", Name: "default-channel", Type: model.ChannelTypeOpen, TeamId: createdTeam.Id}
 		if _, err := c.App.CreateChannel(c.AppContext, channel, false); err != nil {
 			c.Err = err
 			return
@@ -152,7 +152,7 @@ func ManualTest(c *web.Context, w http.ResponseWriter, r *http.Request) {
 			HttpOnly: true,
 		}
 		http.SetCookie(w, sessionCookie)
-		http.Redirect(w, r, "/channels/town-square", http.StatusTemporaryRedirect)
+		http.Redirect(w, r, "/channels/default-channel", http.StatusTemporaryRedirect)
 	}
 
 	// Setup test environment

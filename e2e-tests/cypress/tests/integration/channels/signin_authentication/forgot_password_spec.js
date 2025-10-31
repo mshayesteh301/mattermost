@@ -36,8 +36,8 @@ describe('Signin/Authentication', () => {
     it('MM-T407 - Sign In Forgot password - Email address has account on server', () => {
         const newPassword = 'newpasswd';
 
-        // # Visit town-square
-        cy.visit(`/${teamName.name}/channels/town-square`);
+        // # Visit default-channel
+        cy.visit(`/${teamName.name}/channels/default-channel`);
 
         // * Verify that it redirects to /login
         cy.url().should('contain', '/login');
@@ -98,8 +98,8 @@ describe('Signin/Authentication', () => {
             cy.get('#input_password-input').should('be.visible').type(newPassword);
             cy.get('#saveSetting').click();
 
-            // * Verify that it successfully logged in and redirects to /channels/town-square
-            cy.url().should('contain', `/${teamName}/channels/town-square`);
+            // * Verify that it successfully logged in and redirects to /channels/default-channel
+            cy.url().should('contain', `/${teamName}/channels/default-channel`);
         });
     });
 });

@@ -11,12 +11,12 @@
 // Group: @channels @system_console
 
 describe('System Console', () => {
-    let townSquareUrl;
+    let defaultChannelUrl;
 
     before(() => {
-        // # Initialize setup and visit town-square
+        // # Initialize setup and visit default-channel
         cy.apiInitSetup().then((out) => {
-            townSquareUrl = out.townSquareUrl;
+            defaultChannelUrl = out.defaultChannelUrl;
         });
     });
 
@@ -35,7 +35,7 @@ describe('System Console', () => {
         cy.get('#saveSetting').click();
 
         // # Go to main page
-        cy.visit(townSquareUrl);
+        cy.visit(defaultChannelUrl);
 
         // # Go to Settings > Display
         cy.uiOpenSettingsModal('Display');
@@ -63,7 +63,7 @@ describe('System Console', () => {
         cy.uiSave();
 
         // # Go to main page
-        cy.visit(townSquareUrl);
+        cy.visit(defaultChannelUrl);
 
         // # Go to Settings > Display
         cy.uiOpenSettingsModal('Display');

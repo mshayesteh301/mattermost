@@ -30,19 +30,19 @@ test('displays multiple mentions correctly in Recent Mentions panel', {tag: '@me
     // # Add the mentioned user to the team
     await adminClient.addToTeam(team.id, mentionedUserID);
 
-    // # Get the town-square channel data
+    // # Get the default-channel channel data
     const channels = await userClient.getMyChannels(team.id);
-    const townSquare = channels.find((channel) => channel.name === 'town-square');
+    const defaultChannel = channels.find((channel) => channel.name === 'default-channel');
 
-    if (!townSquare) {
-        throw new Error('Town Square channel not found');
+    if (!defaultChannel) {
+        throw new Error('Default Channel channel not found');
     }
 
     // # Create multiple posts that mention the second user
     for (let i = 0; i < MENTION_COUNT; i++) {
         const message = `Hey @${mentionedUser.username}, this is mention #${i + 1}`;
         await userClient.createPost({
-            channel_id: townSquare.id,
+            channel_id: defaultChannel.id,
             message,
             user_id: mentioningUser.id,
         });
@@ -50,7 +50,7 @@ test('displays multiple mentions correctly in Recent Mentions panel', {tag: '@me
 
     // # Login as the mentioned user to check mentions in the UI
     const {page: mentionedPage, channelsPage: mentionedChannelsPage} = await pw.testBrowser.login(mentionedUser);
-    await mentionedChannelsPage.goto(team.name, 'town-square');
+    await mentionedChannelsPage.goto(team.name, 'default-channel');
     await mentionedChannelsPage.toBeVisible();
 
     // # Click on the Recent Mentions button in the channel header

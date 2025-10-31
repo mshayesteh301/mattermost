@@ -38,7 +38,7 @@ const PlaybookRunner = () => {
 
     useEffect(() => {
         const switchToChannelAndStartRun = async () => {
-            const channelToSwitchTo = lastViewedChannel ?? await Client4.getChannelByName(team?.id || '', 'town-square');
+            const channelToSwitchTo = lastViewedChannel ?? await Client4.getChannelByName(team?.id || '', 'default-channel');
 
             dispatch(switchToChannel(channelToSwitchTo));
             dispatch(startPlaybookRunById(channelToSwitchTo, team?.id || '', playbookId));

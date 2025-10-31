@@ -4086,7 +4086,7 @@
   "onboardingTour.ChannelsAndDirectMessagesTour.directMessages": "<b>Direktemeldinger</b> er for private samtaler mellom enkeltpersoner eller små grupper.",
   "onboardingTour.ChannelsAndDirectMessagesTour.firstChannel": "Hei se, der er din **{firstChannelName}**-kanal! ",
   "onboardingTour.ChannelsAndDirectMessagesTour.title": "Kanaler og direktemeldinger",
-  "onboardingTour.ChannelsAndDirectMessagesTour.townSquare": "Vi har også lagt til kanalene <b>{townSquare}</b> og <b>{offTopic}</b> for alle i teamet ditt.",
+  "onboardingTour.ChannelsAndDirectMessagesTour.defaultChannel": "Vi har også lagt til kanalene <b>{defaultChannel}</b> og <b>{offTopic}</b> for alle i teamet ditt.",
   "onboardingTour.CreateAndJoinChannels.Description": "Opprett nye kanaler eller bla gjennom tilgjengelige kanaler for å se hva teamet ditt diskuterer. Når du blir med i kanaler, kan du organisere dem i kategorier basert på hvordan du jobber.",
   "onboardingTour.CreateAndJoinChannels.title": "Opprett og bli med i kanaler",
   "onboardingTour.customizeYourExperience.Description": "Angi tilgjengeligheten din, legg til en egendefinert status og få tilgang til Innstillinger og Profilen din for å konfigurere opplevelsen din, inkludert varslingsinnstillinger og egendefinerte temafarger.",

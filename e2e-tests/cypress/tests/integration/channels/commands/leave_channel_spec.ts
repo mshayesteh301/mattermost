@@ -16,11 +16,11 @@ describe('Leave Channel Command', () => {
     let testChannel;
 
     before(() => {
-        // # Login as test user and go to town-square
+        // # Login as test user and go to default-channel
         cy.apiInitSetup({loginAfter: true}).then(({team, channel}) => {
             testChannel = channel;
-            cy.visit(`/${team.name}/channels/town-square`);
-            cy.get('#channelHeaderTitle').should('be.visible').and('contain', 'Town Square');
+            cy.visit(`/${team.name}/channels/default-channel`);
+            cy.get('#channelHeaderTitle').should('be.visible').and('contain', 'Default Channel');
         });
     });
 
@@ -34,8 +34,8 @@ describe('Leave Channel Command', () => {
         cy.postMessage('/leave ');
         cy.wait(TIMEOUTS.TWO_SEC);
 
-        // * Assert that user is redirected to townsquare
-        cy.url().should('include', '/channels/town-square');
-        cy.get('#channelHeaderTitle').should('be.visible').and('contain', 'Town Square');
+        // * Assert that user is redirected to defaultchannel
+        cy.url().should('include', '/channels/default-channel');
+        cy.get('#channelHeaderTitle').should('be.visible').and('contain', 'Default Channel');
     });
 });

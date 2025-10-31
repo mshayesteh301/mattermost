@@ -14,7 +14,7 @@ import {getRandomId} from '../../../utils';
 
 describe('Teams Suite', () => {
     before(() => {
-        // # Login as test user and visit town-square
+        // # Login as test user and visit default-channel
         cy.apiInitSetup({loginAfter: true}).then(({offTopicUrl}) => {
             cy.visit(offTopicUrl);
             cy.postMessage('hello');
@@ -39,11 +39,11 @@ describe('Teams Suite', () => {
         // # Click finish button
         cy.get('#teamURLFinishButton').should('be.visible').click();
 
-        // * Should redirect to Town Square channel
-        cy.get('#channelHeaderTitle').should('contain', 'Town Square');
+        // * Should redirect to Default Channel channel
+        cy.get('#channelHeaderTitle').should('contain', 'Default Channel');
 
         // * check url is correct
-        cy.url().should('include', teamURL + '/channels/town-square');
+        cy.url().should('include', teamURL + '/channels/default-channel');
 
         // * Team name should displays correctly at top of LHS
         cy.uiGetLHSHeader().findByText(teamName);

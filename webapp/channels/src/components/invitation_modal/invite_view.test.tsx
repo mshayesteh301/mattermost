@@ -57,7 +57,7 @@ const defaultProps: Props = deepFreeze({
     },
     usersEmails: [],
     usersEmailsSearch: '',
-    townSquareDisplayName: '',
+    defaultChannelDisplayName: '',
 });
 
 let props = defaultProps;

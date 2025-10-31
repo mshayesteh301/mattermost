@@ -1908,7 +1908,7 @@ func TestImportUserTeams(t *testing.T) {
 							Name: &channel3.Name,
 						},
 						{
-							Name: model.NewPointer("town-square"),
+							Name: model.NewPointer("default-channel"),
 						},
 					},
 				},

@@ -69,7 +69,7 @@ export type Props = {
     };
     currentTeam?: Team;
     currentChannel?: Channel;
-    townSquareDisplayName: string;
+    defaultChannelDisplayName: string;
     invitableChannels: Channel[];
     emailInvitationsEnabled: boolean;
     isAdmin: boolean;
@@ -404,7 +404,7 @@ export default class InvitationModal extends React.PureComponent<Props, State> {
                 onChannelsInputChange={this.onChannelsInputChange}
                 onChannelsChange={this.onChannelsChange}
                 currentChannel={this.props.currentChannel}
-                townSquareDisplayName={this.props.townSquareDisplayName}
+                defaultChannelDisplayName={this.props.defaultChannelDisplayName}
                 isAdmin={this.props.isAdmin}
                 usersLoader={this.usersLoader}
                 emailInvitationsEnabled={this.props.emailInvitationsEnabled}

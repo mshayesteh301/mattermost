@@ -16,10 +16,10 @@ describe('DM/GM filtering and sorting', () => {
     let testUser;
 
     before(() => {
-        // # Login as test user and visit town-square
-        cy.apiInitSetup({loginAfter: true, promoteNewUserAsAdmin: true}).then(({user, townSquareUrl}) => {
+        // # Login as test user and visit default-channel
+        cy.apiInitSetup({loginAfter: true, promoteNewUserAsAdmin: true}).then(({user, defaultChannelUrl}) => {
             testUser = user;
-            cy.visit(townSquareUrl);
+            cy.visit(defaultChannelUrl);
         });
     });
 

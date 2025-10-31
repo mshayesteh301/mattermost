@@ -46,8 +46,8 @@ describe('Guest Account - Guest User Invitation Flow', () => {
                 cy.apiAddUserToTeam(testTeam.id, newUser.id);
             });
 
-            // # Go to town square
-            cy.visit(`/${team.name}/channels/town-square`);
+            // # Go to default channel
+            cy.visit(`/${team.name}/channels/default-channel`);
         });
     });
 
@@ -82,7 +82,7 @@ describe('Guest Account - Guest User Invitation Flow', () => {
 
         cy.get('.channels-input__control').should('be.visible').within(() => {
             // * Verify the input placeholder text
-            cy.get('.channels-input__placeholder').should('have.text', 'e.g. Town Square');
+            cy.get('.channels-input__placeholder').should('have.text', 'e.g. Default Channel');
 
             // # Type the channel name
             cy.get('input').typeWithForce('town sq');
@@ -90,7 +90,7 @@ describe('Guest Account - Guest User Invitation Flow', () => {
 
         cy.get('.channels-input__menu').
             children().should('have.length', 1).
-            eq(0).should('contain', 'Town Square').click();
+            eq(0).should('contain', 'Default Channel').click();
 
         // * Verify Set Custom Message before clicking on the link
         cy.get('.AddToChannels').should('be.visible').within(() => {
@@ -114,7 +114,7 @@ describe('Guest Account - Guest User Invitation Flow', () => {
         changeGuestFeatureSettings(false, true);
 
         // # reload current page
-        cy.visit(`/${testTeam.name}/channels/town-square`);
+        cy.visit(`/${testTeam.name}/channels/default-channel`);
 
         // # Open team menu and click 'Invite People'
         cy.uiOpenTeamMenu('Invite people');
@@ -138,7 +138,7 @@ describe('Guest Account - Guest User Invitation Flow', () => {
         cy.reload();
 
         const email = `temp-${getRandomId()}@mattermost.com`;
-        invitePeople(email, 1, email, 'Town Square', false);
+        invitePeople(email, 1, email, 'Default Channel', false);
 
         // * Verify Invite Guests button is disabled
         cy.findByTestId('inviteButton').should('be.disabled');
@@ -149,7 +149,7 @@ describe('Guest Account - Guest User Invitation Flow', () => {
         changeGuestFeatureSettings();
 
         // # Visit Team page
-        cy.visit(`/${testTeam.name}/channels/town-square`);
+        cy.visit(`/${testTeam.name}/channels/default-channel`);
 
         // # Invite a email containing uppercase letters
         const email = `tEMp-${getRandomId()}@mattermost.com`;
@@ -206,7 +206,7 @@ describe('Guest Account - Guest User Invitation Flow', () => {
         // * Verify the channel is preselected
         cy.get('.channels-input__control').should('be.visible').within(() => {
             cy.get('.public-channel-icon').should('be.visible');
-            cy.findByText('Town Square').should('be.visible');
+            cy.findByText('Default Channel').should('be.visible');
         });
 
         // * Verify the email field is empty

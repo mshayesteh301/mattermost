@@ -280,7 +280,7 @@
     "translation": "የጋራ መልዕክት ቻናሎች ከ 3 ያላነሱ እና ከ 8 ያልበለጡ ተጠቃሚዎችን ብቻ መያዝ አለባቸው."
   },
   {
-    "id": "api.channel.create_default_channels.town_square",
+    "id": "api.channel.create_default_channels.default_channel",
     "translation": "ታውን ስኩዌር"
   },
   {

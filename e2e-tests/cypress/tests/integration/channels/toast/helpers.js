@@ -10,10 +10,10 @@
 import * as TIMEOUTS from '../../../fixtures/timeouts';
 import {getRandomId} from '../../../utils';
 
-export function visitTownSquareAndWaitForPageToLoad() {
-    // # Click town-square at LHS and wait for post list to load
-    cy.get('#sidebarItem_town-square').should('be.visible').click();
-    cy.get('#channelHeaderTitle').should('be.visible').and('have.text', 'Town Square');
+export function visitDefaultChannelAndWaitForPageToLoad() {
+    // # Click default-channel at LHS and wait for post list to load
+    cy.get('#sidebarItem_default-channel').should('be.visible').click();
+    cy.get('#channelHeaderTitle').should('be.visible').and('have.text', 'Default Channel');
     cy.findAllByTestId('postView').should('be.visible');
 }
 

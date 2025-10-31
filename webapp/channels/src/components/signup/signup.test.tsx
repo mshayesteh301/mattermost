@@ -343,7 +343,7 @@ describe('components/signup/Signup', () => {
         );
 
         setTimeout(() => {
-            expect(mockHistoryPush).toHaveBeenCalledWith('/teamName/channels/town-square');
+            expect(mockHistoryPush).toHaveBeenCalledWith('/teamName/channels/default-channel');
             expect(wrapper).toMatchSnapshot();
         }, 0);
     });

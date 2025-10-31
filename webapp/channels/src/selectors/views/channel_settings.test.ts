@@ -27,7 +27,7 @@ describe('Selectors.Views.ChannelSettings', () => {
                     [defaultChannelId]: {
                         id: defaultChannelId,
                         team_id: teamId,
-                        name: 'town-square', // Constants.DEFAULT_CHANNEL
+                        name: 'default-channel', // Constants.DEFAULT_CHANNEL
                         type: 'O', // Constants.OPEN_CHANNEL
                     },
                     [privateChannelId]: {

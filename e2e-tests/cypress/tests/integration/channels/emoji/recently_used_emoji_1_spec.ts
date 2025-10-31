@@ -18,7 +18,7 @@ import {getCustomEmoji} from './helpers';
 describe('Recent Emoji', () => {
     const largeEmojiFile = 'gif-image-file.gif';
 
-    let townsquareLink;
+    let defaultchannelLink;
 
     before(() => {
         cy.apiUpdateConfig({
@@ -33,8 +33,8 @@ describe('Recent Emoji', () => {
 
         cy.apiInitSetup().then(({team, user}) => {
             cy.apiLogin(user);
-            townsquareLink = `/${team.name}/channels/town-square`;
-            cy.visit(townsquareLink);
+            defaultchannelLink = `/${team.name}/channels/default-channel`;
+            cy.visit(defaultchannelLink);
         });
     });
 
@@ -94,7 +94,7 @@ describe('Recent Emoji', () => {
         cy.uiSave().wait(TIMEOUTS.THREE_SEC);
 
         // # Go back to home channel
-        cy.visit(townsquareLink);
+        cy.visit(defaultchannelLink);
 
         // # Post a system emoji
         cy.postMessage(`${MESSAGES.TINY}-second :lemon:`);
@@ -150,7 +150,7 @@ describe('Recent Emoji', () => {
         cy.get('#confirmModalButton').should('be.visible').click();
 
         // # Go back to home channel
-        cy.visit(townsquareLink);
+        cy.visit(defaultchannelLink);
 
         cy.reload();
 

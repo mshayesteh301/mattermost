@@ -15,10 +15,10 @@ describe('DM category', () => {
     let testUser;
 
     before(() => {
-        // # Login as test user and visit town-square
+        // # Login as test user and visit default-channel
         cy.apiInitSetup({loginAfter: true, promoteNewUserAsAdmin: true}).then(({team, user}) => {
             testUser = user;
-            cy.visit(`/${team.name}/channels/town-square`);
+            cy.visit(`/${team.name}/channels/default-channel`);
         });
     });
 
@@ -200,11 +200,11 @@ describe('DM category', () => {
                     // * Verify that the GM has moved to a new category
                     cy.get(`.SidebarChannelGroup:contains(Category ${user.username})`).find(`#sidebarItem_${channel.name}`).should('be.visible');
 
-                    // # Go to Town Square
-                    cy.get('#sidebarItem_town-square').should('be.visible').click();
+                    // # Go to Default Channel
+                    cy.get('#sidebarItem_default-channel').should('be.visible').click();
 
-                    // * Verify we are now in town square
-                    cy.url().should('include', '/channels/town-square');
+                    // * Verify we are now in default channel
+                    cy.url().should('include', '/channels/default-channel');
 
                     // # Click the + button next to the DM category
                     clickOnNewDMButton();

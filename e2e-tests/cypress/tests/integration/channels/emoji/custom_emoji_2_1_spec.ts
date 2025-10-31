@@ -17,7 +17,7 @@ describe('Custom emojis', () => {
     let testTeam;
     let testUser;
     let otherUser;
-    let townsquareLink;
+    let defaultchannelLink;
 
     const largeEmojiFile = 'gif-image-file.gif';
     const largeEmojiFileResized = 'gif-image-file-resized.gif';
@@ -35,7 +35,7 @@ describe('Custom emojis', () => {
         cy.apiInitSetup().then(({team, user}) => {
             testTeam = team;
             testUser = user;
-            townsquareLink = `/${team.name}/channels/town-square`;
+            defaultchannelLink = `/${team.name}/channels/default-channel`;
         });
 
         cy.apiCreateUser().then(({user: user1}) => {
@@ -43,7 +43,7 @@ describe('Custom emojis', () => {
             cy.apiAddUserToTeam(testTeam.id, otherUser.id);
         }).then(() => {
             cy.apiLogin(testUser);
-            cy.visit(townsquareLink);
+            cy.visit(defaultchannelLink);
         });
     });
 
@@ -66,7 +66,7 @@ describe('Custom emojis', () => {
         cy.uiSave().wait(TIMEOUTS.THREE_SEC);
 
         // # Go back to home channel
-        cy.visit(townsquareLink);
+        cy.visit(defaultchannelLink);
 
         // # Post a message with the emoji
         cy.postMessage(customEmojiWithColons);
@@ -75,7 +75,7 @@ describe('Custom emojis', () => {
         cy.apiLogin(otherUser);
 
         // # Navigate to a channel
-        cy.visit(townsquareLink);
+        cy.visit(defaultchannelLink);
 
         // * The emoji should be displayed in the post
         verifyLastPostedEmoji(customEmojiWithColons, largeEmojiFileResized);
@@ -84,7 +84,7 @@ describe('Custom emojis', () => {
         cy.apiLogin(testUser);
 
         // # Navigate to a channel
-        cy.visit(townsquareLink);
+        cy.visit(defaultchannelLink);
 
         // * The emoji should be displayed in the post
         verifyLastPostedEmoji(customEmojiWithColons, largeEmojiFileResized);

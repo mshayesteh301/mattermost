@@ -22,10 +22,10 @@ describe('Channel sidebar', () => {
     beforeEach(() => {
         // # Start with a new team
         cy.apiAdminLogin();
-        cy.apiInitSetup({loginAfter: true}).then(({team, townSquareUrl}) => {
+        cy.apiInitSetup({loginAfter: true}).then(({team, defaultChannelUrl}) => {
             testTeam = team;
 
-            cy.visit(townSquareUrl);
+            cy.visit(defaultChannelUrl);
         });
     });
 
@@ -49,7 +49,7 @@ describe('Channel sidebar', () => {
 
         // * Verify that both channels are visible when not collapsed
         cy.get('.SidebarChannelGroup').should('be.visible').as('sidebarChannelGroup');
-        cy.get('@sidebarChannelGroup').findByText('Town Square').should('exist').and('be.visible');
+        cy.get('@sidebarChannelGroup').findByText('Default Channel').should('exist').and('be.visible');
         cy.get('@sidebarChannelGroup').findByText('Off-Topic').should('be.visible');
 
         // # Click on CHANNELS
@@ -57,7 +57,7 @@ describe('Channel sidebar', () => {
 
         // * Verify that both channels are visible when not collapsed
         cy.get('.SidebarChannelGroup').should('be.visible').as('sidebarChannelGroup');
-        cy.get('@sidebarChannelGroup').findByText('Town Square').should('be.visible');
+        cy.get('@sidebarChannelGroup').findByText('Default Channel').should('be.visible');
         cy.get('@sidebarChannelGroup').findByText('Off-Topic').should('not.exist');
     });
 

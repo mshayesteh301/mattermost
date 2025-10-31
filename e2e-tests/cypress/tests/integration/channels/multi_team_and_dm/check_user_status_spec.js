@@ -23,7 +23,7 @@ describe('Multi-Team + DMs', () => {
     before(() => {
         cy.apiInitSetup().then(({team, user}) => {
             userA = user;
-            testChannelUrl = `/${team.name}/channels/town-square`;
+            testChannelUrl = `/${team.name}/channels/default-channel`;
 
             cy.apiCreateUser().then(({user: otherUser}) => {
                 userB = otherUser;

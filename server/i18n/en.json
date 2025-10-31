@@ -364,8 +364,8 @@
     "translation": "Off-Topic"
   },
   {
-    "id": "api.channel.create_default_channels.town_square",
-    "translation": "Town Square"
+    "id": "api.channel.create_default_channels.default_channel",
+    "translation": "Default Channel"
   },
   {
     "id": "api.channel.create_direct_channel.invalid_user.app_error",

@@ -13,7 +13,7 @@
 import * as TIMEOUTS from '../../../fixtures/timeouts';
 
 describe('Environment', () => {
-    let townsquareLink;
+    let defaultchannelLink;
     let testTeam;
 
     const mattermostIcon = 'mattermost-icon_128x128.png';
@@ -21,7 +21,7 @@ describe('Environment', () => {
         cy.shouldNotRunOnCloudEdition();
         cy.apiInitSetup().then(({team}) => {
             testTeam = team;
-            townsquareLink = `/${team.name}/channels/town-square`;
+            defaultchannelLink = `/${team.name}/channels/default-channel`;
         });
     });
 
@@ -32,7 +32,7 @@ describe('Environment', () => {
         cy.findByTestId('ServiceSettings.WebserverModedropdown').should('have.value', 'gzip');
 
         // # Navigate to a channel
-        cy.visit(townsquareLink);
+        cy.visit(defaultchannelLink);
 
         // # Open team menu and click "Team Settings"
         cy.uiOpenTeamMenu('Team settings');
@@ -76,7 +76,7 @@ describe('Environment', () => {
         cy.get('#saveSetting').click().wait(TIMEOUTS.ONE_SEC);
 
         // # Navigate to a channel
-        cy.visit(townsquareLink);
+        cy.visit(defaultchannelLink);
 
         // # Open team menu and click "Team Settings"
         cy.uiOpenTeamMenu('Team settings');
@@ -120,7 +120,7 @@ describe('Environment', () => {
         cy.get('#saveSetting').click().wait(TIMEOUTS.ONE_SEC);
 
         // # Navigate to a channel
-        cy.visit(townsquareLink);
+        cy.visit(defaultchannelLink);
 
         // # Open team menu and click "Team Settings"
         cy.uiOpenTeamMenu('Team settings');

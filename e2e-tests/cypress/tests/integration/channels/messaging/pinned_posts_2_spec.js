@@ -83,8 +83,8 @@ describe('pinned messages', () => {
             // * Number of pinned messages in RHS should be 1
             cy.findByTestId('search-item-container').should('have.length', 1);
 
-            // # Go to town square
-            cy.get('#sidebarItem_town-square').should('be.visible').click();
+            // # Go to default channel
+            cy.get('#sidebarItem_default-channel').should('be.visible').click();
 
             // * Should not have any pinned messages
             cy.get('#search-items-container .no-results__title').should('have.text', 'No pinned messages yet');
@@ -211,14 +211,14 @@ describe('pinned messages', () => {
         // # Login
         cy.apiLogin(testUser);
 
-        // # Visit town square
-        cy.visit(`/${testTeam.name}/channels/town-square`);
+        // # Visit default channel
+        cy.visit(`/${testTeam.name}/channels/default-channel`);
 
         // * Pinned count should be zero
         cy.get('#channelPinnedPostCountText').should('not.exist');
 
         // # Post a message
-        cy.postMessage('Town-square post');
+        cy.postMessage('Default-channel post');
 
         cy.getLastPostId().then((postId) => {
             // # Pin the post
@@ -267,8 +267,8 @@ describe('pinned messages', () => {
             // # Click pin icon
             cy.uiGetChannelPinButton().should('be.visible').click();
 
-            // # Go to town square
-            cy.get('#sidebarItem_town-square').should('be.visible').click();
+            // # Go to default channel
+            cy.get('#sidebarItem_default-channel').should('be.visible').click();
 
             // * Pinned count should be 1
             cy.get('#channelPinnedPostCountText').should('have.text', '1');

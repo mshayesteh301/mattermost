@@ -245,7 +245,7 @@ test(
         const draftMessage = `Scheduled Draft ${pw.random.id()}`;
 
         // # Initialize test user, login and navigate to a channel
-        const {user, townSquareUrl} = await pw.initSetup();
+        const {user, defaultChannelUrl} = await pw.initSetup();
         const {channelsPage, scheduledPostsPage} = await pw.testBrowser.login(user);
         await channelsPage.goto();
         await channelsPage.toBeVisible();
@@ -274,7 +274,7 @@ test(
         await scheduledPostsPage.sendMessageNowModal.sendNowButton.click();
 
         // * Verify page redirects to the channel
-        await expect(channelsPage.page).toHaveURL(townSquareUrl);
+        await expect(channelsPage.page).toHaveURL(defaultChannelUrl);
 
         // * Verify scheduled indicators are removed
         await channelsPage.centerView.scheduledPostIndicator.toBeNotVisible();
@@ -419,7 +419,7 @@ test(
         const draftMessage = `Scheduled Draft ${pw.random.id()}`;
 
         // # Initialize test user, login and navigate to a channel
-        const {user, townSquareUrl} = await pw.initSetup();
+        const {user, defaultChannelUrl} = await pw.initSetup();
         const {channelsPage, scheduledPostsPage} = await pw.testBrowser.login(user);
         await channelsPage.goto();
         await channelsPage.toBeVisible();
@@ -464,7 +464,7 @@ test(
         await scheduledPostsPage.sendMessageNowModal.sendNowButton.click();
 
         // * Verify page redirects to the channel
-        await expect(channelsPage.page).toHaveURL(townSquareUrl);
+        await expect(channelsPage.page).toHaveURL(defaultChannelUrl);
 
         // * Verify scheduled indicators are removed
         await channelsPage.centerView.scheduledPostIndicator.toBeNotVisible();

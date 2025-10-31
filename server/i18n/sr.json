@@ -920,7 +920,7 @@
     "translation": "Корисник %v је архивирао канал."
   },
   {
-    "id": "api.channel.create_default_channels.town_square",
+    "id": "api.channel.create_default_channels.default_channel",
     "translation": "Градски трг"
   },
   {

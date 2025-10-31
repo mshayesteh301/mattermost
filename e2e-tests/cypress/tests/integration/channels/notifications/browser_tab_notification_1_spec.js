@@ -16,7 +16,7 @@ describe('Notifications', () => {
     let testUser;
     let testTeam;
     let otherTeam;
-    let testTeamTownSquareUrl;
+    let testTeamDefaultChannelUrl;
     let siteName;
 
     before(() => {
@@ -28,10 +28,10 @@ describe('Notifications', () => {
             otherTeam = team;
         });
 
-        cy.apiInitSetup().then(({team, user, townSquareUrl}) => {
+        cy.apiInitSetup().then(({team, user, defaultChannelUrl}) => {
             testTeam = team;
             testUser = user;
-            testTeamTownSquareUrl = townSquareUrl;
+            testTeamDefaultChannelUrl = defaultChannelUrl;
 
             cy.apiAddUserToTeam(otherTeam.id, testUser.id);
 
@@ -41,7 +41,7 @@ describe('Notifications', () => {
 
             // # Remove mention notification (for initial channel).
             cy.apiLogin(testUser);
-            cy.visit(testTeamTownSquareUrl);
+            cy.visit(testTeamDefaultChannelUrl);
             cy.postMessage('hello');
             cy.get('#sidebar-left').get('.unread-title').click();
 
@@ -55,9 +55,9 @@ describe('Notifications', () => {
     it('MM-T556 Browser tab and team sidebar notification - no unreads/mentions', () => {
         // # Test user views test team
         cy.apiLogin(testUser);
-        cy.visit(testTeamTownSquareUrl);
+        cy.visit(testTeamDefaultChannelUrl);
 
-        cy.title().should('include', `Town Square - ${testTeam.display_name} ${siteName}`);
+        cy.title().should('include', `Default Channel - ${testTeam.display_name} ${siteName}`);
 
         // * Browser tab shows channel name with no unread indicator
         cy.get(`#${testTeam.name}TeamButton`).parent('.unread').should('not.exist');

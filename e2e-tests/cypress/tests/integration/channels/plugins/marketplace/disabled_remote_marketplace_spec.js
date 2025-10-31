@@ -12,7 +12,7 @@
 import {githubPlugin} from '../../../../utils/plugins';
 
 describe('Plugin Marketplace', () => {
-    let townsquareLink;
+    let defaultchannelLink;
 
     before(() => {
         cy.shouldNotRunOnCloudEdition();
@@ -20,7 +20,7 @@ describe('Plugin Marketplace', () => {
         cy.apiUninstallAllPlugins();
 
         cy.apiInitSetup().then(({team}) => {
-            townsquareLink = `/${team.name}/channels/town-square`;
+            defaultchannelLink = `/${team.name}/channels/default-channel`;
         });
     });
 
@@ -37,8 +37,8 @@ describe('Plugin Marketplace', () => {
             },
         });
 
-        // # Visit town-square channel
-        cy.visit(townsquareLink);
+        // # Visit default-channel channel
+        cy.visit(defaultchannelLink);
 
         // # Open up marketplace
         cy.uiOpenProductMenu('Marketplace');

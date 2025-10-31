@@ -19,11 +19,11 @@ describe('DM on sidebar', () => {
             otherUser = user;
         });
 
-        // # Login as test user and visit town-square
-        cy.apiInitSetup({loginAfter: true}).then(({user, townSquareUrl}) => {
+        // # Login as test user and visit default-channel
+        cy.apiInitSetup({loginAfter: true}).then(({user, defaultChannelUrl}) => {
             testUser = user;
 
-            cy.visit(townSquareUrl);
+            cy.visit(defaultChannelUrl);
         });
     });
 
@@ -40,11 +40,11 @@ describe('DM on sidebar', () => {
             // # Click on the new DM channel to mark it read
             cy.get(`#sidebarItem_${channel.name}`).should('be.visible').click();
 
-            // # Click on Town Square
-            cy.get('.SidebarLink:contains(Town Square)').should('be.visible').click();
+            // # Click on Default Channel
+            cy.get('.SidebarLink:contains(Default Channel)').should('be.visible').click();
 
-            // * Verify we're on Town Square
-            cy.url().should('contain', 'town-square');
+            // * Verify we're on Default Channel
+            cy.url().should('contain', 'default-channel');
 
             // # Refresh the page
             cy.visit('/');

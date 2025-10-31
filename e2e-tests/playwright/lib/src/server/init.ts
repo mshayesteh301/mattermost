@@ -64,7 +64,7 @@ export async function initSetup({
             userClient,
             team,
             offTopicUrl: getUrl(team.name, 'off-topic'),
-            townSquareUrl: getUrl(team.name, 'town-square'),
+            defaultChannelUrl: getUrl(team.name, 'default-channel'),
         };
     } catch (error) {
         expect(error, 'Should not throw an error').toBeFalsy();

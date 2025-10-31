@@ -15,16 +15,16 @@ import {spyNotificationAs} from '../../../support/notification';
 describe('Group Message', () => {
     let testTeam;
     let testUser;
-    let townsquareLink;
+    let defaultchannelLink;
     const users = [];
 
     const groupUsersCount = 3;
 
     before(() => {
-        cy.apiInitSetup({}).then(({team, user, townSquareUrl}) => {
+        cy.apiInitSetup({}).then(({team, user, defaultChannelUrl}) => {
             testTeam = team;
             testUser = user;
-            townsquareLink = townSquareUrl;
+            defaultchannelLink = defaultChannelUrl;
         });
     });
 
@@ -38,7 +38,7 @@ describe('Group Message', () => {
                 users.push(newUser);
                 if (i === groupUsersCount - 1) {
                     cy.apiLogin(testUser);
-                    cy.visit(townsquareLink);
+                    cy.visit(defaultchannelLink);
                 }
             });
         });
@@ -198,7 +198,7 @@ describe('Group Message', () => {
             });
 
             cy.postMessageAs({sender: participants[0], message: 'Hello all', channelId}).then(() => {
-                cy.visit(townsquareLink);
+                cy.visit(defaultchannelLink);
 
                 // * Assert that user does not receives a notification
                 cy.get('@withNotification').should('not.have.been.called');
@@ -213,7 +213,7 @@ describe('Group Message', () => {
 
             cy.postMessageAs({sender: participants[0], message: `@${testUser.username} Hello!!!`, channelId}).then(() => {
                 cy.apiLogin(testUser);
-                cy.visit(townsquareLink);
+                cy.visit(defaultchannelLink);
 
                 // * Assert that user does not receives a notification
                 cy.get('@withNotification').should('not.have.been.called');

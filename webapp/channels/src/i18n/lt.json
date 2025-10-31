@@ -3688,7 +3688,7 @@
   "onboardingTour.ChannelsAndDirectMessagesTour.directMessages": "<b>Tiesioginiai pranešimai</b> skirti asmeniniams pokalbiams tarp asmenų ar mažų grupių.",
   "onboardingTour.ChannelsAndDirectMessagesTour.firstChannel": "Ei, štai Jūsų **{firstChannelName}** kanalas ",
   "onboardingTour.ChannelsAndDirectMessagesTour.title": "Kanalai ir tiesioginiai pranešimai",
-  "onboardingTour.ChannelsAndDirectMessagesTour.townSquare": "Taip pat visiems Jūsų komandos nariams pridėjome kanalus <b>{townSquare}</b> ir <b>{offTopic}</b>.",
+  "onboardingTour.ChannelsAndDirectMessagesTour.defaultChannel": "Taip pat visiems Jūsų komandos nariams pridėjome kanalus <b>{defaultChannel}</b> ir <b>{offTopic}</b>.",
   "onboardingTour.CreateAndJoinChannels.Description": "Kurkite naujus kanalus arba naršykite turimus kanalus, kad pamatytumėte, ką Jūsų komanda aptaria. Prisijungdami prie kanalų suskirstykite juos į kategorijas pagal tai, kaip dirbate.",
   "onboardingTour.CreateAndJoinChannels.title": "Kurkite kanalus ir prisijunkite prie jų",
   "onboardingTour.customizeYourExperience.Description": "Nustatykite pasiekiamumą, pridėkite tinkintą būseną ir pasiekite nustatymus bei profilį, kad sukonfigūruotumėte savo patirtį, įskaitant pranešimų nuostatas ir tinkintas temos spalvas.",

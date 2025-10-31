@@ -38,8 +38,8 @@ describe('Desktop notifications', () => {
             cy.apiAddUserToTeam(testTeam.id, testUser.id);
             cy.apiLogin(testUser);
 
-            // Visit town-square.
-            cy.visit(`/${testTeam.name}/channels/town-square`);
+            // Visit default-channel.
+            cy.visit(`/${testTeam.name}/channels/default-channel`);
         });
     });
 

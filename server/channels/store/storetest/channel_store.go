@@ -6127,8 +6127,8 @@ func testChannelStoreSearchInTeam(t *testing.T, rctx request.CTX, ss store.Store
 
 	o9 := model.Channel{
 		TeamId:      teamID,
-		DisplayName: "Town Square",
-		Name:        "town-square",
+		DisplayName: "Default Channel",
+		Name:        "default-channel",
 		Type:        model.ChannelTypeOpen,
 	}
 	_, nErr = ss.Channel().Save(rctx, &o9, -1)
@@ -6190,11 +6190,11 @@ func testChannelStoreSearchInTeam(t *testing.T, rctx request.CTX, ss store.Store
 		{"no matches", teamID, m1.UserId, "blargh", false, model.ChannelList{}},
 		{"prefix", teamID, m1.UserId, "off-", false, model.ChannelList{&o7, &o6}},
 		{"full match with dash", teamID, m1.UserId, "off-topic", false, model.ChannelList{&o6}},
-		{"town square", teamID, m1.UserId, "town square", false, model.ChannelList{&o9}},
+		{"default channel", teamID, m1.UserId, "default channel", false, model.ChannelList{&o9}},
 		{"the in name", teamID, m1.UserId, "thename", false, model.ChannelList{&o10}},
 		{"Mobile", teamID, m1.UserId, "Mobile", false, model.ChannelList{&o11}},
 		{"search purpose", teamID, m1.UserId, "now searchable", false, model.ChannelList{&o12}},
-		{"pipe ignored", teamID, m1.UserId, "town square |", false, model.ChannelList{&o9}},
+		{"pipe ignored", teamID, m1.UserId, "default channel |", false, model.ChannelList{&o9}},
 	}
 
 	for _, testCase := range testCases {
@@ -6676,8 +6676,8 @@ func testChannelStoreSearchAllChannels(t *testing.T, rctx request.CTX, ss store.
 
 	o9 := model.Channel{
 		TeamId:      t1.Id,
-		DisplayName: "A9 Town Square",
-		Name:        "town-square",
+		DisplayName: "A9 Default Channel",
+		Name:        "default-channel",
 		Type:        model.ChannelTypeOpen,
 	}
 	_, nErr = ss.Channel().Save(rctx, &o9, -1)
@@ -6784,13 +6784,13 @@ func testChannelStoreSearchAllChannels(t *testing.T, rctx request.CTX, ss store.
 		{"no matches", "blargh", store.ChannelSearchOpts{IncludeDeleted: false}, model.ChannelList{}, 0},
 		{"prefix", "off-", store.ChannelSearchOpts{IncludeDeleted: false}, model.ChannelList{&o6, &o7, &o8}, 0},
 		{"full match with dash", "off-topic", store.ChannelSearchOpts{IncludeDeleted: false}, model.ChannelList{&o6}, 0},
-		{"town square", "town square", store.ChannelSearchOpts{IncludeDeleted: false}, model.ChannelList{&o9}, 0},
+		{"default channel", "default channel", store.ChannelSearchOpts{IncludeDeleted: false}, model.ChannelList{&o9}, 0},
 		{"which in name", "which", store.ChannelSearchOpts{IncludeDeleted: false}, model.ChannelList{&o10}, 0},
 		{"Mobile", "Mobile", store.ChannelSearchOpts{IncludeDeleted: false}, model.ChannelList{&o11}, 0},
 		{"search purpose", "now searchable", store.ChannelSearchOpts{IncludeDeleted: false}, model.ChannelList{&o12}, 0},
-		{"pipe ignored", "town square |", store.ChannelSearchOpts{IncludeDeleted: false}, model.ChannelList{&o9}, 0},
+		{"pipe ignored", "default channel |", store.ChannelSearchOpts{IncludeDeleted: false}, model.ChannelList{&o9}, 0},
 		{"exclude defaults search 'off'", "off-", store.ChannelSearchOpts{IncludeDeleted: false, ExcludeChannelNames: []string{"off-topic"}}, model.ChannelList{&o7, &o8}, 0},
-		{"exclude defaults search 'town'", "town", store.ChannelSearchOpts{IncludeDeleted: false, ExcludeChannelNames: []string{"town-square"}}, model.ChannelList{}, 0},
+		{"exclude defaults search 'town'", "default", store.ChannelSearchOpts{IncludeDeleted: false, ExcludeChannelNames: []string{"default-channel"}}, model.ChannelList{}, 0},
 		{"exclude by group association", "off-", store.ChannelSearchOpts{IncludeDeleted: false, NotAssociatedToGroup: group.Id}, model.ChannelList{&o6, &o8}, 0},
 		{"paginate includes count", "off-", store.ChannelSearchOpts{IncludeDeleted: false, PerPage: model.NewPointer(100)}, model.ChannelList{&o6, &o7, &o8}, 3},
 		{"paginate, page 2 correct entries and count", "off-", store.ChannelSearchOpts{IncludeDeleted: false, PerPage: model.NewPointer(2), Page: model.NewPointer(1)}, model.ChannelList{&o8}, 3},

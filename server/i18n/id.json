@@ -2662,7 +2662,7 @@
     "translation": "ID pengguna tidak valid untuk pembuatan kanal langsung"
   },
   {
-    "id": "api.channel.create_default_channels.town_square",
+    "id": "api.channel.create_default_channels.default_channel",
     "translation": "Taman Kota"
   },
   {

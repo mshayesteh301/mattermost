@@ -149,8 +149,8 @@ func TestCreateTeam(t *testing.T) {
 			if ch.Name == "off-topic" {
 				require.Equal(t, translateFunc("api.channel.create_default_channels.off_topic"), ch.DisplayName)
 			}
-			if ch.Name == "town-square" {
-				require.Equal(t, translateFunc("api.channel.create_default_channels.town_square"), ch.DisplayName)
+			if ch.Name == "default-channel" {
+				require.Equal(t, translateFunc("api.channel.create_default_channels.default_channel"), ch.DisplayName)
 			}
 		}
 	})

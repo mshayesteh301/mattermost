@@ -52,7 +52,7 @@ describe('Integrations page', () => {
         cy.get('#addIncomingWebhook').click();
 
         // # Pick the channel
-        cy.get('#channelSelect').select('Town Square');
+        cy.get('#channelSelect').select('Default Channel');
 
         // # Save
         cy.get('#saveWebhook').click();
@@ -79,7 +79,7 @@ describe('Integrations page', () => {
         cy.get('#addOutgoingWebhook').click();
 
         // # Pick the channel and dummy callback
-        cy.get('#channelSelect').select('Town Square');
+        cy.get('#channelSelect').select('Default Channel');
         cy.get('#callbackUrls').type('https://dummy');
 
         // # Save
@@ -185,7 +185,7 @@ describe('Integrations page', () => {
     });
 
     it('MM-T570 Integration Page titles are bolded', () => {
-        cy.visit(`/${testTeam.name}/channels/town-square`);
+        cy.visit(`/${testTeam.name}/channels/default-channel`);
 
         // # Open product menu and click 'Integrations'
         cy.uiOpenProductMenu('Integrations');
@@ -201,7 +201,7 @@ describe('Integrations page', () => {
 
     it('MM-T572 Copy icon for Slash Command', () => {
         // # Visit home channel
-        cy.visit(`/${testTeam.name}/channels/town-square`);
+        cy.visit(`/${testTeam.name}/channels/default-channel`);
 
         // # Click 'Integrations' at product menu
         cy.uiOpenProductMenu('Integrations');
@@ -271,7 +271,7 @@ describe('Integrations page', () => {
 
     it('MM-T702 Edit to invalid URL', () => {
         // # Visit home channel
-        cy.visit(`/${testTeam.name}/channels/town-square`);
+        cy.visit(`/${testTeam.name}/channels/default-channel`);
 
         // # Click 'Integrations' at product menu
         cy.uiOpenProductMenu('Integrations');
@@ -355,11 +355,11 @@ describe('Integrations page', () => {
             should('exist').and('be.visible').scrollIntoView();
 
         // # Go back to home channel
-        cy.visit(`/${testTeam.name}/channels/town-square`);
+        cy.visit(`/${testTeam.name}/channels/default-channel`);
     });
 
     it('MM-T580 Custom slash command auto-complete displays trigger word and not command name', () => {
-        cy.visit(`/${testTeam.name}/channels/town-square`);
+        cy.visit(`/${testTeam.name}/channels/default-channel`);
 
         // # Click 'Integrations' at product menu
         cy.uiOpenProductMenu('Integrations');
@@ -422,7 +422,7 @@ describe('Integrations page', () => {
         cy.findByText(commandTitle).should('exist').and('be.visible').scrollIntoView();
 
         // # Return to channels
-        cy.visit(`${testTeam.name}/channels/town-square`);
+        cy.visit(`${testTeam.name}/channels/default-channel`);
 
         const first2LettersOfCommandTrigger = commandTrigger.slice(0, 2);
 

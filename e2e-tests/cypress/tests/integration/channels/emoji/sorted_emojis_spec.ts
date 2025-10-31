@@ -14,7 +14,7 @@ import * as TIMEOUTS from '../../../fixtures/timeouts';
 
 describe('Emoji sorting', () => {
     before(() => {
-        // # Login as test user and visit town-square
+        // # Login as test user and visit default-channel
         cy.apiInitSetup({loginAfter: true}).then(({offTopicUrl}) => {
             cy.visit(offTopicUrl);
         });

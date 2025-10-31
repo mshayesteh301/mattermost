@@ -13,13 +13,13 @@
 import {verifyPluginMarketplaceVisibility} from './helpers';
 
 describe('Plugin Marketplace', () => {
-    let townsquareLink;
+    let defaultchannelLink;
     let regularUser;
 
     before(() => {
         cy.apiInitSetup().then(({team, user}) => {
             regularUser = user;
-            townsquareLink = `/${team.name}/channels/town-square`;
+            defaultchannelLink = `/${team.name}/channels/default-channel`;
         });
     });
 
@@ -40,7 +40,7 @@ describe('Plugin Marketplace', () => {
 
         // # Login as non admin user
         cy.apiLogin(regularUser);
-        cy.visit(townsquareLink);
+        cy.visit(defaultchannelLink);
 
         // * Verify Plugin Marketplace does not exist
         verifyPluginMarketplaceVisibility(false);
@@ -57,8 +57,8 @@ describe('Plugin Marketplace', () => {
             },
         });
 
-        // # Visit town-square channel
-        cy.visit(townsquareLink);
+        // # Visit default-channel channel
+        cy.visit(defaultchannelLink);
 
         // * Verify Plugin Marketplace does not exist
         verifyPluginMarketplaceVisibility(false);
@@ -75,8 +75,8 @@ describe('Plugin Marketplace', () => {
             },
         });
 
-        // # Visit town-square channel
-        cy.visit(townsquareLink);
+        // # Visit default-channel channel
+        cy.visit(defaultchannelLink);
 
         // * Verify Plugin Marketplace does not exist
         verifyPluginMarketplaceVisibility(false);

@@ -65,7 +65,7 @@ export type Props = InviteState & {
     footerClass: string;
     canInviteGuests: boolean;
     canAddUsers: boolean;
-    townSquareDisplayName: string;
+    defaultChannelDisplayName: string;
     channelToInvite?: Channel;
     onPaste?: (e: ClipboardEvent) => void;
 }
@@ -244,7 +244,7 @@ export default function InviteView(props: Props) {
                         inviteChannels={props.inviteChannels}
                         channelsLoader={props.channelsLoader}
                         currentChannel={props.currentChannel}
-                        townSquareDisplayName={props.townSquareDisplayName}
+                        defaultChannelDisplayName={props.defaultChannelDisplayName}
                         titleClass='InviteView__sectionTitle'
                         channelToInvite={props.channelToInvite}
                         inviteType={props.inviteType}

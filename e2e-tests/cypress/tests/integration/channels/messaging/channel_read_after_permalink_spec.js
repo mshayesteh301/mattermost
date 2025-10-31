@@ -29,7 +29,7 @@ describe('Messaging', () => {
 
                 cy.apiAddUserToTeam(testTeam.id, otherUser.id).then(() => {
                     cy.apiLogin(testUser);
-                    cy.visit(`/${testTeam.name}/channels/town-square`);
+                    cy.visit(`/${testTeam.name}/channels/default-channel`);
                 });
             });
         });
@@ -68,7 +68,7 @@ describe('Messaging', () => {
                 cy.reload();
                 cy.apiLogin(otherUser);
                 cy.apiSaveSidebarSettingPreference();
-                cy.visit(`/${testTeam.name}/channels/town-square`);
+                cy.visit(`/${testTeam.name}/channels/default-channel`);
 
                 // # Check Message is in Unread List
                 cy.uiGetLhsSection('UNREADS').find('#sidebarItem_' + testChannel.name).

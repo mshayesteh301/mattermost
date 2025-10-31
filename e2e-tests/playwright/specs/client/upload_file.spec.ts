@@ -14,7 +14,7 @@ import {FileUploadResponseSchema} from './schema';
 let userClient: Client4;
 let user: UserProfile;
 let team: Team;
-let townSquareChannel: ServerChannel;
+let defaultChannelChannel: ServerChannel;
 
 const filename = 'mattermost-icon_128x128.png';
 const file = getFileFromAsset(filename);
@@ -22,39 +22,39 @@ const blob = getBlobFromAsset(filename);
 
 test.beforeEach(async ({pw}) => {
     ({userClient, user, team} = await pw.initSetup());
-    townSquareChannel = await userClient.getChannelByName(team.id, 'town-square');
+    defaultChannelChannel = await userClient.getChannelByName(team.id, 'default-channel');
 });
 
 test('should succeed with File', async ({pw}) => {
     // # Prepare data with File
     const clientId = pw.random.id();
     const formData = new FormData();
-    formData.set('channel_id', townSquareChannel.id);
+    formData.set('channel_id', defaultChannelChannel.id);
     formData.set('client_ids', clientId);
     formData.set('files', file, filename);
 
     // # Do upload then validate the response
     const data = await userClient.uploadFile(formData);
-    validateFileUploadResponse(data, clientId, user.id, townSquareChannel.id);
+    validateFileUploadResponse(data, clientId, user.id, defaultChannelChannel.id);
 });
 
 test('should succeed with Blob', async ({pw}) => {
     // # Prepare data with Blob
     const clientId = pw.random.id();
     const formData = new FormData();
-    formData.set('channel_id', townSquareChannel.id);
+    formData.set('channel_id', defaultChannelChannel.id);
     formData.set('client_ids', clientId);
     formData.set('files', blob, filename);
 
     // # Do upload then validate the response
     const data = await userClient.uploadFile(formData);
-    validateFileUploadResponse(data, clientId, user.id, townSquareChannel.id);
+    validateFileUploadResponse(data, clientId, user.id, defaultChannelChannel.id);
 });
 
 test('should succeed even with channel_id only', async () => {
     // # Set without channel ID
     const formData = new FormData();
-    formData.set('channel_id', townSquareChannel.id);
+    formData.set('channel_id', defaultChannelChannel.id);
 
     // # Do upload then validate the response
     const data = await userClient.uploadFile(formData);
@@ -96,7 +96,7 @@ test('should fail on missing files', async ({pw}) => {
 
     // # Set with invalid channel ID
     const formData = new FormData();
-    formData.set('channel_id', townSquareChannel.id);
+    formData.set('channel_id', defaultChannelChannel.id);
     formData.set('client_ids', clientId);
 
     await expect(userClient.uploadFile(formData)).rejects.toThrowError(
@@ -109,7 +109,7 @@ test('should fail on incorrect order setting up FormData', async ({pw}) => {
 
     // # Set with files before client_ids
     const formData = new FormData();
-    formData.set('channel_id', townSquareChannel.id);
+    formData.set('channel_id', defaultChannelChannel.id);
     formData.set('files', file, filename);
     formData.set('client_ids', clientId);
 

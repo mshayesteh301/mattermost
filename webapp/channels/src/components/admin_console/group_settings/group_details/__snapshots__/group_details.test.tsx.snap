@@ -87,7 +87,7 @@ exports[`components/admin_console/group_settings/group_details/GroupDetails shou
         id="group_teams_and_channels"
         subtitle={
           Object {
-            "defaultMessage": "Set default teams and channels for group members. Teams added will include default channels, town-square, and off-topic. Adding a channel without setting the team will add the implied team to the listing below.",
+            "defaultMessage": "Set default teams and channels for group members. Teams added will include default channels, default-channel, and off-topic. Adding a channel without setting the team will add the implied team to the listing below.",
             "id": "admin.group_settings.group_detail.groupTeamsAndChannelsDescription",
           }
         }
@@ -251,7 +251,7 @@ exports[`components/admin_console/group_settings/group_details/GroupDetails shou
         id="group_teams_and_channels"
         subtitle={
           Object {
-            "defaultMessage": "Set default teams and channels for group members. Teams added will include default channels, town-square, and off-topic. Adding a channel without setting the team will add the implied team to the listing below.",
+            "defaultMessage": "Set default teams and channels for group members. Teams added will include default channels, default-channel, and off-topic. Adding a channel without setting the team will add the implied team to the listing below.",
             "id": "admin.group_settings.group_detail.groupTeamsAndChannelsDescription",
           }
         }
@@ -414,7 +414,7 @@ exports[`components/admin_console/group_settings/group_details/GroupDetails shou
         id="group_teams_and_channels"
         subtitle={
           Object {
-            "defaultMessage": "Set default teams and channels for group members. Teams added will include default channels, town-square, and off-topic. Adding a channel without setting the team will add the implied team to the listing below.",
+            "defaultMessage": "Set default teams and channels for group members. Teams added will include default channels, default-channel, and off-topic. Adding a channel without setting the team will add the implied team to the listing below.",
             "id": "admin.group_settings.group_detail.groupTeamsAndChannelsDescription",
           }
         }
@@ -566,7 +566,7 @@ exports[`components/admin_console/group_settings/group_details/GroupDetails shou
         id="group_teams_and_channels"
         subtitle={
           Object {
-            "defaultMessage": "Set default teams and channels for group members. Teams added will include default channels, town-square, and off-topic. Adding a channel without setting the team will add the implied team to the listing below.",
+            "defaultMessage": "Set default teams and channels for group members. Teams added will include default channels, default-channel, and off-topic. Adding a channel without setting the team will add the implied team to the listing below.",
             "id": "admin.group_settings.group_detail.groupTeamsAndChannelsDescription",
           }
         }

@@ -290,9 +290,9 @@ export function createPost(
                 actions = [{type: PostTypes.CREATE_POST_FAILURE, error}];
 
                 // If the failure was because: the root post was deleted or
-                // TownSquareIsReadOnly=true then remove the post
+                // DefaultChannelIsReadOnly=true then remove the post
                 if (error.server_error_id === 'api.post.create_post.root_id.app_error' ||
-                    error.server_error_id === 'api.post.create_post.town_square_read_only' ||
+                    error.server_error_id === 'api.post.create_post.default_channel_read_only' ||
                     error.server_error_id === 'plugin.message_will_be_posted.dismiss_post'
                 ) {
                     // RemovePost is a Thunk, and not handled by batchActions

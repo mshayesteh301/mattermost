@@ -14,10 +14,10 @@ import * as TIMEOUTS from '../../../fixtures/timeouts';
 
 describe('Category sorting', () => {
     beforeEach(() => {
-        // # Login as test user and visit town-square
+        // # Login as test user and visit default-channel
         cy.apiAdminLogin();
         cy.apiInitSetup({loginAfter: true}).then(({team}) => {
-            cy.visit(`/${team.name}/channels/town-square`);
+            cy.visit(`/${team.name}/channels/default-channel`);
         });
     });
 

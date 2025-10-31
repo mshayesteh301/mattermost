@@ -215,7 +215,7 @@ describe('ChannelSettingsModal', () => {
     it('should not show archive tab for default channel', async () => {
         const testState = makeTestState();
 
-        testState.entities.channels.channels[channelId].name = 'town-square';
+        testState.entities.channels.channels[channelId].name = 'default-channel';
 
         renderWithContext(<ChannelSettingsModal {...baseProps}/>, testState);
 
@@ -446,7 +446,7 @@ describe('ChannelSettingsModal', () => {
             mockManageChannelAccessRulesPermission = true;
 
             const testState = makeTestState();
-            testState.entities.channels.channels[channelId].name = 'town-square';
+            testState.entities.channels.channels[channelId].name = 'default-channel';
             testState.entities.channels.channels[channelId].type = General.PRIVATE_CHANNEL;
 
             renderWithContext(<ChannelSettingsModal {...baseProps}/>, testState);

@@ -57,7 +57,7 @@ describe('components/integrations/InstalledIncomingWebhook', () => {
                 }}
                 channel={{
                     id: '1jiw9kphbjrntfyrm7xpdcya4o',
-                    name: 'town-square',
+                    name: 'default-channel',
                     create_at: 1502455422406,
                     delete_at: 0,
                     update_at: 1502455422406,
@@ -106,7 +106,7 @@ describe('components/integrations/InstalledIncomingWebhook', () => {
                 }}
                 channel={{
                     id: '1jiw9kphbjrntfyrm7xpdcya4o',
-                    name: 'town-square',
+                    name: 'default-channel',
                     create_at: 1502455422406,
                     delete_at: 0,
                     update_at: 1502455422406,
@@ -155,7 +155,7 @@ describe('components/integrations/InstalledIncomingWebhook', () => {
                 }}
                 channel={{
                     id: '1jiw9kphbjrntfyrm7xpdcya4o',
-                    name: 'town-square',
+                    name: 'default-channel',
                     create_at: 1502455422406,
                     delete_at: 0,
                     update_at: 1502455422406,
@@ -205,7 +205,7 @@ describe('components/integrations/InstalledIncomingWebhook', () => {
                 }}
                 channel={{
                     id: '1jiw9kphbjrntfyrm7xpdcya4o',
-                    name: 'town-square',
+                    name: 'default-channel',
                     create_at: 1502455422406,
                     delete_at: 0,
                     update_at: 1502455422406,
@@ -256,7 +256,7 @@ describe('components/integrations/InstalledIncomingWebhook', () => {
                 }}
                 channel={{
                     id: '1jiw9kphbjrntfyrm7xpdcya4o',
-                    name: 'town-square',
+                    name: 'default-channel',
                     create_at: 1502455422406,
                     delete_at: 0,
                     update_at: 1502455422406,
@@ -305,7 +305,7 @@ describe('components/integrations/InstalledIncomingWebhook', () => {
                 }}
                 channel={{
                     id: '1jiw9kphbjrntfyrm7xpdcya4o',
-                    name: 'town-square',
+                    name: 'default-channel',
                     create_at: 1502455422406,
                     delete_at: 0,
                     update_at: 1502455422406,
@@ -354,7 +354,7 @@ describe('components/integrations/InstalledIncomingWebhook', () => {
                 }}
                 channel={{
                     id: '1jiw9kphbjrntfyrm7xpdcya4o',
-                    name: 'town-square',
+                    name: 'default-channel',
                     create_at: 1502455422406,
                     delete_at: 0,
                     update_at: 1502455422406,

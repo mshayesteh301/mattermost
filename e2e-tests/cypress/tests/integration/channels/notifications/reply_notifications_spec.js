@@ -55,8 +55,8 @@ describe('reply-notifications', () => {
 
         // # Get post id of message
         cy.getLastPostId().then((postId) => {
-            // # Switch to town-square so that unread notifications in test channel may be triggered
-            cy.uiClickSidebarItem('town-square');
+            // # Switch to default-channel so that unread notifications in test channel may be triggered
+            cy.uiClickSidebarItem('default-channel');
 
             cy.uiGetSidebarItem(testChannelName).click({force: true});
 
@@ -70,7 +70,7 @@ describe('reply-notifications', () => {
             cy.uiGetSidebarItem(testChannelName).find('#unreadMentions').should('not.exist');
 
             // # Switch again to other channel
-            cy.uiClickSidebarItem('town-square');
+            cy.uiClickSidebarItem('default-channel');
 
             // # Reply to a post as another user mentioning the receiver
             cy.postMessageAs({sender, message: `Another reply with mention @${receiver.username}`, channelId: testChannelId, rootId: postId});
@@ -97,8 +97,8 @@ describe('reply-notifications', () => {
 
         // # Get post id of message
         cy.getLastPostId().then((postId) => {
-            // # Switch to town-square so that unread notifications in test channel may be triggered
-            cy.uiClickSidebarItem('town-square');
+            // # Switch to default-channel so that unread notifications in test channel may be triggered
+            cy.uiClickSidebarItem('default-channel');
 
             // # Post a message in original thread as another user
             const message = 'This is a reply to the root post';
@@ -140,8 +140,8 @@ describe('reply-notifications', () => {
 
         // # Get post id of message
         cy.getLastPostId().then((postId) => {
-            // # Switch to town-square so that unread notifications in test channel may be triggered
-            cy.uiClickSidebarItem('town-square');
+            // # Switch to default-channel so that unread notifications in test channel may be triggered
+            cy.uiClickSidebarItem('default-channel');
 
             // # Post a message in original thread as another user
             const message = 'This is a reply to the root post';
@@ -198,8 +198,8 @@ describe('reply-notifications', () => {
 
             // # Wait till receiver's post is visible
             cy.getLastPostId().then(() => {
-                // # Switch to town-square so that unread notifications in test channel may be triggered
-                cy.uiClickSidebarItem('town-square');
+                // # Switch to default-channel so that unread notifications in test channel may be triggered
+                cy.uiClickSidebarItem('default-channel');
 
                 // # Post a message in thread as another user
                 const message = 'This is a reply by sender';

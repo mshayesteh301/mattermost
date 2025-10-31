@@ -12,9 +12,9 @@
 
 describe('Messaging', () => {
     before(() => {
-        // # Login as test user and visit town-square
-        cy.apiInitSetup({loginAfter: true}).then(({townSquareUrl}) => {
-            cy.visit(townSquareUrl);
+        // # Login as test user and visit default-channel
+        cy.apiInitSetup({loginAfter: true}).then(({defaultChannelUrl}) => {
+            cy.visit(defaultChannelUrl);
         });
     });
 

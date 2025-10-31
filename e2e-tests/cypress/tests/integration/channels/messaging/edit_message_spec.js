@@ -23,7 +23,7 @@ describe('Edit Message', () => {
     });
 
     beforeEach(() => {
-        // # Visit town-square
+        // # Visit default-channel
         cy.visit(offTopicUrl);
     });
 

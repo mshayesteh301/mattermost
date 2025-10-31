@@ -70,9 +70,9 @@ describe('Notifications', () => {
             cy.uiOpenChannelMenu('Leave Channel');
             cy.apiLogout();
 
-            // # Login as first user and visit town square
+            // # Login as first user and visit default channel
             cy.apiLogin(firstUser);
-            cy.visit(`/${testTeam.name}/channels/town-square`);
+            cy.visit(`/${testTeam.name}/channels/default-channel`);
 
             // * Check that the display name of the team the user was invited to is being correctly displayed
             cy.uiOpenUserMenu().findByText(`@${firstUser.username}`);
@@ -80,9 +80,9 @@ describe('Notifications', () => {
             // # Close the user menu
             cy.get('body').type('{esc}');
 
-            // * Check that 'Town Square' is currently being selected
+            // * Check that 'Default Channel' is currently being selected
             cy.get('.active').within(() => {
-                cy.get('#sidebarItem_town-square').should('exist');
+                cy.get('#sidebarItem_default-channel').should('exist');
             });
 
             // * Verify that the first user did not get a mention from the test channel when the second user left

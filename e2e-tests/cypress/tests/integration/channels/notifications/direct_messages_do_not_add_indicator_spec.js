@@ -14,14 +14,14 @@ describe('Notifications', () => {
     let user2;
     let team1;
     let team2;
-    let testTeam1TownSquareUrl;
+    let testTeam1DefaultChannelUrl;
     let siteName;
 
     before(() => {
         cy.apiInitSetup().then(({team, user}) => {
             team1 = team;
             user1 = user;
-            testTeam1TownSquareUrl = `/${team.name}/channels/town-square`;
+            testTeam1DefaultChannelUrl = `/${team.name}/channels/default-channel`;
 
             cy.apiCreateUser().then(({user: otherUser}) => {
                 user2 = otherUser;
@@ -40,7 +40,7 @@ describe('Notifications', () => {
 
             // # Remove mention notification (for initial channel).
             cy.apiLogin(user1);
-            cy.visit(testTeam1TownSquareUrl);
+            cy.visit(testTeam1DefaultChannelUrl);
             cy.findByText('CHANNELS').get('.unread-title').click();
             cy.findByText('CHANNELS').get('.unread-title').should('not.exist');
             cy.apiLogout();
@@ -50,7 +50,7 @@ describe('Notifications', () => {
     it('MM-T561 Browser tab and team sidebar - direct messages don\'t add indicator on team icon in team sidebar (but do in browser tab)', () => {
         // # User A: Join teams A and B. Open team A
         cy.apiLogin(user1);
-        cy.visit(testTeam1TownSquareUrl);
+        cy.visit(testTeam1DefaultChannelUrl);
 
         // # User B: Join team B
         // # User B: Post a direct message to user A
@@ -58,8 +58,8 @@ describe('Notifications', () => {
             cy.postMessageAs({sender: user2, message: `@${user1.username}`, channelId: ownDMChannel.id});
         });
 
-        // * Browser tab shows: (1) * Town Square - [team name] Mattermost
-        cy.title().should('include', `(1) Town Square - ${team1.display_name} ${siteName}`);
+        // * Browser tab shows: (1) * Default Channel - [team name] Mattermost
+        cy.title().should('include', `(1) Default Channel - ${team1.display_name} ${siteName}`);
 
         // * Team sidebar shows: No unread / mention indicator in team sidebar on either team
         cy.get(`#${team2.name}TeamButton`).parent('.unread').should('not.exist');

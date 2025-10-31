@@ -1456,7 +1456,7 @@ describe('Selectors.Channels.getRedirectChannelNameForTeam', () => {
         expect(Selectors.getRedirectChannelNameForTeam(modifiedState, team1.id)).toEqual(General.DEFAULT_CHANNEL);
     });
 
-    it('getRedirectChannelNameForTeam with advanced permissions but without JOIN_PUBLIC_CHANNELS permission but being member of town-square', () => {
+    it('getRedirectChannelNameForTeam with advanced permissions but without JOIN_PUBLIC_CHANNELS permission but being member of default-channel', () => {
         const modifiedState = {
             ...testState,
             entities: {
@@ -1473,8 +1473,8 @@ describe('Selectors.Channels.getRedirectChannelNameForTeam', () => {
                         },
                         [channel1.id]: {
                             id: channel1.id,
-                            display_name: 'Town Square',
-                            name: 'town-square',
+                            display_name: 'Default Channel',
+                            name: 'default-channel',
                             team_id: team1.id,
                         },
                     },
@@ -1549,7 +1549,7 @@ describe('Selectors.Channels.getRedirectChannelNameForTeam', () => {
         expect(Selectors.getRedirectChannelNameForTeam(modifiedState, team2.id)).toEqual(General.DEFAULT_CHANNEL);
     });
 
-    it('getRedirectChannelNameForTeam with advanced permissions but without JOIN_PUBLIC_CHANNELS permission but being member of town-square in not current team', () => {
+    it('getRedirectChannelNameForTeam with advanced permissions but without JOIN_PUBLIC_CHANNELS permission but being member of default-channel in not current team', () => {
         const modifiedState = {
             ...testState,
             entities: {
@@ -1566,8 +1566,8 @@ describe('Selectors.Channels.getRedirectChannelNameForTeam', () => {
                         },
                         [channel3.id]: {
                             id: channel3.id,
-                            display_name: 'Town Square',
-                            name: 'town-square',
+                            display_name: 'Default Channel',
+                            name: 'default-channel',
                             team_id: team2.id,
                         },
                     },

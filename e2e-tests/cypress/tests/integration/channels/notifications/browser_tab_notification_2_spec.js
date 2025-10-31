@@ -16,8 +16,8 @@ describe('Notifications', () => {
     let user2;
     let team1;
     let team2;
-    let testTeam1TownSquareUrl;
-    let testTeam2TownSquareUrl;
+    let testTeam1DefaultChannelUrl;
+    let testTeam2DefaultChannelUrl;
     let siteName;
 
     before(() => {
@@ -31,13 +31,13 @@ describe('Notifications', () => {
 
         cy.apiCreateTeam('team-b', 'Team B').then(({team}) => {
             team2 = team;
-            testTeam2TownSquareUrl = `/${team2.name}/channels/town-square`;
+            testTeam2DefaultChannelUrl = `/${team2.name}/channels/default-channel`;
         });
 
-        cy.apiInitSetup().then(({team, user, townSquareUrl}) => {
+        cy.apiInitSetup().then(({team, user, defaultChannelUrl}) => {
             team1 = team;
             user1 = user;
-            testTeam1TownSquareUrl = townSquareUrl;
+            testTeam1DefaultChannelUrl = defaultChannelUrl;
 
             cy.apiAddUserToTeam(team1.id, user2.id);
             cy.apiAddUserToTeam(team2.id, user1.id);
@@ -45,7 +45,7 @@ describe('Notifications', () => {
 
             // # Remove mention notification (for initial channel).
             cy.apiLogin(user1);
-            cy.visit(testTeam1TownSquareUrl);
+            cy.visit(testTeam1DefaultChannelUrl);
             cy.postMessage('hello');
             cy.get('#sidebar-left').get('.unread-title').click();
 
@@ -59,10 +59,10 @@ describe('Notifications', () => {
     it('MM-T560_1 Browser tab and team sidebar unreads and mentions - Mention in different team', () => {
         // # User 1 views team A
         cy.apiLogin(user1);
-        cy.visit(testTeam1TownSquareUrl);
+        cy.visit(testTeam1DefaultChannelUrl);
 
-        // # Return to town square
-        cy.visit(testTeam1TownSquareUrl);
+        // # Return to default channel
+        cy.visit(testTeam1DefaultChannelUrl);
 
         // * Check for no unreads or mentions
         cy.get('.unread-title').should('not.exist');
@@ -78,7 +78,7 @@ describe('Notifications', () => {
         cy.wait(TIMEOUTS.HALF_SEC);
 
         // * Browser tab should displays (1) * channel - [team name] Mattermost
-        cy.title().should('include', `(1) Town Square - ${team1.display_name} ${siteName}`);
+        cy.title().should('include', `(1) Default Channel - ${team1.display_name} ${siteName}`);
 
         // * Team sidebar: Small dot left of team B icon in team sidebar
         cy.get(`#${team2.name}TeamButton`).parent('.unread').should('be.visible').within(() => {
@@ -93,14 +93,14 @@ describe('Notifications', () => {
     it('MM-T560_2 Team sidebar icon - Badge with mention count increments when added to channel', () => {
         // # User 1 view and remain on team A
         cy.apiLogin(user1);
-        cy.visit(testTeam1TownSquareUrl);
+        cy.visit(testTeam1DefaultChannelUrl);
 
         // * Browser tab should displays (1) * channel - [team name] Mattermost (for verify count increase)
-        cy.title().should('include', `(1) Town Square - ${team1.display_name} ${siteName}`);
+        cy.title().should('include', `(1) Default Channel - ${team1.display_name} ${siteName}`);
 
         // # Have another user view team B
         cy.apiLogin(user2);
-        cy.visit(testTeam2TownSquareUrl);
+        cy.visit(testTeam2DefaultChannelUrl);
 
         // # Create a new channel
         cy.uiCreateChannel({name: 'new-channel'});
@@ -122,14 +122,14 @@ describe('Notifications', () => {
             should('contain', `@${user1.username}`).
             should('contain', 'added to the channel');
 
-        // # Switch to User 1 and visit the town-square
+        // # Switch to User 1 and visit the default-channel
         cy.apiLogout();
         cy.apiLogin(user1);
-        cy.visit(testTeam1TownSquareUrl);
+        cy.visit(testTeam1DefaultChannelUrl);
 
         // * Title should be increased
         // * Browser tab should displays (1) * channel - [team name] Mattermost
-        cy.title().should('include', `(2) Town Square - ${team1.display_name} ${siteName}`);
+        cy.title().should('include', `(2) Default Channel - ${team1.display_name} ${siteName}`);
 
         // * Team sidebar: Small dot left of team B icon in team sidebar
         cy.get(`#${team2.name}TeamButton`).should('be.visible').within(() => {

@@ -57,7 +57,7 @@ func TestCreateTeamWithExperimentalDefaultChannels(t *testing.T) {
 	require.NoError(t, err)
 	require.Len(t, channels, 3)
 
-	ch, err := th.service.channelStore.GetByName(team.Id, "town-square", false)
+	ch, err := th.service.channelStore.GetByName(team.Id, "default-channel", false)
 	require.NoError(t, err)
 	require.NotNil(t, ch)
 

@@ -43,8 +43,8 @@ describe('Compliance Export', () => {
     });
 
     it('MM-T1177_1 - Compliance export should include updated posts after editing multiple times, exporting multiple times', () => {
-        // # Visit town-square channel
-        cy.visit(`/${teamName}/channels/town-square`);
+        // # Visit default-channel channel
+        cy.visit(`/${teamName}/channels/default-channel`);
 
         // # Post messages
         cy.postMessage('Testing one');
@@ -62,8 +62,8 @@ describe('Compliance Export', () => {
     });
 
     it('MM-T1177_2 - Compliance export should include updated posts after editing multiple times, exporting multiple times', () => {
-        // # Visit town-square channel
-        cy.visit(`/${teamName}/channels/town-square`);
+        // # Visit default-channel channel
+        cy.visit(`/${teamName}/channels/default-channel`);
 
         // # Post a Message
         cy.postMessage('Testing');
@@ -84,7 +84,7 @@ describe('Compliance Export', () => {
 
     it('MM-T1177_3 - Compliance export should include updated posts after editing multiple times, exporting multiple times', () => {
         // # Navigate to a team and post a message
-        cy.visit(`/${teamName}/channels/town-square`);
+        cy.visit(`/${teamName}/channels/default-channel`);
         cy.postMessage('Testing');
 
         // # Go to compliance page and export
@@ -92,7 +92,7 @@ describe('Compliance Export', () => {
         cy.uiExportCompliance();
 
         // # Editing previously exported post
-        cy.visit(`/${teamName}/channels/town-square`);
+        cy.visit(`/${teamName}/channels/default-channel`);
         editLastPost('This is Edit Three');
 
         // # Go to compliance page and export
@@ -105,7 +105,7 @@ describe('Compliance Export', () => {
 
     it('MM-T1177_4 - Compliance export should include updated posts after editing multiple times, exporting multiple times', () => {
         // # Navigate to a team and post a Message
-        cy.visit(`/${teamName}/channels/town-square`);
+        cy.visit(`/${teamName}/channels/default-channel`);
         cy.postMessage('Testing');
 
         // # Go to compliance page and export
@@ -113,7 +113,7 @@ describe('Compliance Export', () => {
         cy.uiExportCompliance();
 
         // # Editing previously exported post
-        cy.visit(`/${teamName}/channels/town-square`);
+        cy.visit(`/${teamName}/channels/default-channel`);
         editLastPost('This is Edit Three');
 
         // # Post new message
@@ -128,8 +128,8 @@ describe('Compliance Export', () => {
     });
 
     it('MM-T1177_5 - Compliance export should include updated posts after editing multiple times, exporting multiple times', () => {
-        // # Visit town-square channel
-        cy.visit(`/${teamName}/channels/town-square`);
+        // # Visit default-channel channel
+        cy.visit(`/${teamName}/channels/default-channel`);
 
         // # Navigate to a team and post a message
         cy.postMessage('Testing');

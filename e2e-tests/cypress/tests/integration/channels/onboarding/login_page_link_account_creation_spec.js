@@ -38,7 +38,7 @@ describe('Onboarding', () => {
 
         cy.apiInitSetup().then(({team}) => {
             testTeam = team;
-            cy.visit(`/${testTeam.name}/channels/town-square`);
+            cy.visit(`/${testTeam.name}/channels/default-channel`);
         });
     });
 
@@ -91,13 +91,13 @@ describe('Onboarding', () => {
         // * Check that the display name of the team the user was invited to is being correctly displayed
         cy.uiGetLHSHeader().findByText(testTeam.display_name);
 
-        // * Check that 'Town Square' is currently being selected
+        // * Check that 'Default Channel' is currently being selected
         cy.get('.SidebarChannel.active').within(() => {
-            cy.get('#sidebarItem_town-square').should('exist');
+            cy.get('#sidebarItem_default-channel').should('exist');
         });
 
-        // * Check that the 'Town Square' message is visible
-        cy.url().should('include', `/${testTeam.name}/channels/town-square`);
+        // * Check that the 'Default Channel' message is visible
+        cy.url().should('include', `/${testTeam.name}/channels/default-channel`);
     });
 
 

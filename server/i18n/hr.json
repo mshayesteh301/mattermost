@@ -632,7 +632,7 @@
     "translation": "nije uspio/uspjela dodati korisnika timovima grupe i kanalima grupe"
   },
   {
-    "id": "api.channel.create_default_channels.town_square",
+    "id": "api.channel.create_default_channels.default_channel",
     "translation": "Gradski trg"
   },
   {

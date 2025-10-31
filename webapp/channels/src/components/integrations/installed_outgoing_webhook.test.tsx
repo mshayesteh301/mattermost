@@ -23,8 +23,8 @@ describe('components/integrations/InstalledOutgoingWebhook', () => {
 
     const channel: Channel = TestHelper.getChannelMock({
         id: '1jiw9kphbjrntfyrm7xpdcya4o',
-        name: 'town-square',
-        display_name: 'Town Square',
+        name: 'default-channel',
+        display_name: 'Default Channel',
     });
 
     const userProfile: UserProfile = TestHelper.getUserMock();

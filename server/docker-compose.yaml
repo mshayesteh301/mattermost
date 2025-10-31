@@ -3,6 +3,8 @@ services:
     container_name: mattermost-postgres
     ports:
       - "5432:5432"
+    volumes:
+      - "postgres-data:/var/lib/postgresql/data"
     extends:
         file: build/docker-compose.common.yml
         service: postgres
@@ -10,6 +12,9 @@ services:
     container_name: mattermost-minio
     ports:
       - "9000:9000"
+      - "9002:9002"
+    volumes:
+      - "minio-data:/data"
     extends:
         file: build/docker-compose.common.yml
         service: minio
@@ -35,6 +40,8 @@ services:
     ports:
       - "9200:9200"
       - "9300:9300"
+    volumes:
+      - "elasticsearch-data:/usr/share/elasticsearch/data"
     extends:
         file: build/docker-compose.common.yml
         service: elasticsearch
@@ -42,6 +49,8 @@ services:
     container_name: mattermost-opensearch
     ports:
       - "9201:9201"
+    volumes:
+      - "opensearch-data:/usr/share/opensearch/data"
     extends:
         file: build/docker-compose.common.yml
         service: opensearch
@@ -49,6 +58,8 @@ services:
     container_name: mattermost-redis
     ports:
       - "6379:6379"
+    volumes:
+      - "redis-data:/data"
     extends:
         file: build/docker-compose.common.yml
         service: redis
@@ -98,7 +109,7 @@ services:
   start_dependencies:
     image: mattermost/mattermost-wait-for-dep:latest
     networks:
-      - mm-test
+      - messaging-app
     depends_on:
       - postgres
       - minio
@@ -127,7 +138,7 @@ services:
       # - "MM_CLUSTERSETTINGS_CLUSTERNAME=mm_dev_cluster"
       - "MM_LOGSETTINGS_FILELOCATION=./logs/leader"
     networks:
-      - mm-test
+      - messaging-app
     ports:
       - "8065:8065"  
     depends_on:
@@ -166,7 +177,7 @@ services:
   #     - "MM_CLUSTERSETTINGS_CLUSTERNAME=mm_dev_cluster"
   #     - "MM_LOGSETTINGS_FILELOCATION=./logs/follower"
   #   networks:
-  #     - mm-test
+  #     - messaging-app
   #   depends_on:
   #     - leader
   #   volumes:
@@ -203,7 +214,7 @@ services:
   #     - "MM_CLUSTERSETTINGS_CLUSTERNAME=mm_dev_cluster"
   #     - "MM_LOGSETTINGS_FILELOCATION=./logs/follower2"
   #   networks:
-  #     - mm-test
+  #     - messaging-app
   #   depends_on:
   #     - leader
   #   volumes:
@@ -229,7 +240,7 @@ services:
   # haproxy:
   #   image: nginx
   #   networks:
-  #     - mm-test
+  #     - messaging-app
   #   volumes:
   #     - ./build/docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
   #   restart: on-failure
@@ -244,10 +255,17 @@ services:
   #     - "8065:8065"
 
 networks:
-  mm-test:
+  messaging-app:
     driver: bridge
     ipam:
       driver: default
       config:
         - subnet: 192.168.254.0/24
           ip_range: 192.168.254.0/24
+
+volumes:
+  postgres-data:
+  minio-data:
+  elasticsearch-data:
+  opensearch-data:
+  redis-data:

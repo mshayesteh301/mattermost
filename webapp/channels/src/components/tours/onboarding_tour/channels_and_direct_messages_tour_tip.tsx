@@ -32,7 +32,7 @@ const FirstChannel = ({firstChannelName}: {firstChannelName: string}) => {
 
 export const ChannelsAndDirectMessagesTour = ({firstChannelName}: Props) => {
     const channelsByName = useSelector((state: GlobalState) => getChannelsNameMapInCurrentTeam(state));
-    const townSquareDisplayName = channelsByName[Constants.DEFAULT_CHANNEL]?.display_name || Constants.DEFAULT_CHANNEL_UI_NAME;
+    const defaultChannelDisplayName = channelsByName[Constants.DEFAULT_CHANNEL]?.display_name || Constants.DEFAULT_CHANNEL_UI_NAME;
     const offTopicDisplayName = channelsByName[Constants.OFFTOPIC_CHANNEL]?.display_name || Constants.OFFTOPIC_CHANNEL_UI_NAME;
 
     const title = (
@@ -52,9 +52,9 @@ export const ChannelsAndDirectMessagesTour = ({firstChannelName}: Props) => {
             </p>
             <p>
                 <FormattedMessage
-                    id='onboardingTour.ChannelsAndDirectMessagesTour.townSquare'
-                    defaultMessage='We’ve also added the <b>{townSquare}</b> and <b>{offTopic}</b> channels for everyone on your team.'
-                    values={{townSquare: townSquareDisplayName, offTopic: offTopicDisplayName, b: (value) => <b>{value}</b>}}
+                    id='onboardingTour.ChannelsAndDirectMessagesTour.defaultChannel'
+                    defaultMessage='We’ve also added the <b>{defaultChannel}</b> and <b>{offTopic}</b> channels for everyone on your team.'
+                    values={{defaultChannel: defaultChannelDisplayName, offTopic: offTopicDisplayName, b: (value) => <b>{value}</b>}}
                 />
             </p>
             <p>

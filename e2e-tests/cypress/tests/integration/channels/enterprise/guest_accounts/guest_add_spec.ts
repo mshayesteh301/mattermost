@@ -74,7 +74,7 @@ describe('Guest Account - Guest User Experience', () => {
         demoteGuestUser(guestUser);
 
         cy.apiAdminLogin();
-        cy.visit(`/${testTeam.name}/channels/town-square`);
+        cy.visit(`/${testTeam.name}/channels/default-channel`);
         cy.sendDirectMessageToUser(guestUser, 'hello');
 
         // # Search for the Guest User

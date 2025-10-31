@@ -47,7 +47,7 @@ export type Props = {
     channelsLoader: (value: string, callback?: (channels: Channel[]) => void) => Promise<Channel[]>;
     currentChannel?: Channel;
     titleClass?: string;
-    townSquareDisplayName: string;
+    defaultChannelDisplayName: string;
 
     inviteType: InviteType;
 
@@ -68,7 +68,7 @@ export default function AddToChannels(props: Props) {
 
     const {formatMessage} = useIntl();
 
-    let placeholderChannelName = props.townSquareDisplayName;
+    let placeholderChannelName = props.defaultChannelDisplayName;
 
     // If the user is in a public or private channel and is not abac policy enforced,
     // use this channel name as a placeholder.

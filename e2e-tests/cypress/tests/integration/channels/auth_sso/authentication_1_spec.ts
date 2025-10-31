@@ -120,7 +120,7 @@ describe('Authentication', () => {
         cy.findByText('The email you provided does not belong to an accepted domain. Please contact your administrator or sign up with a different email.').should('be.visible');
     });
 
-    it('MM-T1763 - Security - Signup: Email verification not required, user immediately sees Town Square', () => {
+    it('MM-T1763 - Security - Signup: Email verification not required, user immediately sees Default Channel', () => {
         // # Disable email verification
         cy.apiUpdateConfig({
             EmailSettings: {

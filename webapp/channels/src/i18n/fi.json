@@ -393,7 +393,7 @@
   "admin.group_settings.filters.isUnlinked": "Ei linkitetty",
   "admin.group_settings.group_detail.groupProfileDescription": "Tämän ryhmän nimi.",
   "admin.group_settings.group_detail.groupProfileTitle": "Ryhmäprofiili",
-  "admin.group_settings.group_detail.groupTeamsAndChannelsDescription": "Aseta oletustiimit ja kanavat ryhmän jäsenille. Tiimien oletuskanavat, town-square ja off-topic lisätään. Kanavan lisääminen ilman tiimiä lisää kanavan tiimin alle listalle, mutta ei varsinaisesti ryhmälle.",
+  "admin.group_settings.group_detail.groupTeamsAndChannelsDescription": "Aseta oletustiimit ja kanavat ryhmän jäsenille. Tiimien oletuskanavat, default-channel ja off-topic lisätään. Kanavan lisääminen ilman tiimiä lisää kanavan tiimin alle listalle, mutta ei varsinaisesti ryhmälle.",
   "admin.group_settings.group_detail.groupTeamsAndChannelsTitle": "Tiimien ja kanavien jäsenyys",
   "admin.group_settings.group_detail.groupUsersDescription": "Ryhmään liittyvien Mattermost-käyttäjien listaus.",
   "admin.group_settings.group_detail.group_configuration": "Ryhmäasetukset",

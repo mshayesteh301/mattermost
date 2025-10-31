@@ -14,7 +14,7 @@ import {getRandomId} from '../../../utils';
 
 describe('System message', () => {
     before(() => {
-        // # Login as test user and visit town-square
+        // # Login as test user and visit default-channel
         cy.apiInitSetup({loginAfter: true}).then(({team, channel}) => {
             cy.visit(`/${team.name}/channels/${channel.name}`);
 

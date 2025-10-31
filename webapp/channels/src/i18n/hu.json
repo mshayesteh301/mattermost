@@ -3478,7 +3478,7 @@
   "onboardingTour.ChannelsAndDirectMessagesTour.directMessages": "A <b>közvetlen üzenetek</b> egyének vagy kis csoportok közötti magánbeszélgetésekre szolgálnak.",
   "onboardingTour.ChannelsAndDirectMessagesTour.firstChannel": "Hahó nézze, itt van a **{firstChannelName}** csatornája! ",
   "onboardingTour.ChannelsAndDirectMessagesTour.title": "Csatornák és közvetlen üzenetek",
-  "onboardingTour.ChannelsAndDirectMessagesTour.townSquare": "A <b>{townSquare}</b> és az <b>{offTopic}</b> csatornákat is hozzáadtuk a csapatod minden tagja számára.",
+  "onboardingTour.ChannelsAndDirectMessagesTour.defaultChannel": "A <b>{defaultChannel}</b> és az <b>{offTopic}</b> csatornákat is hozzáadtuk a csapatod minden tagja számára.",
   "onboardingTour.CreateAndJoinChannels.Description": "Hozzon létre új csatornákat, vagy böngésszen a rendelkezésre álló csatornák között, hogy lássa, miről beszélget a csapata. Ahogy csatlakozik a csatornákhoz, rendszerezze őket  kategóriákba a saját munkamódszere szerint.",
   "onboardingTour.CreateAndJoinChannels.title": "Hozzon létre és csatlakozzon csatornákhoz",
   "onboardingTour.customizeYourExperience.Description": "Állítsa be elérhetőségét, adjon hozzá egyéni állapotot, és lépjen be a Beállításokba és a Profiljába, hogy konfigurálhassa élményét, beleértve az értesítési beállításokat és az egyéni téma színeit.",

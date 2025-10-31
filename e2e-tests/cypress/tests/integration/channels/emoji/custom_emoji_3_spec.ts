@@ -20,7 +20,7 @@ describe('Custom emojis', () => {
     let testTeam;
     let testUser;
     let otherUser;
-    let townsquareLink;
+    let defaultchannelLink;
 
     const builtinEmoji = 'taco';
     const builtinEmojiWithColons = ':taco:';
@@ -41,7 +41,7 @@ describe('Custom emojis', () => {
         cy.apiInitSetup().then(({team, user}) => {
             testTeam = team;
             testUser = user;
-            townsquareLink = `/${team.name}/channels/town-square`;
+            defaultchannelLink = `/${team.name}/channels/default-channel`;
         });
 
         cy.apiCreateUser().then(({user: user1}) => {
@@ -49,7 +49,7 @@ describe('Custom emojis', () => {
             cy.apiAddUserToTeam(testTeam.id, otherUser.id);
         }).then(() => {
             cy.apiLogin(testUser);
-            cy.visit(townsquareLink);
+            cy.visit(defaultchannelLink);
         });
     });
 
@@ -74,7 +74,7 @@ describe('Custom emojis', () => {
         cy.uiSave().wait(TIMEOUTS.THREE_SEC);
 
         // # Go back to home channel
-        cy.visit(townsquareLink);
+        cy.visit(defaultchannelLink);
 
         // # Post a message
         cy.postMessage(messageText);
@@ -146,7 +146,7 @@ describe('Custom emojis', () => {
         cy.uiSave().wait(TIMEOUTS.THREE_SEC);
 
         // # Go back to home channel
-        cy.visit(townsquareLink);
+        cy.visit(defaultchannelLink);
 
         // # Post a message
         cy.postMessage(messageText);
@@ -185,7 +185,7 @@ describe('Custom emojis', () => {
         cy.uiSave().wait(TIMEOUTS.THREE_SEC);
 
         // # Go back to home channel
-        cy.visit(townsquareLink);
+        cy.visit(defaultchannelLink);
 
         // # Post a message with the emoji
         cy.postMessage(customEmojiWithColons);
@@ -208,7 +208,7 @@ describe('Custom emojis', () => {
         cy.get('#confirmModalButton').should('be.visible').click();
 
         // # Go back to home channel
-        cy.visit(townsquareLink);
+        cy.visit(defaultchannelLink);
 
         cy.reload();
 
@@ -222,7 +222,7 @@ describe('Custom emojis', () => {
         cy.get('.no-results__title').should('be.visible').and('have.text', 'No results for “' + customEmoji + '”');
 
         // # Navigate to a channel
-        cy.visit(townsquareLink);
+        cy.visit(defaultchannelLink);
 
         cy.getLastPost().within(() => {
             // * Verify that only the plain message renders in the post and the emoji has been deleted
@@ -249,7 +249,7 @@ describe('Custom emojis', () => {
         cy.uiSave().wait(TIMEOUTS.THREE_SEC);
 
         // # Go back to home channel
-        cy.visit(townsquareLink);
+        cy.visit(defaultchannelLink);
 
         // # Post a message to which we will react with the custom emoji
         cy.postMessage(MESSAGES.TINY);
@@ -292,7 +292,7 @@ describe('Custom emojis', () => {
         cy.get('#confirmModalButton').should('be.visible').click();
 
         // # Go back to home channel
-        cy.visit(townsquareLink);
+        cy.visit(defaultchannelLink);
 
         cy.reload();
 
@@ -306,7 +306,7 @@ describe('Custom emojis', () => {
         cy.get('.no-results__title').should('be.visible').and('have.text', 'No results for “' + customEmoji + '”');
 
         // # Navigate to a channel
-        cy.visit(townsquareLink);
+        cy.visit(defaultchannelLink);
 
         cy.getLastPost().within(() => {
             // * Verify that the custom emoji as reaction is not present to last post

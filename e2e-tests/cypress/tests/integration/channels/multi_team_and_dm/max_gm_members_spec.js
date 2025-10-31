@@ -27,8 +27,8 @@ describe('Multi-user group messages', () => {
         // # Login as test user
         cy.apiLogin(testUser);
 
-        // # Go to town-square channel
-        cy.visit(`/${testTeam.name}/channels/town-square`);
+        // # Go to default-channel channel
+        cy.visit(`/${testTeam.name}/channels/default-channel`);
 
         // # Open the 'Direct messages' dialog to create a new direct message
         cy.uiAddDirectMessage().click();

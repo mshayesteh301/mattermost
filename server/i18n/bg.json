@@ -6836,7 +6836,7 @@
     "translation": "Невалидно ID на потребител при създаването на канал за директни съобщения."
   },
   {
-    "id": "api.channel.create_default_channels.town_square",
+    "id": "api.channel.create_default_channels.default_channel",
     "translation": "Площада"
   },
   {

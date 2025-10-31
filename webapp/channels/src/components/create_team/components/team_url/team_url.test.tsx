@@ -69,7 +69,7 @@ describe('/components/create_team/components/display_name', () => {
             expect(actions.createTeam).toHaveBeenCalledTimes(1);
             expect(actions.createTeam).toBeCalledWith({display_name: 'test-team', name: 'test-team', type: 'O'});
             expect(props.history.push).toHaveBeenCalledTimes(1);
-            expect(props.history.push).toBeCalledWith('/test-team/channels/town-square');
+            expect(props.history.push).toBeCalledWith('/test-team/channels/default-channel');
         });
     });
 

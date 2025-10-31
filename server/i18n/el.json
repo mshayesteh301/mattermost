@@ -1135,8 +1135,8 @@
     "translation": "Μη έγκυρο αναγνωριστικό χρήστη για άμεση δημιουργία καναλιού."
   },
   {
-    "id": "api.channel.create_default_channels.town_square",
-    "translation": "Town Square"
+    "id": "api.channel.create_default_channels.default_channel",
+    "translation": "Default Channel"
   },
   {
     "id": "api.channel.create_default_channels.off_topic",

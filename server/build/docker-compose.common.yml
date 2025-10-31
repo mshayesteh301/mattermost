@@ -3,7 +3,7 @@ services:
     image: "postgres:14"
     restart: always
     networks:
-      - mm-test
+      - messaging-app
     environment:
       POSTGRES_USER: mmuser
       POSTGRES_PASSWORD: mostest
@@ -22,7 +22,7 @@ services:
     image: "minio/minio:RELEASE.2024-06-22T05-26-45Z"
     command: "server /data --console-address :9002"
     networks:
-      - mm-test
+      - messaging-app
     environment:
       MINIO_ROOT_USER: minioaccesskey
       MINIO_ROOT_PASSWORD: miniosecretkey
@@ -35,12 +35,12 @@ services:
       INBUCKET_POP3_ADDR: "0.0.0.0:10110"
       INBUCKET_SMTP_ADDR: "0.0.0.0:10025"
     networks:
-      - mm-test
+      - messaging-app
   openldap:
     image: "osixia/openldap:1.4.0"
     restart: always
     networks:
-      - mm-test
+      - messaging-app
     environment:
       LDAP_TLS_VERIFY_CLIENT: "never"
       LDAP_ORGANISATION: "Mattermost Test"
@@ -49,7 +49,7 @@ services:
   elasticsearch:
     image: "mattermostdevelopment/mattermost-elasticsearch:8.9.0"
     networks:
-      - mm-test
+      - messaging-app
     environment:
       http.host: "0.0.0.0"
       http.port: 9200
@@ -66,7 +66,7 @@ services:
       context: .
       dockerfile: ./Dockerfile.opensearch
     networks:
-      - mm-test
+      - messaging-app
     environment:
       http.host: "0.0.0.0"
       http.port: 9201
@@ -81,17 +81,17 @@ services:
   redis:
     image: "redis:7.4.0"
     networks:
-      - mm-test
+      - messaging-app
   dejavu:
     image: "appbaseio/dejavu:3.4.2"
     networks:
-      - mm-test
+      - messaging-app
   keycloak:
     image: "quay.io/keycloak/keycloak:23.0.7"
     restart: always
     entrypoint: /opt/keycloak/bin/kc.sh start --import-realm
     networks:
-      - mm-test
+      - messaging-app
     environment:
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
@@ -107,7 +107,7 @@ services:
       - "./docker/prometheus.yml:/etc/prometheus/prometheus.yml"
       - "/var/run/docker.sock:/var/run/docker.sock"
     networks:
-      - mm-test
+      - messaging-app
     extra_hosts:
       - "host.docker.internal:host-gateway"
   grafana:
@@ -117,11 +117,11 @@ services:
       - "./docker/grafana/provisioning:/etc/grafana/provisioning"
       - "./docker/grafana/dashboards:/var/lib/grafana/dashboards"
     networks:
-      - mm-test
+      - messaging-app
   loki:
     image: "grafana/loki:3.0.0"
     networks:
-      - mm-test
+      - messaging-app
   promtail:
     image: "grafana/promtail:3.0.0"
     volumes:
@@ -131,4 +131,4 @@ services:
       - "../logs:/logs"
     command: -config.file=/etc/promtail/docker-config.yaml
     networks:
-      - mm-test
+      - messaging-app

@@ -44,7 +44,7 @@ describe('Authentication', () => {
         });
 
         spyNotificationAs('withNotification', 'granted');
-        cy.visit(`/${testTeam.name}/channels/town-square`);
+        cy.visit(`/${testTeam.name}/channels/default-channel`);
 
         cy.postMessage('hello');
 

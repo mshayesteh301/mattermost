@@ -18,8 +18,8 @@ describe('Channel Settings - Channel Header', () => {
             testTeam = team;
             cy.apiLogin(user);
 
-            // # Visit town-square channel
-            cy.visit(`/${testTeam.name}/channels/town-square`);
+            // # Visit default-channel channel
+            cy.visit(`/${testTeam.name}/channels/default-channel`);
         });
     });
 

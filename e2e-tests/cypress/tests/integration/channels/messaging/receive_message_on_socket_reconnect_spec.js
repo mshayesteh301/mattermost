@@ -24,7 +24,7 @@ describe('Messaging', () => {
         // # Update config to enable "EnableReliableWebSockets"
         cy.apiUpdateConfig({ServiceSettings: {EnableReliableWebSockets: true}});
 
-        // # Login as test user and go to town-square
+        // # Login as test user and go to default-channel
         cy.apiInitSetup().then(({team, channel, user}) => {
             testUser = user;
             testTeam = team;
@@ -64,7 +64,7 @@ describe('Messaging', () => {
             cy.postMessageReplyInRHS('def');
 
             // # Change channel
-            cy.uiGetLhsSection('CHANNELS').findByText('Town Square').click().then(() => {
+            cy.uiGetLhsSection('CHANNELS').findByText('Default Channel').click().then(() => {
                 // # Close all sockets
                 window.mockWebsockets.forEach((value) => {
                     if (value.close) {
@@ -93,7 +93,7 @@ describe('Messaging', () => {
                     cy.wait(TIMEOUTS.THREE_SEC);
                     cy.uiGetLhsSection('CHANNELS').findByText('Off-Topic').click();
                     cy.postMessage('any');
-                    cy.uiGetLhsSection('CHANNELS').findByText('Town Square').click();
+                    cy.uiGetLhsSection('CHANNELS').findByText('Default Channel').click();
                     cy.postMessage('any');
                     cy.wait(TIMEOUTS.THREE_SEC);
 

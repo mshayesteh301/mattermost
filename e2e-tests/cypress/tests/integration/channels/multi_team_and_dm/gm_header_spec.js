@@ -79,7 +79,7 @@ describe('Multi-user group header', () => {
         // * Channel is marked as unread for other user
         cy.apiLogout();
         cy.apiLogin(userList[0]);
-        cy.visit(`/${testTeam.name}/channels/town-square`);
+        cy.visit(`/${testTeam.name}/channels/default-channel`);
         cy.get(`#sidebarItem_${groupChannel.name}`).should(beUnread);
         cy.apiLogout();
     });
@@ -107,7 +107,7 @@ describe('Multi-user group header', () => {
         // * Channel is marked as unread for other users
         cy.apiLogout();
         cy.apiLogin(userList[0]);
-        cy.visit(`/${testTeam.name}/channels/town-square`);
+        cy.visit(`/${testTeam.name}/channels/default-channel`);
         cy.get(`#sidebarItem_${groupChannel.name}`).should(beUnread);
         cy.apiLogout();
     });

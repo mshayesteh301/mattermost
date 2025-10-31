@@ -70,7 +70,7 @@ const baseState: DeepPartial<GlobalState> = {
 };
 
 // Helper function to render the component with router
-const renderWithRouter = (state: any, initialEntries = ['/team1/channels/town-square']) => {
+const renderWithRouter = (state: any, initialEntries = ['/team1/channels/default-channel']) => {
     return renderWithContext(
         <MemoryRouter initialEntries={initialEntries}>
             <Route path='/:team'>

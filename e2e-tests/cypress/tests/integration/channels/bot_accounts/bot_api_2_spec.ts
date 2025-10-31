@@ -38,12 +38,12 @@ describe('Bot accounts ownership and API', () => {
         };
         cy.apiUpdateConfig(newSettings);
 
-        cy.apiInitSetup().then(({team, user, channel, townSquareUrl}) => {
+        cy.apiInitSetup().then(({team, user, channel, defaultChannelUrl}) => {
             newTeam = team;
             newUser = user;
             newChannel = channel;
 
-            cy.visit(townSquareUrl);
+            cy.visit(defaultChannelUrl);
             cy.postMessage('hello');
         });
 

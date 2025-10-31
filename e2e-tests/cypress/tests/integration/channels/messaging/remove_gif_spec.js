@@ -26,12 +26,12 @@ describe('Messaging', () => {
             },
         });
 
-        // # Login as test user and go to town-square
+        // # Login as test user and go to default-channel
         cy.apiInitSetup().then(({team, user}) => {
             testUser = user;
             testTeam = team;
 
-            cy.visit(`/${testTeam.name}/channels/town-square`);
+            cy.visit(`/${testTeam.name}/channels/default-channel`);
         });
     });
 
@@ -45,9 +45,9 @@ describe('Messaging', () => {
         // # Write message on reply box
         cy.postMessageReplyInRHS('https://media1.giphy.com/media/l41lM6sJvwmZNruLe/giphy.gif');
 
-        // # Change user and go to Town Square
+        // # Change user and go to Default Channel
         cy.apiLogin(testUser);
-        cy.visit(`/${testTeam.name}/channels/town-square`);
+        cy.visit(`/${testTeam.name}/channels/default-channel`);
 
         // # Click Reply button to open the RHS
         cy.clickPostCommentIcon();
@@ -88,9 +88,9 @@ describe('Messaging', () => {
             // * Should see (message deleted)
             cy.get(`#post_${postId}`).should('not.exist');
 
-            // # Log in as the other user and go to town square
+            // # Log in as the other user and go to default channel
             cy.apiAdminLogin();
-            cy.visit(`/${testTeam.name}/channels/town-square`);
+            cy.visit(`/${testTeam.name}/channels/default-channel`);
 
             // * The post should not exist
             cy.get(`#post_${postId}`).should('not.exist');
@@ -109,9 +109,9 @@ describe('Messaging', () => {
         // # Write message on reply box
         cy.postMessageReplyInRHS('https://media1.giphy.com/media/l41lM6sJvwmZNruLe/giphy.gif');
 
-        // # Change user and go to Town Square
+        // # Change user and go to Default Channel
         cy.apiLogin(testUser);
-        cy.visit(`/${testTeam.name}/channels/town-square`);
+        cy.visit(`/${testTeam.name}/channels/default-channel`);
 
         // # Change viewport so it has mobile view
         cy.viewport('iphone-6');
@@ -145,9 +145,9 @@ describe('Messaging', () => {
             // * Cannot view the gif on RHS
             cy.get(`#rhsPost_${postId}`).find('.attachment__image').should('not.exist');
 
-            // # Log in as the other user and go to town square
+            // # Log in as the other user and go to default channel
             cy.apiAdminLogin();
-            cy.visit(`/${testTeam.name}/channels/town-square`);
+            cy.visit(`/${testTeam.name}/channels/default-channel`);
 
             // * The post should not exist
             cy.get(`#post_${postId}`).should('not.exist');

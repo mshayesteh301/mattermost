@@ -19,10 +19,10 @@ describe('Edit bot', () => {
     let testTeam: Team;
 
     before(() => {
-        cy.apiInitSetup().then(({team, townSquareUrl}) => {
+        cy.apiInitSetup().then(({team, defaultChannelUrl}) => {
             testTeam = team;
 
-            cy.visit(townSquareUrl);
+            cy.visit(defaultChannelUrl);
             cy.postMessage('hello');
         });
     });

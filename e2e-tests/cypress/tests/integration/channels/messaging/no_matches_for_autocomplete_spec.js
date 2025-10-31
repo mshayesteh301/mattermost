@@ -13,8 +13,8 @@
 describe('No Matches for Autocomplete', () => {
     before(() => {
         cy.apiInitSetup().then(({team}) => {
-            // # Visit town-square
-            cy.visit(`/${team.name}/channels/town-square`);
+            // # Visit default-channel
+            cy.visit(`/${team.name}/channels/default-channel`);
         });
     });
 

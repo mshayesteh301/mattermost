@@ -15,7 +15,7 @@ import * as TIMEOUTS from '../../../fixtures/timeouts';
 describe('Keyboard Shortcuts', () => {
     let sysadmin;
     let dmWithSysadmin;
-    let townSquare;
+    let defaultChannel;
     let offTopic;
     let testTeam;
     let publicChannel;
@@ -39,8 +39,8 @@ describe('Keyboard Shortcuts', () => {
                     dmWithSysadmin.name = sysadmin.username;
                     dmWithSysadmin.display_name = sysadmin.username;
                 });
-                cy.apiGetChannelByName(testTeam.name, 'town-square').then((out) => {
-                    townSquare = out.channel;
+                cy.apiGetChannelByName(testTeam.name, 'default-channel').then((out) => {
+                    defaultChannel = out.channel;
                 });
                 cy.apiGetChannelByName(testTeam.name, 'off-topic').then((out) => {
                     offTopic = out.channel;
@@ -56,8 +56,8 @@ describe('Keyboard Shortcuts', () => {
         cy.get('#channelHeaderTitle').should('contain', sysadmin.username).wait(TIMEOUTS.ONE_SEC);
 
         // * Switch to channels by Alt+Up/Down keypress and verify
-        verifyChannelSwitch(testTeam.name, townSquare, dmWithSysadmin, '{uparrow}');
-        verifyChannelSwitch(testTeam.name, privateChannel, townSquare, '{uparrow}');
+        verifyChannelSwitch(testTeam.name, defaultChannel, dmWithSysadmin, '{uparrow}');
+        verifyChannelSwitch(testTeam.name, privateChannel, defaultChannel, '{uparrow}');
         verifyChannelSwitch(testTeam.name, offTopic, privateChannel, '{uparrow}');
         verifyChannelSwitch(testTeam.name, publicChannel, offTopic, '{uparrow}');
 
@@ -74,8 +74,8 @@ describe('Keyboard Shortcuts', () => {
         // # Switch to channels by Alt+Up/Down keypress and verify
         verifyChannelSwitch(testTeam.name, offTopic, publicChannel, '{downarrow}');
         verifyChannelSwitch(testTeam.name, privateChannel, offTopic, '{downarrow}');
-        verifyChannelSwitch(testTeam.name, townSquare, privateChannel, '{downarrow}');
-        verifyChannelSwitch(testTeam.name, dmWithSysadmin, townSquare, '{downarrow}');
+        verifyChannelSwitch(testTeam.name, defaultChannel, privateChannel, '{downarrow}');
+        verifyChannelSwitch(testTeam.name, dmWithSysadmin, defaultChannel, '{downarrow}');
     });
 
     function verifyChannelSwitch(teamName, toChannel, fromChannel, arrowKey) {

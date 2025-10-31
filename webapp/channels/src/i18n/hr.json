@@ -1266,7 +1266,7 @@
   "onboardingTask.checklist.no_thanks": "Ne, hvala",
   "onboardingTask.completeYourProfileTour.title": "Uredi tvoj profil",
   "onboardingTour.ChannelsAndDirectMessagesTour.title": "Kanali i izravne poruke",
-  "onboardingTour.ChannelsAndDirectMessagesTour.townSquare": "Također smo dodali <b>{townSquare}</b> i <b>{offTopic}</b> kanale za sve u tvom timu.",
+  "onboardingTour.ChannelsAndDirectMessagesTour.defaultChannel": "Također smo dodali <b>{defaultChannel}</b> i <b>{offTopic}</b> kanale za sve u tvom timu.",
   "onboardingTour.invitePeople.title": "Pozovi osobe u tim",
   "onboardingTour.sendMessage.title": "Pošalji poruke",
   "onboarding_wizard.invite_members.copied_link": "Poveznica kopirana",

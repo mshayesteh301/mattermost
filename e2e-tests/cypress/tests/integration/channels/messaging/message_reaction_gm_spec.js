@@ -30,9 +30,9 @@ describe('Emoji reactions to posts/messages in GM channels', () => {
                     testGroupChannel = channel;
                 });
 
-                // # Login as userOne and town-square
+                // # Login as userOne and default-channel
                 cy.apiLogin(userOne);
-                cy.visit(`/${testTeam.name}/channels/town-square`);
+                cy.visit(`/${testTeam.name}/channels/default-channel`);
             });
         });
     });

@@ -18,7 +18,7 @@ describe('Custom emojis', () => {
     let testTeam;
     let testUser;
     let otherUser;
-    let townsquareLink;
+    let defaultchannelLink;
 
     const largeEmojiFile = 'gif-image-file.gif';
     before(() => {
@@ -35,7 +35,7 @@ describe('Custom emojis', () => {
         cy.apiInitSetup().then(({team, user}) => {
             testTeam = team;
             testUser = user;
-            townsquareLink = `/${team.name}/channels/town-square`;
+            defaultchannelLink = `/${team.name}/channels/default-channel`;
         });
 
         cy.apiCreateUser().then(({user: user1}) => {
@@ -43,7 +43,7 @@ describe('Custom emojis', () => {
             cy.apiAddUserToTeam(testTeam.id, otherUser.id);
         }).then(() => {
             cy.apiLogin(testUser);
-            cy.visit(townsquareLink);
+            cy.visit(defaultchannelLink);
         });
     });
 
@@ -69,7 +69,7 @@ describe('Custom emojis', () => {
         cy.uiSave().wait(TIMEOUTS.THREE_SEC);
 
         // # Go back to home channel
-        cy.visit(townsquareLink);
+        cy.visit(defaultchannelLink);
 
         // # Open emoji picker
         cy.uiOpenEmojiPicker();
@@ -111,7 +111,7 @@ describe('Custom emojis', () => {
         });
 
         // # Go back to home channel
-        cy.visit(townsquareLink);
+        cy.visit(defaultchannelLink);
 
         cy.reload().wait(TIMEOUTS.FIVE_SEC);
 

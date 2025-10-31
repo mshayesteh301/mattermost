@@ -30,7 +30,7 @@ describe('Channel sidebar', () => {
             cy.apiCreateChannel(team.id, 'channel', 'Channel').then(({channel}) => {
                 channelName = channel.display_name;
             });
-            cy.visit(`/${team.name}/channels/town-square`);
+            cy.visit(`/${team.name}/channels/default-channel`);
         });
     });
 
@@ -43,7 +43,7 @@ describe('Channel sidebar', () => {
             cy.get('.SidebarChannel > .SidebarLink').should('be.visible').as('fromChannelSidebarLink');
             cy.get('@fromChannelSidebarLink').eq(0).should('contain', channelName);
             cy.get('@fromChannelSidebarLink').eq(1).should('contain', 'Off-Topic');
-            cy.get('@fromChannelSidebarLink').eq(2).should('contain', 'Town Square');
+            cy.get('@fromChannelSidebarLink').eq(2).should('contain', 'Default Channel');
         });
 
         // # Perform drag using keyboard
@@ -56,7 +56,7 @@ describe('Channel sidebar', () => {
         cy.uiGetLhsSection('CHANNELS').within(() => {
             cy.get('.SidebarChannel > .SidebarLink').as('toChannelSidebarLink');
             cy.get('@toChannelSidebarLink').eq(0).should('contain', channelName);
-            cy.get('@toChannelSidebarLink').eq(1).should('contain', 'Town Square');
+            cy.get('@toChannelSidebarLink').eq(1).should('contain', 'Default Channel');
             cy.get('@toChannelSidebarLink').eq(2).should('contain', 'Off-Topic');
         });
     });
