@@ -516,7 +516,7 @@ class PluginManagement extends OLDAdminSettings<Props, State> {
             confirmOverwriteInstallModal: false,
             showRemoveModal: false,
             resolveRemoveModal: null,
-        });
+        } as any);
         this.fileInput = React.createRef();
     }
     getConfigFromState = (config: Props['config']) => {
@@ -1150,6 +1150,25 @@ class PluginManagement extends OLDAdminSettings<Props, State> {
                                     disabled={this.props.isDisabled || !this.state.enable}
                                     onChange={this.handleChange}
                                     setByEnv={this.isSetByEnv('PluginSettings.AutomaticPrepackagedPlugins')}
+                                />
+                                <BooleanSetting
+                                    id='enableUploads'
+                                    label={
+                                        <FormattedMessage
+                                            id='admin.plugins.settings.enableUploads'
+                                            defaultMessage='Enable Plugin Uploads:'
+                                        />
+                                    }
+                                    helpText={
+                                        <FormattedMessage
+                                            id='admin.plugins.settings.enableUploadsDesc'
+                                            defaultMessage='When true, System Admins can upload plugins from the file system. When false, plugins can only be installed through the Marketplace.'
+                                        />
+                                    }
+                                    value={this.state.enableUploads}
+                                    disabled={this.props.isDisabled || !this.state.enable}
+                                    onChange={this.handleChange}
+                                    setByEnv={this.isSetByEnv('PluginSettings.EnableUploads')}
                                 />
                                 <SettingSet
                                     helpText={uploadHelpText}
