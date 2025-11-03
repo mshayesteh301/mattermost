@@ -938,6 +938,8 @@ class PluginManagement extends OLDAdminSettings<Props, State> {
         // Using props values to make sure these are set on the server and not just locally
         const enableUploadButton = enableUploads && enable && !(this.props.config.PluginSettings && this.props.config.PluginSettings.RequirePluginSignature);
 
+        console.log({enableUploads,enable,PluginSettings: this.props.config.PluginSettings,  RequirePluginSignature:this.props.config.PluginSettings?.RequirePluginSignature })
+
         if (this.state.serverError) {
             serverError = <div className='col-sm-12'><div className='form-group has-error half'><label className='control-label'>{this.state.serverError}</label></div></div>;
         }
