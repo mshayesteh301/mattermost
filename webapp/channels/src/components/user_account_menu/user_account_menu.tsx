@@ -129,8 +129,8 @@ export default function UserAccountMenu(props: Props) {
             <UserAccountProfileMenuItem
                 userId={props.userId}
             />
-            <Menu.Separator/>
-            <UserAccountLogoutMenuItem/>
+            {/* <Menu.Separator/>
+            <UserAccountLogoutMenuItem/> */}
         </Menu.Container>
     );
 }

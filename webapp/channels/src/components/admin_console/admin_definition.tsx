@@ -585,7 +585,9 @@ const AdminDefinition: AdminDefinitionType = {
             />
         ),
         sectionTitle: defineMessage({id: 'admin.sidebar.systemAttributes', defaultMessage: 'System Attributes'}),
-        isHidden: it.not(it.userHasReadPermissionOnSomeResources(RESOURCE_KEYS.USER_MANAGEMENT)),
+
+        // isHidden: it.not(it.userHasReadPermissionOnSomeResources(RESOURCE_KEYS.USER_MANAGEMENT)),
+        isHidden: true,
         subsections: {
             system_properties: {
                 url: 'system_attributes/user_attributes',
@@ -2120,10 +2122,12 @@ const AdminDefinition: AdminDefinitionType = {
             mobile_security: {
                 url: 'environment/mobile_security',
                 title: defineMessage({id: 'admin.sidebar.mobileSecurity', defaultMessage: 'Mobile Security'}),
-                isHidden: it.any(
-                    it.not(it.userHasReadPermissionOnResource(RESOURCE_KEYS.ENVIRONMENT.MOBILE_SECURITY)),
-                    it.not(it.minLicenseTier(LicenseSkus.Enterprise)),
-                ),
+
+                // isHidden: it.any(
+                //     it.not(it.userHasReadPermissionOnResource(RESOURCE_KEYS.ENVIRONMENT.MOBILE_SECURITY)),
+                //     it.not(it.minLicenseTier(LicenseSkus.Enterprise)),
+                // ),
+                isHidden: true,
                 schema: {
                     id: 'MobileSecuritySettings',
                     name: defineMessage({id: 'admin.mobileSecurity.title', defaultMessage: 'Mobile Security'}),
@@ -3493,7 +3497,9 @@ const AdminDefinition: AdminDefinitionType = {
             />
         ),
         sectionTitle: defineMessage({id: 'admin.sidebar.authentication', defaultMessage: 'Authentication'}),
-        isHidden: it.not(it.userHasReadPermissionOnSomeResources(RESOURCE_KEYS.AUTHENTICATION)),
+
+        //isHidden: it.not(it.userHasReadPermissionOnSomeResources(RESOURCE_KEYS.AUTHENTICATION)),
+        isHidden: true,
         subsections: {
             signup: {
                 url: 'authentication/signup',
@@ -5005,7 +5011,9 @@ const AdminDefinition: AdminDefinitionType = {
         ),
         sectionTitle: defineMessage({id: 'admin.sidebar.plugins', defaultMessage: 'Plugins'}),
         id: 'plugins',
-        isHidden: it.not(it.userHasReadPermissionOnResource('plugins')),
+
+        //isHidden: it.not(it.userHasReadPermissionOnResource('plugins')),
+        isHidden: true,
         subsections: {
             plugin_management: {
                 url: 'plugins/plugin_management',
@@ -5036,7 +5044,9 @@ const AdminDefinition: AdminDefinitionType = {
         ),
         sectionTitle: defineMessage({id: 'admin.sidebar.integrations', defaultMessage: 'Integrations'}),
         id: 'integrations',
-        isHidden: it.not(it.userHasReadPermissionOnSomeResources(RESOURCE_KEYS.INTEGRATIONS)),
+
+        //isHidden: it.not(it.userHasReadPermissionOnSomeResources(RESOURCE_KEYS.INTEGRATIONS)),
+        isHidden: true,
         subsections: {
             integration_management: {
                 url: 'integrations/integration_management',
@@ -5354,7 +5364,9 @@ const AdminDefinition: AdminDefinitionType = {
             />
         ),
         sectionTitle: defineMessage({id: 'admin.sidebar.compliance', defaultMessage: 'Compliance'}),
-        isHidden: it.not(it.userHasReadPermissionOnSomeResources(RESOURCE_KEYS.COMPLIANCE)),
+        
+        //isHidden: it.not(it.userHasReadPermissionOnSomeResources(RESOURCE_KEYS.COMPLIANCE)),
+        isHidden: true,
         subsections: {
             custom_policy_form_edit: {
                 url: `compliance/data_retention_settings/custom_policy/:policy_id(${ID_PATH_PATTERN})`,
@@ -5732,7 +5744,9 @@ const AdminDefinition: AdminDefinitionType = {
             />
         ),
         sectionTitle: defineMessage({id: 'admin.sidebar.experimental', defaultMessage: 'Experimental'}),
-        isHidden: it.not(it.userHasReadPermissionOnSomeResources(RESOURCE_KEYS.EXPERIMENTAL)),
+
+        //isHidden: it.not(it.userHasReadPermissionOnSomeResources(RESOURCE_KEYS.EXPERIMENTAL)),
+        isHidden: true,
         subsections: {
             experimental_features: {
                 url: 'experimental/features',

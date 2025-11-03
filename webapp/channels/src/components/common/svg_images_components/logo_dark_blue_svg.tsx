@@ -17,7 +17,7 @@ const Svg = styled.svg.attrs({
 })``;
 
 export default (props: Props) => (
-    <span>دستیارینو</span>
+    <span></span>
     // <Svg
     //     className={props.className}
     //     width={props.width ? props.width.toString() : '182'}
