@@ -5012,8 +5012,8 @@ const AdminDefinition: AdminDefinitionType = {
         sectionTitle: defineMessage({id: 'admin.sidebar.plugins', defaultMessage: 'Plugins'}),
         id: 'plugins',
 
-        //isHidden: it.not(it.userHasReadPermissionOnResource('plugins')),
-        isHidden: true,
+        isHidden: it.not(it.userHasReadPermissionOnResource('plugins')),
+        //isHidden: true,
         subsections: {
             plugin_management: {
                 url: 'plugins/plugin_management',
