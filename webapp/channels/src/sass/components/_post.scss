@@ -137,6 +137,7 @@
     height: 100%;
     flex: 1 1 auto;
     overflow-y: hidden;
+    max-height: calc(100% - 125px);
 
     .inactive {
         display: none;
@@ -1985,9 +1986,6 @@
     }
 }
 
-.post-message__text {
-    text-align: left;
-}
 
 .view-history__text {
     display: block;
