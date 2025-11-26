@@ -23,7 +23,7 @@ const LeftControlsContainer = styled.div`
 
 const LeftControls = (): JSX.Element => (
     <LeftControlsContainer>
-        <ProductMenu/>
+        {/* <ProductMenu/> */}
         {isDesktopApp() && <HistoryButtons/>}
     </LeftControlsContainer>
 );
