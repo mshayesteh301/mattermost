@@ -70,7 +70,7 @@ class UserSettingsModal extends React.PureComponent<Props, State> {
         super(props);
 
         this.state = {
-            active_tab: props.activeTab ?? (props.isContentProductSettings ? 'notifications' : 'profile'),
+            active_tab: props.activeTab ?? (props.isContentProductSettings ? 'display' : 'profile'),
             active_section: '',
             showConfirmModal: false,
             enforceFocus: true,
@@ -260,13 +260,13 @@ class UserSettingsModal extends React.PureComponent<Props, State> {
     getUserSettingsTabs = () => {
         const {formatMessage} = this.props.intl;
         return [
-            // {
-            //     name: 'notifications',
-            //     uiName: formatMessage({id: 'user.settings.modal.notifications', defaultMessage: 'Notifications'}),
-            //     icon: 'icon icon-bell-outline',
-            //     iconTitle: formatMessage({id: 'user.settings.notifications.icon', defaultMessage: 'Notification Settings Icon'}),
-            //     display :false
-            // },
+            {
+                name: 'notifications',
+                uiName: formatMessage({id: 'user.settings.modal.notifications', defaultMessage: 'Notifications'}),
+                icon: 'icon icon-bell-outline',
+                iconTitle: formatMessage({id: 'user.settings.notifications.icon', defaultMessage: 'Notification Settings Icon'}),
+                display :false
+            },
             {
                 name: 'display',
                 uiName: formatMessage({id: 'user.settings.modal.display', defaultMessage: 'Display'}),

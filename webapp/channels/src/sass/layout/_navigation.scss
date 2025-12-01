@@ -81,6 +81,10 @@
         .navbar-plugin-button {
             position: relative;
             top: 1px;
+
+            i {
+                color: #fff !important;
+            }
         }
 
         .navbar-toggle {
