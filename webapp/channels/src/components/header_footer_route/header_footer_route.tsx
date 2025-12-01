@@ -39,15 +39,15 @@ export const HFRoute = ({path, component}: HFRouteProps) => {
                     </React.Suspense>
                     <div className='header-footer-route'>
                         <div className='header-footer-route-container'>
-                            <React.Suspense fallback={null}>
+                            {/* <React.Suspense fallback={null}>
                                 <Header {...headerProps}/>
-                            </React.Suspense>
+                            </React.Suspense> */}
                             <React.Suspense fallback={null}>
                                 <Component onCustomizeHeader={customizeHeader}/>
                             </React.Suspense>
-                            <React.Suspense fallback={null}>
+                            {/* <React.Suspense fallback={null}>
                                 <Footer/>
-                            </React.Suspense>
+                            </React.Suspense> */}
                         </div>
                     </div>
                 </>

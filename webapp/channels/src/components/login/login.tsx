@@ -935,7 +935,7 @@ const Login = ({onCustomizeHeader}: LoginProps) => {
                                             hasError={hasError}
                                             disabled={isWaiting}
                                         />
-                                        {getResetPasswordLink()}
+                                        {/* {getResetPasswordLink()} */}
                                         <SaveButton
                                             extraClasses='login-body-card-form-button-submit large'
                                             saving={isWaiting}

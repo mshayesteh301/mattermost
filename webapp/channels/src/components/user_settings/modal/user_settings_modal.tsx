@@ -162,7 +162,7 @@ class UserSettingsModal extends React.PureComponent<Props, State> {
     // called after the dialog is fully hidden and faded out
     handleHidden = () => {
         this.setState({
-            active_tab: this.props.isContentProductSettings ? 'notifications' : 'profile',
+            active_tab: this.props.isContentProductSettings ? 'display' : 'profile',
             active_section: '',
         });
         if (this.props.focusOriginElement) {
@@ -260,12 +260,13 @@ class UserSettingsModal extends React.PureComponent<Props, State> {
     getUserSettingsTabs = () => {
         const {formatMessage} = this.props.intl;
         return [
-            {
-                name: 'notifications',
-                uiName: formatMessage({id: 'user.settings.modal.notifications', defaultMessage: 'Notifications'}),
-                icon: 'icon icon-bell-outline',
-                iconTitle: formatMessage({id: 'user.settings.notifications.icon', defaultMessage: 'Notification Settings Icon'}),
-            },
+            // {
+            //     name: 'notifications',
+            //     uiName: formatMessage({id: 'user.settings.modal.notifications', defaultMessage: 'Notifications'}),
+            //     icon: 'icon icon-bell-outline',
+            //     iconTitle: formatMessage({id: 'user.settings.notifications.icon', defaultMessage: 'Notification Settings Icon'}),
+            //     display :false
+            // },
             {
                 name: 'display',
                 uiName: formatMessage({id: 'user.settings.modal.display', defaultMessage: 'Display'}),
@@ -391,6 +392,7 @@ class UserSettingsModal extends React.PureComponent<Props, State> {
                                 <div className='settings-links'>
                                     <SettingsSidebar
                                         tabs={this.props.isContentProductSettings ? this.getUserSettingsTabs() : this.getProfileSettingsTab()}
+                                        // pluginTabs={this.props.isContentProductSettings ? this.getPluginsSettingsTab() : []}
                                         pluginTabs={this.props.isContentProductSettings ? this.getPluginsSettingsTab() : []}
                                         activeTab={this.state.active_tab}
                                         updateTab={this.updateTab}
