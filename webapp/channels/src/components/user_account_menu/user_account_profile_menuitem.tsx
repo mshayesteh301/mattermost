@@ -10,6 +10,7 @@ import type {UserProfile} from '@mattermost/types/users';
 
 import {savePreferences} from 'mattermost-redux/actions/preferences';
 import {getInt} from 'mattermost-redux/selectors/entities/preferences';
+import {isCurrentUserSystemAdmin} from 'mattermost-redux/selectors/entities/users';
 
 import {openModal} from 'actions/views/modals';
 
@@ -28,8 +29,13 @@ interface Props {
 export default function UserAccountProfileMenuItem(props: Props) {
     const dispatch = useDispatch();
 
+    const isAdmin = useSelector(isCurrentUserSystemAdmin);
     const onboardingTaskStep = useSelector((state: GlobalState) => getInt(state, OnboardingTaskCategory, OnboardingTasksName.COMPLETE_YOUR_PROFILE, 0));
     const isCompleteYourProfileTaskPending = onboardingTaskStep === TaskNameMapToSteps[OnboardingTasksName.COMPLETE_YOUR_PROFILE].STARTED;
+
+    if (!isAdmin) {
+        return <div/>;
+    }
 
     function handleTourClick() {
         const taskName = OnboardingTasksName.COMPLETE_YOUR_PROFILE;
