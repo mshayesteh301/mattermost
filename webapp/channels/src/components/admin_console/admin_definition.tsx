@@ -5045,8 +5045,7 @@ const AdminDefinition: AdminDefinitionType = {
         sectionTitle: defineMessage({id: 'admin.sidebar.integrations', defaultMessage: 'Integrations'}),
         id: 'integrations',
 
-        //isHidden: it.not(it.userHasReadPermissionOnSomeResources(RESOURCE_KEYS.INTEGRATIONS)),
-        isHidden: true,
+        isHidden: it.not(it.userHasReadPermissionOnSomeResources(RESOURCE_KEYS.INTEGRATIONS)),
         subsections: {
             integration_management: {
                 url: 'integrations/integration_management',

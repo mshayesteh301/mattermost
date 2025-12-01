@@ -125,10 +125,10 @@ export default function UserAccountMenu(props: Props) {
                 shouldConfirmBeforeStatusChange={shouldConfirmBeforeStatusChange}
                 isStatusOffline={props.status === UserStatuses.OFFLINE}
             />
-            {/* <Menu.Separator/>
+            <Menu.Separator/>
             <UserAccountProfileMenuItem
                 userId={props.userId}
-            /> */}
+            />
             {/* <Menu.Separator/>
             <UserAccountLogoutMenuItem/> */}
         </Menu.Container>
