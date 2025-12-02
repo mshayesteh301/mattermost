@@ -114,14 +114,14 @@ export class MobileSidebarRightItems extends React.PureComponent<Props> {
                     />
                 </Menu.Group>
                 <Menu.Group>
-                    <Menu.ItemToggleModalRedux
+                    {/* <Menu.ItemToggleModalRedux
                         id='profileSettings'
                         modalId={ModalIdentifiers.USER_SETTINGS}
                         dialogType={UserSettingsModal}
                         dialogProps={{isContentProductSettings: false}}
                         text={formatMessage({id: 'navbar_dropdown.profileSettings', defaultMessage: 'Profile'})}
                         icon={<i className='fa fa-user'/>}
-                    />
+                    /> */}
                     <Menu.ItemToggleModalRedux
                         id='accountSettings'
                         modalId={ModalIdentifiers.USER_SETTINGS}
@@ -251,7 +251,7 @@ export class MobileSidebarRightItems extends React.PureComponent<Props> {
                 <Menu.Group>
                     {pluginItems}
                 </Menu.Group>
-                <Menu.Group>
+                {/* <Menu.Group>
                     <Menu.ItemExternalLink
                         id='helpLink'
                         show={Boolean(this.props.helpLink)}
@@ -288,7 +288,7 @@ export class MobileSidebarRightItems extends React.PureComponent<Props> {
                         text={formatMessage({id: 'navbar_dropdown.logout', defaultMessage: 'Log Out'})}
                         icon={<i className='fa fa-sign-out'/>}
                     />
-                </Menu.Group>
+                </Menu.Group> */}
             </Menu>
         );
     }

@@ -4960,6 +4960,7 @@
   "navbar_dropdown.userGroups.modal.titleEndUser": "گروه‌های کاربر در طرح‌های پرداخت شده موجود هستند",
   "navbar_dropdown.userGroups.tooltip.cloudFreeTrial": "در طول آزمایشی شما می‌توانید گروه‌های کاربر ایجاد کنید. این گروه‌های کاربر پس از پایان آزمایشی بایگانی خواهند شد.",
   "navbar_dropdown.versionText": "این نسخه رایگان <link>پشتیبانی نشده</link> Mattermost است.",
+  "navbar_dropdown.viewMembers": "اعضا را مشاهده کنید",
   "navbar.addGroups": "گروه‌ها را اضافه کنید",
   "navbar.addMembers": "اعضا را اضافه کنید",
   "navbar.preferences": "ترجیحات اعلان",
