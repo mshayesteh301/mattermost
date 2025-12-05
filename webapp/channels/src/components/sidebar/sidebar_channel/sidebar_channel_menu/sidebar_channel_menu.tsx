@@ -191,25 +191,25 @@ const SidebarChannelMenu = ({
     }
 
     let copyLinkMenuItem: JSX.Element | null = null;
-    if (channel.type === Constants.OPEN_CHANNEL || channel.type === Constants.PRIVATE_CHANNEL) {
-        function handleCopyLink() {
-            copyToClipboard(channelLink);
-        }
+    // if (channel.type === Constants.OPEN_CHANNEL || channel.type === Constants.PRIVATE_CHANNEL) {
+    //     function handleCopyLink() {
+    //         copyToClipboard(channelLink);
+    //     }
 
-        copyLinkMenuItem = (
-            <Menu.Item
-                id={`copyLink-${channel.id}`}
-                onClick={handleCopyLink}
-                leadingElement={<LinkVariantIcon size={18}/>}
-                labels={(
-                    <FormattedMessage
-                        id='sidebar_left.sidebar_channel_menu.copyLink'
-                        defaultMessage='Copy Link'
-                    />
-                )}
-            />
-        );
-    }
+    //     copyLinkMenuItem = (
+    //         <Menu.Item
+    //             id={`copyLink-${channel.id}`}
+    //             onClick={handleCopyLink}
+    //             leadingElement={<LinkVariantIcon size={18}/>}
+    //             labels={(
+    //                 <FormattedMessage
+    //                     id='sidebar_left.sidebar_channel_menu.copyLink'
+    //                     defaultMessage='Copy Link'
+    //                 />
+    //             )}
+    //         />
+    //     );
+    // }
 
     let addMembersMenuItem: JSX.Element | null = null;
     if ((channel.type === Constants.PRIVATE_CHANNEL && managePrivateChannelMembers) || (channel.type === Constants.OPEN_CHANNEL && managePublicChannelMembers)) {

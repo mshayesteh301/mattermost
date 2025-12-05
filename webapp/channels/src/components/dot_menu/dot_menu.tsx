@@ -632,7 +632,7 @@ export class DotMenuClass extends React.PureComponent<Props, State> {
                         onClick={this.handleMoveThreadMenuItemActivated}
                     />
                 }
-                {!isSystemMessage && (this.state.canEdit || this.state.canDelete) && <Menu.Separator/>}
+                {/* {!isSystemMessage && (this.state.canEdit || this.state.canDelete) && <Menu.Separator/>}
                 {!isSystemMessage &&
                     <Menu.Item
                         id={`permalink_${this.props.post.id}`}
@@ -646,7 +646,7 @@ export class DotMenuClass extends React.PureComponent<Props, State> {
                         trailingElements={<ShortcutKey shortcutKey='K'/>}
                         onClick={this.copyLink}
                     />
-                }
+                } */}
                 {!isSystemMessage && <Menu.Separator/>}
                 {this.state.canEdit &&
                     <Menu.Item
