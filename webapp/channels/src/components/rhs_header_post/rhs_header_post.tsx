@@ -229,7 +229,7 @@ class RhsHeaderPost extends React.PureComponent<Props> {
                         </button>
                     </WithTooltip>
                 </div>
-                {this.props.showThreadsTutorialTip && <CRTThreadsPaneTutorialTip/>}
+                {/* {this.props.showThreadsTutorialTip && <CRTThreadsPaneTutorialTip/>} */}
             </div>
         );
     }

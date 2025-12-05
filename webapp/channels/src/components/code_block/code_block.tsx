@@ -104,7 +104,7 @@ const CodeBlock: React.FC<Props> = ({code, language, searchedContent, channelId}
     return (
         <div className={className}>
             <div className='post-code__overlay'>
-                <CopyButton content={code}/>
+                {/* <CopyButton content={code}/> */}
                 {pluginItems}
                 {header}
             </div>

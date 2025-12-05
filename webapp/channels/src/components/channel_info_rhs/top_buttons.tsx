@@ -193,7 +193,7 @@ export default function TopButtons({
                     </Button>
                 </WithTooltip>
             )}
-            {canCopyLink && (
+            {/* {canCopyLink && (
                 <WithTooltip
                     title={
                         <FormattedMessage
@@ -213,7 +213,7 @@ export default function TopButtons({
                         <span>{copyText}</span>
                     </CopyButton>
                 </WithTooltip>
-            )}
+            )} */}
         </ChannelInfoRhsTopButtons>
     );
 }

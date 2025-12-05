@@ -24,40 +24,7 @@ import * as UserAgent from 'utils/user_agent';
 //
 // Order is important! The notices at the top are shown first.
 
-const notices: Notice[] = [
-    {
-        name: 'apiv3_deprecation',
-        adminOnly: true,
-        title: (
-            <FormattedMessage
-                id='system_notice.title'
-                defaultMessage='Notice from Mattermost'
-            />
-        ),
-        body: (
-            <FormattedMessage
-                id='system_notice.body.api3'
-                defaultMessage='If you’ve created or installed integrations in the last two years, find out how <link>recent changes</link> may have affected them.'
-                values={{
-                    link: (msg: React.ReactNode) => (
-                        <ExternalLink
-                            href='https://api.mattermost.com/#tag/APIv3-Deprecation'
-                            location='system_notices'
-                        >
-                            {msg}
-                        </ExternalLink>
-                    ),
-                }}
-            />
-        ),
-        allowForget: true,
-        show: (serverVersion, config) => {
-            if (config.InstallationDate >= new Date(2018, 5, 16, 0, 0, 0, 0).getTime()) {
-                return false;
-            }
-            return true;
-        },
-    },
+const notices: Notice[] = [   
     {
         name: 'advanced_permissions',
         adminOnly: true,
@@ -96,52 +63,7 @@ const notices: Notice[] = [
             }
             return true;
         },
-    },
-    {
-        name: 'ee_upgrade_advice',
-        adminOnly: true,
-        title: (
-            <FormattedMessage
-                id='system_notice.title'
-                defaultMessage='Notice from Mattermost'
-            />
-        ),
-        body: (
-            <FormattedMessage
-                id='system_notice.body.ee_upgrade_advice'
-                defaultMessage='Enterprise Edition is recommended to ensure optimal operation and reliability. <link>Learn more</link>.'
-                values={{
-                    link: (msg: React.ReactNode) => (
-                        <ExternalLink
-                            href='https://mattermost.com/performance'
-                            location='system_notices'
-                        >
-                            {msg}
-                        </ExternalLink>
-                    ),
-                }}
-            />
-        ),
-        allowForget: false,
-        show: (serverVersion, config, license, analytics) => {
-            const USERS_THRESHOLD = 10000;
-
-            // If we don't have the analytics yet, don't show
-            if (!analytics || Object.hasOwn(analytics, 'TOTAL_USERS')) {
-                return false;
-            }
-
-            if (analytics.TOTAL_USERS && analytics.TOTAL_USERS < USERS_THRESHOLD) {
-                return false;
-            }
-
-            if (license.IsLicensed === 'true' && license.Cluster === 'true') {
-                return false;
-            }
-
-            return true;
-        },
-    },
+    },  
     {
         name: 'ie11_deprecation',
         title: (

@@ -146,16 +146,16 @@ const FilePreviewModalMainActions: React.FC<Props> = ({
         </WithTooltip>
     );
 
-    const copy = (
-        <CopyButton
-            className='file-preview-modal-main-actions__action-item'
-            isForText={getFileType(fileInfo.extension) === FileTypes.TEXT}
-            content={content}
-        />
-    );
+    // const copy = (
+    //     <CopyButton
+    //         className='file-preview-modal-main-actions__action-item'
+    //         isForText={getFileType(fileInfo.extension) === FileTypes.TEXT}
+    //         content={content}
+    //     />
+    // );
     return (
         <div className='file-preview-modal-main-actions__actions'>
-            {!showOnlyClose && canCopyContent && copy}
+            {!showOnlyClose && canCopyContent }
             {!showOnlyClose && enablePublicLink && showPublicLink && publicLink}
             {!showOnlyClose && canDownloadFiles && download}
             {showClose && closeButton}

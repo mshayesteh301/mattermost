@@ -6,7 +6,7 @@
     width: auto;
     align-items: center;
     justify-content: center;
-
+    direction: ltr;
     padding: 6px;
     border: none;
     border-radius: 4px;
@@ -36,6 +36,7 @@
         &.HeaderIconButton--toggled {
             --bg-opacity: 1;
             --text-opacity: 1;
+                color: initial;
 
             &:hover {
                 --bg-opacity: 0.92;

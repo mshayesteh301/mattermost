@@ -115,7 +115,7 @@ function TextboxLinks({
         <div className={'help__text ' + helpTextClass}>
             {helpText}
             {previewLink}
-            <ExternalLink
+            {/* <ExternalLink
                 location='textbox_links'
                 href={'https://docs.mattermost.com/collaborate/format-messages.html'}
                 className='textbox-help-link'
@@ -124,7 +124,7 @@ function TextboxLinks({
                     id='textbox.help'
                     defaultMessage='Help'
                 />
-            </ExternalLink>
+            </ExternalLink> */}
         </div>
     );
 }

@@ -253,7 +253,7 @@ export default function InviteView(props: Props) {
                 <OverageUsersBannerNotice/>
             </Modal.Body>
             <Modal.Footer className={classNames('InviteView__footer', props.footerClass, {'InviteView__footer-guest': props.inviteType === InviteType.GUEST})}>
-                {props.inviteType === InviteType.MEMBER && copyButton}
+                {/* {props.inviteType === InviteType.MEMBER && copyButton} */}
                 <button
                     disabled={!isInviteValid}
                     onClick={props.invite}

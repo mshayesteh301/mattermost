@@ -52,7 +52,7 @@ const ProfilePopoverSelfUserRow = ({
         <div
             className='user-popover__bottom-row-container'
         >
-            <button
+            {/* <button
                 type='button'
                 className='btn btn-primary btn-sm'
                 onClick={handleEditAccountSettings}
@@ -65,7 +65,7 @@ const ProfilePopoverSelfUserRow = ({
                     id='user_profile.account.editProfile'
                     defaultMessage='Edit Profile'
                 />
-            </button>
+            </button> */}
             <WithTooltip
                 title={formatMessage({id: 'user_profile.send.dm.yourself', defaultMessage: 'Send yourself a message'})}
             >

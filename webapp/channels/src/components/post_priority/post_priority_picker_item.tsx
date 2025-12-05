@@ -60,7 +60,7 @@ const Header = styled.h4`
     align-items: center;
     display: flex;
     gap: 8px;
-    font-family: 'Open Sans', sans-serif;
+    
     font-size: 14px;
     font-weight: 600;
     letter-spacing: 0;
@@ -73,7 +73,7 @@ const Header = styled.h4`
 const Footer = styled.div`
     align-items: center;
     display: flex;
-    font-family: Open Sans;
+    
     justify-content: flex-end;
     padding: 16px;
     gap: 8px;
