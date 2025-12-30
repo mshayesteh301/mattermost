@@ -18,42 +18,42 @@ services:
     extends:
         file: build/docker-compose.common.yml
         service: minio
-  inbucket:
-    container_name: mattermost-inbucket
-    ports:
-      - "9001:9001"
-      - "10025:10025"
-      - "10110:10110"
-    extends:
-        file: build/docker-compose.common.yml
-        service: inbucket
-  openldap:
-    container_name: mattermost-openldap
-    ports:
-      - "389:389"
-      - "636:636"
-    extends:
-        file: build/docker-compose.common.yml
-        service: openldap
-  elasticsearch:
-    container_name: mattermost-elasticsearch
-    ports:
-      - "9200:9200"
-      - "9300:9300"
-    volumes:
-      - "elasticsearch-data:/usr/share/elasticsearch/data"
-    extends:
-        file: build/docker-compose.common.yml
-        service: elasticsearch
-  opensearch:
-    container_name: mattermost-opensearch
-    ports:
-      - "9201:9201"
-    volumes:
-      - "opensearch-data:/usr/share/opensearch/data"
-    extends:
-        file: build/docker-compose.common.yml
-        service: opensearch
+  # inbucket:
+  #   container_name: mattermost-inbucket
+  #   ports:
+  #     - "9001:9001"
+  #     - "10025:10025"
+  #     - "10110:10110"
+  #   extends:
+  #       file: build/docker-compose.common.yml
+  #       service: inbucket
+  # openldap:
+  #   container_name: mattermost-openldap
+  #   ports:
+  #     - "389:389"
+  #     - "636:636"
+  #   extends:
+  #       file: build/docker-compose.common.yml
+  #       service: openldap
+  # elasticsearch:
+  #   container_name: mattermost-elasticsearch
+  #   ports:
+  #     - "9200:9200"
+  #     - "9300:9300"
+  #   volumes:
+  #     - "elasticsearch-data:/usr/share/elasticsearch/data"
+  #   extends:
+  #       file: build/docker-compose.common.yml
+  #       service: elasticsearch
+  # opensearch:
+  #   container_name: mattermost-opensearch
+  #   ports:
+  #     - "9201:9201"
+  #   volumes:
+  #     - "opensearch-data:/usr/share/opensearch/data"
+  #   extends:
+  #       file: build/docker-compose.common.yml
+  #       service: opensearch
   redis:
     container_name: mattermost-redis
     ports:
@@ -63,48 +63,48 @@ services:
     extends:
         file: build/docker-compose.common.yml
         service: redis
-  dejavu:
-    container_name: mattermost-dejavu
-    ports:
-      - "1358:1358"
-    extends:
-        file: build/docker-compose.common.yml
-        service: dejavu
-  keycloak:
-    container_name: mattermost-saml
-    ports:
-      - "8484:8080"
-    extends:
-        file: build/docker-compose.common.yml
-        service: keycloak
-  prometheus:
-    container_name: mattermost-prometheus
-    ports:
-      - "9090:9090"
-    extends:
-        file: build/docker-compose.common.yml
-        service: prometheus
-  grafana:
-    container_name: mattermost-grafana
-    ports:
-      - "3000:3000"
-    extends:
-        file: build/docker-compose.common.yml
-        service: grafana
-  loki:
-    container_name: mattermost-loki
-    ports:
-      - "3100:3100"
-    extends:
-        file: build/docker-compose.common.yml
-        service: loki
-  promtail:
-    container_name: mattermost-promtail
-    ports:
-      - "3180:3180"
-    extends:
-        file: build/docker-compose.common.yml
-        service: promtail
+  # dejavu:
+  #   container_name: mattermost-dejavu
+  #   ports:
+  #     - "1358:1358"
+  #   extends:
+  #       file: build/docker-compose.common.yml
+  #       service: dejavu
+  # keycloak:
+  #   container_name: mattermost-saml
+  #   ports:
+  #     - "8484:8080"
+  #   extends:
+  #       file: build/docker-compose.common.yml
+  #       service: keycloak
+  # prometheus:
+  #   container_name: mattermost-prometheus
+  #   ports:
+  #     - "9090:9090"
+  #   extends:
+  #       file: build/docker-compose.common.yml
+  #       service: prometheus
+  # grafana:
+  #   container_name: mattermost-grafana
+  #   ports:
+  #     - "3000:3000"
+  #   extends:
+  #       file: build/docker-compose.common.yml
+  #       service: grafana
+  # loki:
+  #   container_name: mattermost-loki
+  #   ports:
+  #     - "3100:3100"
+  #   extends:
+  #       file: build/docker-compose.common.yml
+  #       service: loki
+  # promtail:
+  #   container_name: mattermost-promtail
+  #   ports:
+  #     - "3180:3180"
+  #   extends:
+  #       file: build/docker-compose.common.yml
+  #       service: promtail
 
   start_dependencies:
     image: mattermost/mattermost-wait-for-dep:latest
@@ -257,15 +257,15 @@ services:
 networks:
   messaging-app:
     driver: bridge
-    ipam:
-      driver: default
-      config:
-        - subnet: 192.168.254.0/24
-          ip_range: 192.168.254.0/24
+    # ipam:
+    #   driver: default
+    #   config:
+    #     - subnet: 192.168.254.0/24
+    #       ip_range: 192.168.254.0/24
 
 volumes:
   postgres-data:
   minio-data:
-  elasticsearch-data:
-  opensearch-data:
+  # elasticsearch-data:
+  # opensearch-data:
   redis-data:
